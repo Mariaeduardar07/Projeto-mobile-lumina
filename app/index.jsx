@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {
+  ScrollView,
   View,
   Text,
   StyleSheet,
@@ -18,7 +19,8 @@ export default function Home() {
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
+      {/* INCIO DA BARRA DE PESQUISA */}
       <View style={styles.searchContainer}>
         <TextInput
           style={styles.searchInput}
@@ -33,6 +35,9 @@ export default function Home() {
           />
         </TouchableOpacity>
       </View>
+      {/* FIM DA BARRA D PESQUISA */}
+
+      {/* INTRODUÇÃO DA PÁGINA */}
       <View style={styles.introduction}>
         <Text style={styles.titleIntroduction}>
           Seja bem vindo ao blog lumina
@@ -43,38 +48,46 @@ export default function Home() {
         </Text>
       </View>
 
-      <View style={styles.categoriesContainer}>
-        <Text style={styles.titleSection}>Categorias</Text>
-        <View style={styles.cardContainer}>
-          <Link href="/" asChild>
-            <Pressable style={styles.cardCategories}>
-              <Image
-                source={{
-                  uri: "https://img.freepik.com/fotos-premium/garrafa-de-oleo-para-restaurar-e-recuperar-cabelos-danificados-cachos-de-cabelo-e-oleo-de-cabelo-vista-superior_132254-2492.jpg",
-                }}
-                style={styles.imageCategories}
-              />
-              <View style={styles.textContainerCategories}>
-                <Text style={styles.titleCategories}>Cuidados capilares</Text>
-                <Text style={styles.textCategories}>
-                  Dicas e produtos para manter seus cabelos lindos e saudáveis
-                </Text>
-              </View>
-            </Pressable>
-          </Link>
+      {/*INICIO DA SEÇÃO DE CATEGORIAS */}
+      <View style={styles.categoriasContainer}>
+        <Text style={styles.titleSectionCategories}>Categorias</Text>
+        <View style={styles.cardsCategoriesContainer}>
+          <View style={styles.cardCategory}>
+            <Image
+              source={{ uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrSMBIuuGYX20mZlX9zgTuaoCp7uVwaDFDbTyR_-HaDm59PmyA" }} // Substitua pelo link da imagem
+              style={styles.imageCategory} // Defina o tamanho da imagem
+            />
+            <Text style={styles.titleCategory}>Cuidados Capilares</Text>
+            <Text style={styles.textCategory}>Dicas e produtos para manter seus cabelos lindos e saudáveis</Text>
+          </View>
+          <View style={styles.cardCategory}>
+            <Image
+              source={{ uri: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTwQqd5I0JZJ6a59nPWnT1ovC2TCAwEmhgTx9qgkviSg9PfY0UE" }} // Substitua pelo link da imagem
+              style={styles.imageCategory} // Defina o tamanho da imagem
+            />
+            <Text style={styles.titleCategory}>Maquiagem</Text>
+            <Text style={styles.textCategory}>Dicas práticas para realçar sua beleza com maquiagem.</Text>
+          </View>
+          <View style={styles.cardCategory}>
+            <Image
+              source={{ uri: "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRA8nXWkNZUnwCCxM7LS-sz-LcW5-h1-3cz4K6iygQzEasfROC3" }} // Substitua pelo link da imagem
+              style={styles.imageCategory} // Defina o tamanho da imagem
+            />
+            <Text style={styles.titleCategory}>Skin Care</Text>
+            <Text style={styles.textCategory}>Cuidados essenciais para uma pele bonita e bem tratada</Text>
+          </View>
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  // Estilo geral da página
+  //Estilo geral da página
   container: {
     justifyContent: "center",
     alignItems: "center",
     flex: 1,
-    padding: 20,
   },
   // Estilo para a barra de busca
   searchContainer: {
@@ -102,6 +115,7 @@ const styles = StyleSheet.create({
     padding: 10,
     marginLeft: 5,
   },
+
   // Estilo para a introdução da página
   introduction: {
     width: "90%",
@@ -119,52 +133,39 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "#2b60ab",
   },
-  // Estilo para as categorias
-  categoriesContainer: {
-    flexDirection: "column",
-    gap: 10,
+
+  // Estilo para a seção de categorias
+  categoriasContainer: {
     width: "90%",
+    marginTop: 20,
   },
-  titleSection: {
+  titleSectionCategories: {
     fontSize: 24,
     fontWeight: "500",
     color: "#2b60ab",
-    marginTop: 15,
-    textAlign: "left",
-    alignSelf: "flex-start",
   },
-  cardContainer: {
-    gap: 10,
-    width: "100%",
-    height: "100%",
+  cardsCategoriesContainer: {
+    flexDirection: "column",
   },
-  cardCategories: {
-    flexDirection: "row",
+  cardCategory: {
+    backgroundColor: "#fff",
     borderRadius: 15,
-    overflow: "hidden",
-    width: "100%",
-    height: 120,
-    alignItems: "center",
     padding: 10,
+  
   },
-  imageCategories: {
+  imageCategory: {
     width: "100%",
     height: 100,
     borderRadius: 10,
-    marginRight: 10,
-    backgroundColor: "#2b60ab",
+    backgroundColor: "#a7d6ed",
   },
-  textContainerCategories: {
-    flex: 1,
+  titleCategory: {
+    fontSize: 16,
+    color: "#000",
+    fontWeight: "bold",
   },
-  titleCategories: {
-    fontSize: 20,
-    fontWeight: "500",
-    color: "#fff",
-    marginTop: 10,
-  },
-  textCategories: {
+  textCategory: {
     fontSize: 14,
-    color: "#fff",
+    color: "#000",
   },
 });
