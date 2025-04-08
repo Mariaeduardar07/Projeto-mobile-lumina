@@ -7,9 +7,8 @@ import {
   TextInput,
   TouchableOpacity,
   Image,
-  Pressable,
 } from "react-native";
-import { Link } from "expo-router";
+import { LinearGradient } from "expo-linear-gradient";
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -52,29 +51,44 @@ export default function Home() {
       <View style={styles.categoriasContainer}>
         <Text style={styles.titleSectionCategories}>Categorias</Text>
         <View style={styles.cardsCategoriesContainer}>
-          <View style={styles.cardCategory}>
-            <Image
-              source={{ uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrSMBIuuGYX20mZlX9zgTuaoCp7uVwaDFDbTyR_-HaDm59PmyA" }} // Substitua pelo link da imagem
-              style={styles.imageCategory} // Defina o tamanho da imagem
-            />
-            <Text style={styles.titleCategory}>Cuidados Capilares</Text>
-            <Text style={styles.textCategory}>Dicas e produtos para manter seus cabelos lindos e saudáveis</Text>
+          <View style={styles.cardCategoryHair}>
+            <LinearGradient
+              colors={["#2b60ab", "#ffffff00"]}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 1 }}
+              style={styles.cardCategoryHair} 
+            >
+              <Text style={styles.titleHair}>Cuidados Capilares</Text>
+              <Text style={styles.textHair}>
+                Dicas e produtos para manter seus cabelos lindos e saudáveis
+              </Text>
+            </LinearGradient>
           </View>
-          <View style={styles.cardCategory}>
-            <Image
-              source={{ uri: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTwQqd5I0JZJ6a59nPWnT1ovC2TCAwEmhgTx9qgkviSg9PfY0UE" }} // Substitua pelo link da imagem
-              style={styles.imageCategory} // Defina o tamanho da imagem
-            />
-            <Text style={styles.titleCategory}>Maquiagem</Text>
-            <Text style={styles.textCategory}>Dicas práticas para realçar sua beleza com maquiagem.</Text>
+          <View style={styles.cardCategoryMakeup}>
+            <LinearGradient
+              colors={["#2b60ab", "#ffffff00"]}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 1 }}
+              style={styles.cardCategoryMakeup}
+            >
+              <Text style={styles.titleMakeup}>Maquiagem</Text>
+              <Text style={styles.textMakeup}>
+                Dicas práticas para realçar sua beleza com maquiagem.
+              </Text>
+            </LinearGradient>
           </View>
-          <View style={styles.cardCategory}>
-            <Image
-              source={{ uri: "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRA8nXWkNZUnwCCxM7LS-sz-LcW5-h1-3cz4K6iygQzEasfROC3" }} // Substitua pelo link da imagem
-              style={styles.imageCategory} // Defina o tamanho da imagem
-            />
-            <Text style={styles.titleCategory}>Skin Care</Text>
-            <Text style={styles.textCategory}>Cuidados essenciais para uma pele bonita e bem tratada</Text>
+          <View style={styles.cardCategorySkinCare}>
+            <LinearGradient
+              colors={["#2b60ab", "#ffffff00"]}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 1 }}
+              style={styles.cardCategorySkinCare}
+            >
+              <Text style={styles.titleSkinCare}>Skin Care</Text>
+              <Text style={styles.textSkinCare}>
+                Cuidados essenciais para uma pele bonita e bem tratada
+              </Text>
+            </LinearGradient>
           </View>
         </View>
       </View>
@@ -136,7 +150,6 @@ const styles = StyleSheet.create({
 
   // Estilo para a seção de categorias
   categoriasContainer: {
-    width: "90%",
     marginTop: 20,
   },
   titleSectionCategories: {
@@ -146,26 +159,87 @@ const styles = StyleSheet.create({
   },
   cardsCategoriesContainer: {
     flexDirection: "column",
-  },
-  cardCategory: {
-    backgroundColor: "#fff",
-    borderRadius: 15,
-    padding: 10,
-  
-  },
-  imageCategory: {
+    alignItems: "center",
     width: "100%",
-    height: 100,
-    borderRadius: 10,
-    backgroundColor: "#a7d6ed",
+    gap: 15,
+    marginTop: 10,
   },
-  titleCategory: {
-    fontSize: 16,
-    color: "#000",
+
+  // CARD DE CABELO
+  cardCategoryHair: {
+    backgroundImage:
+      "url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrSMBIuuGYX20mZlX9zgTuaoCp7uVwaDFDbTyR_-HaDm59PmyA)",
+      borderRadius: 15,
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      width: "100%",
+      height: 115, // Defina uma altura fixa ou ajustável
+      justifyContent: "center",
+  },
+  titleHair: {
+    fontSize: 24,
+    color: "#fff",
     fontWeight: "bold",
+    marginTop: 20,
+    left : 10,
   },
-  textCategory: {
+  textHair: {
     fontSize: 14,
-    color: "#000",
+    color: "#fff",
+    width: "90%",
+    left : 10,
+  },
+
+  // CARD DE MAQUIAGEM
+  cardCategoryMakeup: {
+    backgroundImage:
+      "url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwQqd5I0JZJ6a59nPWnT1ovC2TCAwEmhgTx9qgkviSg9PfY0UE)",
+      borderRadius: 15,
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      width: "100%",
+      height: 115, // Defina uma altura fixa ou ajustável
+      justifyContent: "center",
+  },
+  titleMakeup: {
+    fontSize: 24,
+    color: "#fff",
+    fontWeight: "bold",
+    marginTop: 20,
+    left : 10,
+  },
+  textMakeup: {
+    fontSize: 14,
+    color: "#fff",
+    width: "75%",
+    left : 10,
+  },
+
+  // CARD DE SKINCARE
+  cardCategorySkinCare: {
+    backgroundImage:
+      "url(https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRA8nXWkNZUnwCCxM7LS-sz-LcW5-h1-3cz4K6iygQzEasfROC3)",
+    borderRadius: 15,
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    width: "100%",
+    height: 115, // Defina uma altura fixa ou ajustável
+    justifyContent: "center",
+  },
+  titleSkinCare: {
+    fontSize: 24,
+    color: "#fff",
+    fontWeight: "bold",
+    marginTop: 20,
+    left : 10,
+  },
+  textSkinCare: {
+    fontSize: 14,
+    color: "#fff",
+    width: "75%",
+    left : 10,
   },
 });
