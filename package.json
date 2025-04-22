@@ -9,6 +9,8 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@rneui/base": "^0.0.0-edge.2",
+    "@rneui/themed": "^0.0.0-edge.2",
     "@react-navigation/drawer": "^7.3.9",
     "expo": "~52.0.43",
     "expo-constants": "~17.0.8",
