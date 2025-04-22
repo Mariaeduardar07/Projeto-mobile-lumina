@@ -1,18 +1,16 @@
-import { Stack } from "expo-router";
-import { Image, Text, View, StyleSheet } from "react-native";
+import { Image, View, StyleSheet } from "react-native";
+import { Drawer } from "expo-router/drawer";
+import { Ionicons } from "@expo/vector-icons";
 
 export default function RootLayout() {
   return (
-    <Stack
-      screenOptions={{
-        contentStyle: { backgroundColor: "#fff" },
-        headerTintColor: "#fff",
-        headerTitle: () => (
-          <View style={styles.headerContainer}>
-            <Image
-              source={require("../assets/menu.png")}
-              style={{ width: 40, height: 40 }}
-            />
+      <Drawer
+        screenOptions={{
+          // contentStyle: { backgroundColor: "red" },
+          headerTintColor: "#2b60ab",
+          headerStyle: {
+            backgroundColor: "#ffffff",
+          },
 
             <Image
               source={require("../assets/logoPrincipal.png")}
@@ -30,8 +28,27 @@ export default function RootLayout() {
       <Stack.Screen name="termos" options={{ title: "Termos de Condição" }} />
   
     </Stack>
-
-    
+          headerTitle: () => (
+            <View style={styles.headerContainer}>
+              <Image
+                source={require("../assets/logoPrincipal.png")}
+                style={styles.logoPrincipal}
+              />
+            </View>
+          ),
+        }}
+      >
+        <Drawer.Screen
+          name="index"
+          options={{
+            drawerLabel: "Início",
+            title: "Home",
+            drawerIcon: ({ size, color }) => (
+              <Ionicons name="home" size={size} color={color} />
+            ),
+          }}
+        />
+      </Drawer>
   );
 }
 
@@ -39,13 +56,11 @@ const styles = StyleSheet.create({
   headerContainer: {
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "center",
+    padding: '60%',
     flex: 1,
   },
   logoPrincipal: {
     height: 50,
     width: 150,
-    marginLeft: 80, 
-    marginTop: 10,
   },
 });
