@@ -102,6 +102,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     flex: 1,
+    backgroundColor: "white",
   },
   // Estilo para a barra de busca
   searchContainer: {
