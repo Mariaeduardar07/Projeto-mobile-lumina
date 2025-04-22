@@ -4,9 +4,9 @@ import { View, Text, StyleSheet } from "react-native";
 export default function AboutUs() {
   return (
     <View style={styles.containerAboutUs}>
-      <View styles={styles.introduction}>
+      <View style={styles.introduction}>
         <Text style={styles.titleIntroduction}>
-          Seja bem-vinda ao nosso mundo.
+          Seja bem-vinda ao nosso mundo
         </Text>
         <Text style={styles.textIntroduction}>
           Somos cinco amigas unidas pela paixão por beleza, tecnologia e
@@ -23,21 +23,27 @@ export default function AboutUs() {
 
 const styles = StyleSheet.create({
   containerAboutUs: {
+    justifyContent: "center",
+    alignItems: "center",
+    flex: 1,
     backgroundColor: "white",
-    padding: 20,
   },
   introduction: {
     width: "90%",
+    marginBottom: 20,
   },
   titleIntroduction: {
     fontSize: 26,
-    fontWeight: "500",
+    fontWeight: "400",
+    textAlign: "justify",
+    width: "100%",
     color: "#2b60ab",
   },
   textIntroduction: {
-    fontSize: 16,
+    fontSize: 18,
     color: "black",
     marginTop: 10,
     textAlign: "justify",
+    width: "100%",
   },
 });
