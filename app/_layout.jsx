@@ -18,15 +18,20 @@ export default function RootLayout() {
               source={require("../assets/logoPrincipal.png")}
               style={styles.logoPrincipal}
             />
+          
           </View>
         ),
       }}
     >
+
       <Stack.Screen name="index" options={{ title: "Home" }} />
       <Stack.Screen name="login" options={{ title: "Login" }} />
       <Stack.Screen name="about" options={{ title: "Sobre" }} />
       <Stack.Screen name="termos" options={{ title: "Termos de Condição" }} />
+  
     </Stack>
+
+    
   );
 }
 

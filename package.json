@@ -9,6 +9,8 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@rneui/base": "^0.0.0-edge.2",
+    "@rneui/themed": "^0.0.0-edge.2",
     "expo": "~52.0.43",
     "expo-constants": "~17.0.8",
     "expo-linear-gradient": "~14.0.2",

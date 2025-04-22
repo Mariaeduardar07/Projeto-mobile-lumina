@@ -7,8 +7,10 @@ import {
   TextInput,
   TouchableOpacity,
   Image,
+  FlatList
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import PolaroidCard from "./components/Card";
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -91,6 +93,17 @@ export default function Home() {
             </LinearGradient>
           </View>
         </View>
+      
+      <View style={styles.dicasContainer}>        
+        <Text style={styles.titleSectionDicas}>Dicas</Text>
+        <View style={styles.slide}>
+        <PolaroidCard />
+        <PolaroidCard />
+        <PolaroidCard />
+        <PolaroidCard />
+        </View>
+      </View>
+
       </View>
     </ScrollView>
   );
@@ -105,6 +118,7 @@ const styles = StyleSheet.create({
   },
   // Estilo para a barra de busca
   searchContainer: {
+    marginTop: 80,
     flexDirection: "row",
     alignItems: "center",
     borderRadius: 10,
@@ -156,6 +170,12 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "500",
     color: "#2b60ab",
+  },
+  titleSectionDicas: {
+    fontSize: 24,
+    fontWeight: "500",
+    color: "#2b60ab",
+    marginTop: 20,
   },
   cardsCategoriesContainer: {
     flexDirection: "column",
@@ -241,5 +261,13 @@ const styles = StyleSheet.create({
     color: "#fff",
     width: "75%",
     left : 10,
+  },
+  // Estilo para a seção de dicas
+  slide: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    width: "100%",
+    marginTop: 20,
   },
 });
