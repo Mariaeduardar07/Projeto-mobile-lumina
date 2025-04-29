@@ -69,7 +69,7 @@ export default function Hair() {
       <View style={styles.Dicas}>
         <Text style={styles.titleDicas}>Dicas:</Text>
         <Text style={styles.lineDicas}>__________________________________</Text>
-        <Text style={styles.describeDicas}></Text>
+        <Text style={styles.describeDicas}>Clique no botão abaixo para baixar nosso PDF exclusivo com dicas essenciais para seu tipo ideal de cabelos contendo, produtos para cronograma capilar e muito mais!</Text>
 
       </View>
     </ScrollView>
@@ -208,6 +208,16 @@ const styles = StyleSheet.create({
     width: "90%",
     marginTop: -16, /**edu que colocou */
    
+  },
+
+  describeDicas: {
+    fontSize: 14,
+    color: "black",
+    marginTop: 15,
+    width: "90%",
+    textAlign: "justify",
+    alignItems: "center",
+    justifyContent: "center",
   },
 
 });
