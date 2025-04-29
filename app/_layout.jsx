@@ -32,6 +32,7 @@ export default function RootLayout() {
             ),
           }}
         />
+
         <Drawer.Screen
           name="aboutUs"
           options={{
