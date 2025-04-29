@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -6,8 +6,10 @@ import {
   SafeAreaView,
   ScrollView,
   Image,
+  TextInput,
+  TouchableOpacity,
 } from "react-native";
-import Carousel from "react-native-reanimated-carousel"; // Certifique-se de instalar e importar corretamente
+import Carousel from "react-native-reanimated-carousel"; 
 
 // Dados para o carrossel
 const data = [
@@ -19,8 +21,31 @@ const data = [
 ];
 
 export default function AboutUs() {
+    const [searchQuery, setSearchQuery] = useState("");
+  
+    const handleSearch = () => {
+      console.log("Buscando por:", searchQuery);
+    };
+  
   return (
-    <ScrollView contentContainerStyle={styles.scrollContainer}>
+    <ScrollView contentContainerStyle={styles. containerAboutUs}>
+     {/* INCIO DA BARRA DE PESQUISA */}
+           <View style={styles.searchContainer}>
+             <TextInput
+               style={styles.searchInput}
+               placeholder="Search"
+               value={searchQuery}
+               onChangeText={setSearchQuery}
+             />
+             <TouchableOpacity onPress={handleSearch} style={styles.searchButton}>
+               <Image
+                 source={require("../assets/Search.png")} // Substitua pelo caminho correto da imagem
+                 style={{ width: 20, height: 20 }}
+               />
+             </TouchableOpacity>
+           </View>
+           {/* FIM DA BARRA D PESQUISA */}
+
       <View style={styles.containerAboutUs}>
         <View style={styles.introduction}>
           <Text style={styles.titleIntroduction}>
@@ -54,6 +79,8 @@ export default function AboutUs() {
                       style={styles.image}
                       accessibilityLabel={`Imagem ${item.id}`}
                     />
+                    <View style={styles.textOverlay}>
+      </View>
                   </View>
                 )}
               />
@@ -70,6 +97,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     flex: 1,
+    backgroundColor: "white",
   },
   introduction: {
     width: "90%",
@@ -89,6 +117,34 @@ const styles = StyleSheet.create({
     textAlign: "justify",
     width: "100%",
   },
+  // Estilo para a barra de busca
+  searchContainer: {
+    marginTop: 80,
+    flexDirection: "row",
+    alignItems: "center",
+    borderRadius: 10,
+    paddingHorizontal: 10,
+    width: "90%",
+    height: 40,
+    marginBottom: 20,
+    backgroundColor: "white",
+  },
+  searchInput: {
+    flex: 1,
+    height: 40,
+    backgroundColor: "#fff",
+    borderRadius: 20,
+    paddingHorizontal: 10,
+    borderWidth: 2,
+    borderColor: "#8b8b8b",
+  },
+  searchButton: {
+    backgroundColor: "#a7d5ec",
+    borderRadius: 20,
+    padding: 10,
+    marginLeft: 5,
+  },
+
   // CSS do carrossel
   safeArea: {
     flex: 1,
