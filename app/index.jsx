@@ -10,7 +10,7 @@ import {
   FlatList
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import PolaroidCard from "./components/Card";
+// import PolaroidCard from "./components/Card";
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -97,10 +97,10 @@ export default function Home() {
       <View style={styles.dicasContainer}>        
         <Text style={styles.titleSectionDicas}>Dicas</Text>
         <View style={styles.slide}>
+        {/* <PolaroidCard />
         <PolaroidCard />
         <PolaroidCard />
-        <PolaroidCard />
-        <PolaroidCard />
+        <PolaroidCard /> */}
         </View>
       </View>
 
