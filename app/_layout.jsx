@@ -32,6 +32,17 @@ export default function RootLayout() {
             ),
           }}
         />
+
+        <Drawer.Screen
+          name="aboutUs"
+          options={{
+            drawerLabel: "Sobre nós",
+            title: "Sobre nós",
+            drawerIcon: ({ size, color }) => (
+              <Ionicons name="people-outline" size={size} color={color} />
+            ),
+          }}
+        />
       </Drawer>
   );
 }
