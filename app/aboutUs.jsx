@@ -9,15 +9,41 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
-import Carousel from "react-native-reanimated-carousel"; 
 
-// Dados para o carrossel
-const data = [
-  { id: 1, imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO8qAjlQxPw9tTb-PNp1ZC9Dr8B9F5arJb-A&s" },
-  { id: 2, imageUrl: "https://arcosmodels.com/wp-content/uploads/2022/10/AMORA-CAPA-SITE-ARCOS-MODELS-290x380.jpg" },
-  { id: 3, imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGL0me_PGKcII0ZfpgoFOEyNGH2xNp4a0O0Mp3DmmLEsZu0nSVIbjQT49kHCpSY79g4h4&usqp=CAU" },
-  { id: 4, imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiE1jj4QbYkci-ttq8XTrZOUPbg2G69BKml_076NpqClNjjmJ6yKhHclR1LAW3-LIoWcM&usqp=CAU" },
-  { id: 5, imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6Iosutfl_DXacS21AHIACfDB9GUoU7huGcb2XwuCaf8CXWEQFXYrKDjx11fpQUVI07Gk&usqp=CAU" },
+import Carousel from "../components/carousel/Carousel";
+
+
+const carouselData = [
+  {
+      id: '1',
+      title: 'Destinos Exóticos',
+      subtitle: 'Descubra lugares incríveis para suas próximas férias',
+      image: { uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO8qAjlQxPw9tTb-PNp1ZC9Dr8B9F5arJb-A&s' } 
+  },
+  {
+      id: '2',
+      title: 'Experiências Únicas',
+      subtitle: 'Aventuras que você nunca esquecerá',
+      image:  { uri: 'https://arcosmodels.com/wp-content/uploads/2022/10/AMORA-CAPA-SITE-ARCOS-MODELS-290x380.jpg' } 
+  },
+  {
+      id: '3',
+      title: 'Cultura Local',
+      subtitle: 'Mergulhe nas tradições e costumes locais',
+      image:  { uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGL0me_PGKcII0ZfpgoFOEyNGH2xNp4a0O0Mp3DmmLEsZu0nSVIbjQT49kHCpSY79g4h4&usqp=CAU' }
+  },
+  {
+    id: '4',
+    title: 'Cultura Local',
+    subtitle: 'Mergulhe nas tradições e costumes locais',
+    image:  { uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiE1jj4QbYkci-ttq8XTrZOUPbg2G69BKml_076NpqClNjjmJ6yKhHclR1LAW3-LIoWcM&usqp=CAU' }
+  },
+  {
+    id: '5',
+    title: 'Cultura Local',
+    subtitle: 'Mergulhe nas tradições e costumes locais',
+    image:  { uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6Iosutfl_DXacS21AHIACfDB9GUoU7huGcb2XwuCaf8CXWEQFXYrKDjx11fpQUVI07Gk&usqp=CAU' }
+  }
 ];
 
 export default function AboutUs() {
@@ -28,7 +54,7 @@ export default function AboutUs() {
     };
   
   return (
-    <ScrollView contentContainerStyle={styles. containerAboutUs}>
+    <ScrollView contentContainerStyle={styles.containerAboutUs}>
      {/* INCIO DA BARRA DE PESQUISA */}
            <View style={styles.searchContainer}>
              <TextInput
@@ -39,14 +65,14 @@ export default function AboutUs() {
              />
              <TouchableOpacity onPress={handleSearch} style={styles.searchButton}>
                <Image
-                 source={require("../assets/Search.png")} // Substitua pelo caminho correto da imagem
+                 source={require("../assets/Search.png")}
                  style={{ width: 20, height: 20 }}
                />
              </TouchableOpacity>
            </View>
            {/* FIM DA BARRA D PESQUISA */}
 
-      <View style={styles.containerAboutUs}>
+      <View style={styles.introductionAboutUs}>
         <View style={styles.introduction}>
           <Text style={styles.titleIntroduction}>
             Seja bem-vinda ao nosso mundo
@@ -61,32 +87,8 @@ export default function AboutUs() {
           </Text>
         </View>
 
-        {/* Carrossel */}
-        <SafeAreaView style={styles.safeArea}>
-          <View style={styles.container}>
-            <View style={styles.carouselContainer}>
-              <Carousel
-                width={320}
-                height={300}
-                data={data}
-                autoPlay={true}
-                autoPlayInterval={1500}
-                scrollAnimationDuration={1000}
-                renderItem={({ item }) => (
-                  <View style={styles.item}>
-                    <Image
-                      source={{ uri: item.imageUrl }}
-                      style={styles.image}
-                      accessibilityLabel={`Imagem ${item.id}`}
-                    />
-                    <View style={styles.textOverlay}>
-      </View>
-                  </View>
-                )}
-              />
-            </View>
-          </View>
-        </SafeAreaView>
+        <Carousel data={carouselData} autoplayDelay={4000} />
+
       </View>
     </ScrollView>
   );
@@ -143,31 +145,5 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     padding: 10,
     marginLeft: 5,
-  },
-
-  // CSS do carrossel
-  safeArea: {
-    flex: 1,
-  },
-  scrollContainer: {
-    flexGrow: 1,
-  },
-  container: {
-    padding: 20,
-  },
-  carouselContainer: {
-    marginTop: 20,
-    alignItems: "center",
-  },
-  item: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 10,
-  },
-  image: {
-    width: "100%",
-    height: 260,
-    resizeMode: "contain",
   },
 });
