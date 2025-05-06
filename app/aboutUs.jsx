@@ -16,32 +16,32 @@ import Carousel from "../components/carousel/Carousel";
 const carouselData = [
   {
       id: '1',
-      title: 'Destinos Exóticos',
-      subtitle: 'Descubra lugares incríveis para suas próximas férias',
+      title: 'Maria Eduarda Reis',
+      subtitle: 'Product Owner',
       image: { uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO8qAjlQxPw9tTb-PNp1ZC9Dr8B9F5arJb-A&s' } 
   },
   {
       id: '2',
-      title: 'Experiências Únicas',
-      subtitle: 'Aventuras que você nunca esquecerá',
+      title: 'Mariana Cardoso',
+      subtitle: 'Scrum Master',
       image:  { uri: 'https://arcosmodels.com/wp-content/uploads/2022/10/AMORA-CAPA-SITE-ARCOS-MODELS-290x380.jpg' } 
   },
   {
       id: '3',
-      title: 'Cultura Local',
-      subtitle: 'Mergulhe nas tradições e costumes locais',
+      title: 'Anna Clara',
+      subtitle: 'Desenvolvedora',
       image:  { uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGL0me_PGKcII0ZfpgoFOEyNGH2xNp4a0O0Mp3DmmLEsZu0nSVIbjQT49kHCpSY79g4h4&usqp=CAU' }
   },
   {
     id: '4',
-    title: 'Cultura Local',
-    subtitle: 'Mergulhe nas tradições e costumes locais',
+    title: 'Sophia Gomes',
+    subtitle: 'Desenvolvedora',
     image:  { uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiE1jj4QbYkci-ttq8XTrZOUPbg2G69BKml_076NpqClNjjmJ6yKhHclR1LAW3-LIoWcM&usqp=CAU' }
   },
   {
     id: '5',
-    title: 'Cultura Local',
-    subtitle: 'Mergulhe nas tradições e costumes locais',
+    title: 'Sophia Balico',
+    subtitle: 'Desenvolvedora',
     image:  { uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6Iosutfl_DXacS21AHIACfDB9GUoU7huGcb2XwuCaf8CXWEQFXYrKDjx11fpQUVI07Gk&usqp=CAU' }
   }
 ];
