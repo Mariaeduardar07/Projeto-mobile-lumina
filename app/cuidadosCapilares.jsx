@@ -9,6 +9,7 @@ import {
   Image,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import Banner from "../components/banner/Banner.js";
 
 export default function Hair() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -36,16 +37,10 @@ export default function Hair() {
       </View>
       {/* FIM DA BARRA DE PESQUISA */}
 
-      <View style={styles.cardCategoryHairImage}>
-        <LinearGradient
-          colors={["#2b60ab", "#ffffff00"]}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 1 }}
-          style={styles.cardCategoryHairGradient}
-        >
-          <Text style={styles.titleHair}>Cuidados Capilares</Text>
-        </LinearGradient>
-      </View>
+      <Banner
+        title="Cuidados Capilares"
+        gradientColors={["#2b60ab", "#ffffff00"]}
+      />
       <View style={styles.cardCategoryLisos}>
         <LinearGradient
           colors={["#2b60ab", "#ffffff00"]}
