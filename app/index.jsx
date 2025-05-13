@@ -7,7 +7,10 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import { useRouter } from "expo-router"; // Importação do router
+import Banner from "../components/banner/Banner.js";
 import SearchBar from "../components/search/Search";
+
 
 export default function Home() {
   return (
@@ -17,15 +20,10 @@ export default function Home() {
       {/* FIM DA BARRA DE PESQUISA */}
 
       {/* INTRODUÇÃO DA PÁGINA */}
-      <View style={styles.introduction}>
-        <Text style={styles.titleIntroduction}>
-          Seja bem vindo ao blog Lumina
-        </Text>
-        <Text style={styles.textIntroduction}>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry
-        </Text>
-      </View>
+      <Banner
+        title="Seja bem vindo ao blog Lumina"
+        text="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+      />
 
       {/* INÍCIO DA SEÇÃO DE CATEGORIAS */}
       <View style={styles.categoriasContainer}>

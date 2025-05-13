@@ -9,6 +9,7 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@expo/metro-runtime": "^5.0.4",
     "@react-navigation/drawer": "^7.3.9",
     "@rneui/base": "^0.0.0-edge.2",
     "@rneui/themed": "^0.0.0-edge.2",
