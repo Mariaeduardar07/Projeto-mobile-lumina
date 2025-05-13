@@ -6,13 +6,34 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
-import { useRouter } from "expo-router"; // Importação do router
 import Banner from "../components/banner/Banner.js";
-import SearchBar from "../components/search/Search";
-
+import CategoriesCards from "../components/categoriesCards/CategoriesCards.js";
+import SearchBar from "../components/search/Search.js";
 
 export default function Home() {
+  const categories = [
+    {
+      title: "Cuidados Capilares",
+      description:
+        "Dicas e produtos para manter seus cabelos lindos e saudáveis",
+      route: "/cuidadosCapilares",
+    },
+    {
+      title: "Maquiagem",
+      description: "Dicas práticas para realçar sua beleza com maquiagem.",
+      route: "/maquiagem",
+    },
+    {
+      title: "Skin Care",
+      description: "Cuidados essenciais para uma pele bonita e bem tratada",
+      route: "/skinCare",
+    },
+  ];
+
+  const handleCategoryPress = (route) => {
+    router.push(route); // Navega para a rota correspondente
+  };
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {/* INÍCIO DA BARRA DE PESQUISA */}
@@ -26,58 +47,10 @@ export default function Home() {
       />
 
       {/* INÍCIO DA SEÇÃO DE CATEGORIAS */}
-      <View style={styles.categoriasContainer}>
-        <Text style={styles.titleSectionCategories}>Categorias</Text>
-        <View style={styles.cardsCategoriesContainer}>
-          {/* Card de Cuidados Capilares */}
-          <TouchableOpacity
-            onPress={() => router.push("/cuidadosCapilares")} // Navegação para a página
-            style={styles.cardCategoryHair}
-          >
-            <LinearGradient
-              colors={["#2b60ab", "#ffffff00"]}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 1 }}
-              style={styles.cardCategoryHair}
-            >
-              <Text style={styles.titleHair}>Cuidados Capilares</Text>
-              <Text style={styles.textHair}>
-                Dicas e produtos para manter seus cabelos lindos e saudáveis
-              </Text>
-            </LinearGradient>
-          </TouchableOpacity>
-
-          {/* Card de Maquiagem */}
-          <View style={styles.cardCategoryMakeup}>
-            <LinearGradient
-              colors={["#2b60ab", "#ffffff00"]}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 1 }}
-              style={styles.cardCategoryMakeup}
-            >
-              <Text style={styles.titleMakeup}>Maquiagem</Text>
-              <Text style={styles.textMakeup}>
-                Dicas práticas para realçar sua beleza com maquiagem.
-              </Text>
-            </LinearGradient>
-          </View>
-
-          {/* Card de Skin Care */}
-          <View style={styles.cardCategorySkinCare}>
-            <LinearGradient
-              colors={["#2b60ab", "#ffffff00"]}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 1 }}
-              style={styles.cardCategorySkinCare}
-            >
-              <Text style={styles.titleSkinCare}>Skin Care</Text>
-              <Text style={styles.textSkinCare}>
-                Cuidados essenciais para uma pele bonita e bem tratada
-              </Text>
-            </LinearGradient>
-          </View>
-        </View>
-      </View>
+      <CategoriesCards
+        categories={categories}
+        onCategoryPress={handleCategoryPress}
+      />
     </ScrollView>
   );
 }
