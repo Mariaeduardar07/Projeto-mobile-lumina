@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useRouter } from "expo-router"; // Importação do router
+import Introduction from "../components/banner/Banner.js";
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -39,15 +40,10 @@ export default function Home() {
       {/* FIM DA BARRA DE PESQUISA */}
 
       {/* INTRODUÇÃO DA PÁGINA */}
-      <View style={styles.introduction}>
-        <Text style={styles.titleIntroduction}>
-          Seja bem vindo ao blog Lumina
-        </Text>
-        <Text style={styles.textIntroduction}>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry
-        </Text>
-      </View>
+      <Introduction
+        title="Seja bem vindo ao blog Lumina"
+        text="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+      />
 
       {/* INÍCIO DA SEÇÃO DE CATEGORIAS */}
       <View style={styles.categoriasContainer}>
