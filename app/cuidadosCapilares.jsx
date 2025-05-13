@@ -106,7 +106,7 @@ export default function Hair() {
         <Text style={styles.titleMechas}>Cabelos com Mechas</Text>
         <Image
           style={styles.imageMechas}
-          source={require("../assets/quimica.png")}
+          source={require("../assets/mechas.png")}
         />
       
         <Text style={styles.describe1}>
@@ -129,11 +129,10 @@ export default function Hair() {
       <View style={styles.containerCachos}>
         <Text style={styles.titleCachos}>Cabelos Cacheados</Text>
         <Image
-          style={styles.imageMechas}
-          source={{
-            uri: "",
-          }}
+          style={styles.imageCachos}
+          source={require("../assets/cachos.png")}
         />
+       
         <Text style={styles.describe1}>
           Cabelos cacheados são caracterizados por fios que formam cachos ou
           ondas de forma natural.{" "}
@@ -154,10 +153,9 @@ export default function Hair() {
         <Text style={styles.titleOndulado}>Cabelos Ondulados</Text>
         <Image
           style={styles.imageOndulado}
-          source={{
-            uri: "../",
-          }}
+          source={require("../assets/ondulado.png")}
         />
+        
         <Text style={styles.describe1}>
           Os cabelos ondulados, possuem uma textura que se situa entre os fios
           lisos e os cacheados. Eles formam ondas suaves, com movimento natural.{" "}
@@ -178,9 +176,7 @@ export default function Hair() {
         <Text style={styles.titleCrespo}>Cabelos Crespos</Text>
         <Image
           style={styles.imageCrespo}
-          source={{
-            uri: "../",
-          }}
+          source={require("../assets/crespo.png")}
         />
         <Text style={styles.describe1}>
           Cabelos crespos são caracterizados por fios que possuem uma curvatura
