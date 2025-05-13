@@ -98,37 +98,40 @@ const styles = StyleSheet.create({
     container: {
         width,
         height: width * 0.8,
-        marginBottom: 20
+        marginBottom: 20,
     },
     slide: {
         width,
         height: '100%',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     slideImage: {
-        width: '100%',
-        height: '80%',
-        borderRadius: 10
+        width: "90%", // Largura da imagem
+        height: "80%", // Altura da imagem
+        borderRadius: 10, // Bordas arredondadas
     },
     textContainer: {
-        position: 'absolute',
-        bottom: 30,
-        left: 20,
-        right: 20,
-        backgroundColor: 'rgba(0,0,0,0.6)',
-        padding: 10,
-        borderRadius: 8
+        position: 'absolute', // Sobrepõe a imagem
+        bottom: 0, // Fixa na parte inferior da imagem
+        width: "90%", // Mesma largura da imagem
+        backgroundColor: 'rgba(167, 214, 237, 0.8)', // Fundo azul translúcido
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderBottomLeftRadius: 10, // Bordas arredondadas no canto inferior esquerdo
+        borderBottomRightRadius: 10, // Bordas arredondadas no canto inferior direito
+        alignItems: 'center',
     },
     title: {
-        color: '#fff',
+        color: '#2b60ab', // Azul escuro
         fontSize: 18,
         fontWeight: 'bold',
-        marginBottom: 5
+        textAlign: 'center',
     },
     subtitle: {
-        color: '#fff',
-        fontSize: 14
+        color: '#2b60ab', // Azul escuro
+        fontSize: 14,
+        textAlign: 'center',
     },
     paginationContainer: {
         position: 'absolute',
@@ -137,14 +140,15 @@ const styles = StyleSheet.create({
         right: 0,
         flexDirection: 'row',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     paginationDot: {
         width: 8,
         height: 8,
         borderRadius: 4,
-        marginHorizontal: 4
-    }
+        marginHorizontal: 4,
+        backgroundColor: '#D1D1D1',
+    },
 });
 
 export default Carousel;
