@@ -7,13 +7,13 @@ import {
   TextInput,
   TouchableOpacity,
   Image,
-  FlatList
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-// import PolaroidCard from "./components/Card";
+import { useRouter } from "expo-router"; // Importação do router
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
+  const router = useRouter(); // Inicialização do router
 
   const handleSearch = () => {
     console.log("Buscando por:", searchQuery);
@@ -21,7 +21,7 @@ export default function Home() {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      {/* INCIO DA BARRA DE PESQUISA */}
+      {/* INÍCIO DA BARRA DE PESQUISA */}
       <View style={styles.searchContainer}>
         <TextInput
           style={styles.searchInput}
@@ -31,17 +31,17 @@ export default function Home() {
         />
         <TouchableOpacity onPress={handleSearch} style={styles.searchButton}>
           <Image
-            source={require("../assets/Search.png")} // Substitua pelo caminho correto da imagem
+            source={require("../assets/Search.png")}
             style={{ width: 20, height: 20 }}
           />
         </TouchableOpacity>
       </View>
-      {/* FIM DA BARRA D PESQUISA */}
+      {/* FIM DA BARRA DE PESQUISA */}
 
       {/* INTRODUÇÃO DA PÁGINA */}
       <View style={styles.introduction}>
         <Text style={styles.titleIntroduction}>
-          Seja bem vindo ao blog lumina
+          Seja bem vindo ao blog Lumina
         </Text>
         <Text style={styles.textIntroduction}>
           Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -49,23 +49,29 @@ export default function Home() {
         </Text>
       </View>
 
-      {/*INICIO DA SEÇÃO DE CATEGORIAS */}
+      {/* INÍCIO DA SEÇÃO DE CATEGORIAS */}
       <View style={styles.categoriasContainer}>
         <Text style={styles.titleSectionCategories}>Categorias</Text>
         <View style={styles.cardsCategoriesContainer}>
-          <View style={styles.cardCategoryHair}>
+          {/* Card de Cuidados Capilares */}
+          <TouchableOpacity
+            onPress={() => router.push("/cuidadosCapilares")} // Navegação para a página
+            style={styles.cardCategoryHair}
+          >
             <LinearGradient
               colors={["#2b60ab", "#ffffff00"]}
               start={{ x: 0, y: 0 }}
               end={{ x: 1, y: 1 }}
-              style={styles.cardCategoryHair} 
+              style={styles.cardCategoryHair}
             >
               <Text style={styles.titleHair}>Cuidados Capilares</Text>
               <Text style={styles.textHair}>
                 Dicas e produtos para manter seus cabelos lindos e saudáveis
               </Text>
             </LinearGradient>
-          </View>
+          </TouchableOpacity>
+
+          {/* Card de Maquiagem */}
           <View style={styles.cardCategoryMakeup}>
             <LinearGradient
               colors={["#2b60ab", "#ffffff00"]}
@@ -79,6 +85,8 @@ export default function Home() {
               </Text>
             </LinearGradient>
           </View>
+
+          {/* Card de Skin Care */}
           <View style={styles.cardCategorySkinCare}>
             <LinearGradient
               colors={["#2b60ab", "#ffffff00"]}
@@ -93,31 +101,18 @@ export default function Home() {
             </LinearGradient>
           </View>
         </View>
-      
-      <View style={styles.dicasContainer}>        
-        <Text style={styles.titleSectionDicas}>Dicas</Text>
-        <View style={styles.slide}>
-        {/* <PolaroidCard />
-        <PolaroidCard />
-        <PolaroidCard />
-        <PolaroidCard /> */}
-        </View>
-      </View>
-
       </View>
     </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  //Estilo geral da página
   container: {
     justifyContent: "center",
     alignItems: "center",
     flex: 1,
     backgroundColor: "white",
   },
-  // Estilo para a barra de busca
   searchContainer: {
     marginTop: 80,
     flexDirection: "row",
@@ -144,8 +139,6 @@ const styles = StyleSheet.create({
     padding: 10,
     marginLeft: 5,
   },
-
-  // Estilo para a introdução da página
   introduction: {
     width: "90%",
     height: 200,
@@ -162,8 +155,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "#2b60ab",
   },
-
-  // Estilo para a seção de categorias
   categoriasContainer: {
     marginTop: 20,
   },
@@ -172,12 +163,6 @@ const styles = StyleSheet.create({
     fontWeight: "500",
     color: "#2b60ab",
   },
-  titleSectionDicas: {
-    fontSize: 24,
-    fontWeight: "500",
-    color: "#2b60ab",
-    marginTop: 20,
-  },
   cardsCategoriesContainer: {
     flexDirection: "column",
     alignItems: "center",
@@ -185,69 +170,48 @@ const styles = StyleSheet.create({
     gap: 15,
     marginTop: 10,
   },
-
-  // CARD DE CABELO
   cardCategoryHair: {
-    backgroundImage:
-      "url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrSMBIuuGYX20mZlX9zgTuaoCp7uVwaDFDbTyR_-HaDm59PmyA)",
-      borderRadius: 15,
-      backgroundRepeat: "no-repeat",
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      width: "100%",
-      height: 115, // Defina uma altura fixa ou ajustável
-      justifyContent: "center",
+    borderRadius: 15,
+    width: "100%",
+    height: 115,
+    justifyContent: "center",
   },
   titleHair: {
     fontSize: 24,
     color: "#fff",
     fontWeight: "bold",
     marginTop: 20,
-    left : 10,
+    left: 10,
   },
   textHair: {
     fontSize: 14,
     color: "#fff",
     width: "90%",
-    left : 10,
+    left: 10,
   },
-
-  // CARD DE MAQUIAGEM
   cardCategoryMakeup: {
-    backgroundImage:
-      "url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwQqd5I0JZJ6a59nPWnT1ovC2TCAwEmhgTx9qgkviSg9PfY0UE)",
-      borderRadius: 15,
-      backgroundRepeat: "no-repeat",
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      width: "100%",
-      height: 115, // Defina uma altura fixa ou ajustável
-      justifyContent: "center",
+    borderRadius: 15,
+    width: "100%",
+    height: 115,
+    justifyContent: "center",
   },
   titleMakeup: {
     fontSize: 24,
     color: "#fff",
     fontWeight: "bold",
     marginTop: 20,
-    left : 10,
+    left: 10,
   },
   textMakeup: {
     fontSize: 14,
     color: "#fff",
     width: "75%",
-    left : 10,
+    left: 10,
   },
-
-  // CARD DE SKINCARE
   cardCategorySkinCare: {
-    backgroundImage:
-      "url(https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRA8nXWkNZUnwCCxM7LS-sz-LcW5-h1-3cz4K6iygQzEasfROC3)",
     borderRadius: 15,
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover",
-    backgroundPosition: "center",
     width: "100%",
-    height: 115, // Defina uma altura fixa ou ajustável
+    height: 115,
     justifyContent: "center",
   },
   titleSkinCare: {
@@ -255,20 +219,12 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontWeight: "bold",
     marginTop: 20,
-    left : 10,
+    left: 10,
   },
   textSkinCare: {
     fontSize: 14,
     color: "#fff",
     width: "75%",
-    left : 10,
-  },
-  // Estilo para a seção de dicas
-  slide: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    width: "100%",
-    marginTop: 20,
+    left: 10,
   },
 });
