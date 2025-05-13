@@ -25,9 +25,14 @@ const Carousel = ({ data, autoplayDelay = 3000 }) => {
     });
 
     useEffect(() => {
+        if (!data || data.length === 0) return; // Retorna se o data estiver vazio
         const interval = setInterval(() => {
             const nextIndex = activeIndex === data.length - 1 ? 0 : activeIndex + 1;
-            flatListRef.current?.scrollToIndex({ index: nextIndex, animated: true });
+            try {
+                flatListRef.current?.scrollToIndex({ index: nextIndex, animated: true });
+            } catch (error) {
+                console.error("Erro ao rolar para o índice:", error);
+            }
         }, autoplayDelay);
         return () => clearInterval(interval);
     }, [activeIndex, data.length, autoplayDelay]);
@@ -82,7 +87,7 @@ const Carousel = ({ data, autoplayDelay = 3000 }) => {
                 showsHorizontalScrollIndicator={false}
                 onViewableItemsChanged={onViewableItemsChanged.current}
                 viewabilityConfig={viewConfigRef.current}
-                keyExtractor={(item) => item.id.toString()}
+                keyExtractor={(item, index) => item.id?.toString() || index.toString()}
             />
             {renderPagination()}
         </View>
