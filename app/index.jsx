@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useRouter } from "expo-router"; // Importação do router
-import Introduction from "../components/banner/Banner.js";
+import Banner from "../components/banner/Banner.js";
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -40,7 +40,7 @@ export default function Home() {
       {/* FIM DA BARRA DE PESQUISA */}
 
       {/* INTRODUÇÃO DA PÁGINA */}
-      <Introduction
+      <Banner
         title="Seja bem vindo ao blog Lumina"
         text="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
       />

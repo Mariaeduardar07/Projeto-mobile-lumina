@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-const Introduction = ({ title, text }) => {
+const Banner = ({ title, text }) => {
   return (
     <View style={styles.introduction}>
       <Text style={styles.titleIntroduction}>{title}</Text>
@@ -29,4 +29,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Introduction;
+export default Banner;
