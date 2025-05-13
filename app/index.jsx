@@ -4,62 +4,16 @@ import {
   View,
   Text,
   StyleSheet,
-  TextInput,
   TouchableOpacity,
-  Image,
 } from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
-import { useRouter } from "expo-router"; // Importação do router
 import Banner from "../components/banner/Banner.js";
-import CategoriesCards from "../components/categoriesCards/CategoriesCards.js";
 
 export default function Home() {
-  const [searchQuery, setSearchQuery] = useState("");
-  const router = useRouter(); // Inicialização do router
-
-  const categories = [
-    {
-      title: "Cuidados Capilares",
-      description: "Dicas e produtos para manter seus cabelos lindos e saudáveis",
-      route: "/cuidadosCapilares",
-    },
-    {
-      title: "Maquiagem",
-      description: "Dicas práticas para realçar sua beleza com maquiagem.",
-      route: "/maquiagem",
-    },
-    {
-      title: "Skin Care",
-      description: "Cuidados essenciais para uma pele bonita e bem tratada",
-      route: "/skinCare",
-    },
-  ];
-
-  const handleSearch = () => {
-    console.log("Buscando por:", searchQuery);
-  };
-
-  const handleCategoryPress = (route) => {
-    router.push(route); // Navega para a rota correspondente
-  };
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {/* INÍCIO DA BARRA DE PESQUISA */}
-      <View style={styles.searchContainer}>
-        <TextInput
-          style={styles.searchInput}
-          placeholder="Search"
-          value={searchQuery}
-          onChangeText={setSearchQuery}
-        />
-        <TouchableOpacity onPress={handleSearch} style={styles.searchButton}>
-          <Image
-            source={require("../assets/Search.png")}
-            style={{ width: 20, height: 20 }}
-          />
-        </TouchableOpacity>
-      </View>
+      <SearchBar />
       {/* FIM DA BARRA DE PESQUISA */}
 
       {/* INTRODUÇÃO DA PÁGINA */}
@@ -83,32 +37,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flex: 1,
     backgroundColor: "white",
-  },
-  searchContainer: {
-    marginTop: 80,
-    flexDirection: "row",
-    alignItems: "center",
-    borderRadius: 10,
-    paddingHorizontal: 10,
-    width: "90%",
-    height: 40,
-    marginBottom: 20,
-  },
-  searchInput: {
-    flex: 1,
-    height: 40,
-    backgroundColor: "#fff",
-    borderRadius: 20,
-    paddingHorizontal: 10,
-    borderWidth: 2,
-    borderColor: "#8b8b8b",
-    color: "#8b8b8b",
-  },
-  searchButton: {
-    backgroundColor: "#a7d5ec",
-    borderRadius: 20,
-    padding: 10,
-    marginLeft: 5,
   },
   introduction: {
     width: "90%",

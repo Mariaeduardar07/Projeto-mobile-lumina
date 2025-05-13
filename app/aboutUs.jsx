@@ -3,14 +3,11 @@ import {
   View,
   Text,
   StyleSheet,
-  SafeAreaView,
   ScrollView,
-  Image,
-  TextInput,
-  TouchableOpacity,
 } from "react-native";
 
-import Carousel from "../components/carousel/Carousel";
+import Carousel from "../components/carousel/Carousel.js";
+import SearchBar from "../components/search/Search.js";
 
 const carouselData = [
   {
@@ -56,29 +53,10 @@ const carouselData = [
 ];
 
 export default function AboutUs() {
-  const [searchQuery, setSearchQuery] = useState("");
-
-  const handleSearch = () => {
-    console.log("Buscando por:", searchQuery);
-  };
-
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1, alignItems: "center", backgroundColor: "white",}}>
       {/* INÍCIO DA BARRA DE PESQUISA */}
-      <View style={styles.searchContainer}>
-        <TextInput
-          style={styles.searchInput}
-          placeholder="Search"
-          value={searchQuery}
-          onChangeText={setSearchQuery}
-        />
-        <TouchableOpacity onPress={handleSearch} style={styles.searchButton}>
-          <Image
-            source={require("../assets/Search.png")}
-            style={{ width: 20, height: 20 }}
-          />
-        </TouchableOpacity>
-      </View>
+     <SearchBar />
       {/* FIM DA BARRA DE PESQUISA */}
 
       <View style={styles.introduction}>
