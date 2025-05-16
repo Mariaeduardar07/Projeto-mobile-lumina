@@ -8,6 +8,10 @@ import {
 
 import Carousel from "../components/carousel/Carousel.js";
 import SearchBar from "../components/search/Search.js";
+import ObjetivosCarousel from "../components/carouselGoals/CarouselGoals.js";
+
+
+
 
 const carouselData = [
   {
@@ -74,6 +78,7 @@ export default function AboutUs() {
       </View>
 
       <Carousel data={carouselData} autoplayDelay={4000} />
+       <ObjetivosCarousel />
     </ScrollView>
   );
 }
@@ -96,32 +101,5 @@ const styles = StyleSheet.create({
     marginTop: 10,
     textAlign: "justify",
     width: "90%",
-  },
-  // Estilo para a barra de busca
-  searchContainer: {
-    marginTop: 80,
-    flexDirection: "row",
-    alignItems: "center",
-    borderRadius: 10,
-    paddingHorizontal: 10,
-    width: "90%",
-    height: 40,
-    marginBottom: 20,
-  },
-  searchInput: {
-    flex: 1,
-    height: 40,
-    backgroundColor: "#fff",
-    borderRadius: 20,
-    paddingHorizontal: 10,
-    borderWidth: 2,
-    borderColor: "#8b8b8b",
-    color: "#8b8b8b",
-  },
-  searchButton: {
-    backgroundColor: "#a7d5ec",
-    borderRadius: 20,
-    padding: 10,
-    marginLeft: 5,
   },
 });

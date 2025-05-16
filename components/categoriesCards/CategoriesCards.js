@@ -1,6 +1,14 @@
 import React from "react";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  Dimensions,
+} from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+
+const { width } = Dimensions.get("window");
 
 const CategoriesCards = ({ categories, onCategoryPress }) => {
   return (
@@ -34,7 +42,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   titleSectionCategories: {
-    fontSize: 24,
+    fontSize: width < 350 ? 18 : 24,
     fontWeight: "500",
     color: "#2b60ab",
   },
@@ -47,19 +55,19 @@ const styles = StyleSheet.create({
   },
   cardCategory: {
     borderRadius: 15,
-    width: "100%",
-    height: 115,
+    width: width * 0.9,
+    height: width < 350 ? 90 : 115,
     justifyContent: "center",
   },
   titleCategory: {
-    fontSize: 24,
+    fontSize: width < 350 ? 18 : 24,
     color: "#fff",
     fontWeight: "bold",
     marginTop: 20,
     left: 10,
   },
   textCategory: {
-    fontSize: 14,
+    fontSize: width < 350 ? 12 : 14,
     color: "#fff",
     width: "90%",
     left: 10,
