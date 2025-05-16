@@ -1,5 +1,7 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Dimensions } from "react-native";
+
+const { width } = Dimensions.get("window");
 
 const Banner = ({ title, text }) => {
   return (
@@ -12,19 +14,19 @@ const Banner = ({ title, text }) => {
 
 const styles = StyleSheet.create({
   introduction: {
-    width: "90%",
+    width: width * 0.9,
     height: 200,
     backgroundColor: "#a7d6ed",
     borderRadius: 15,
     padding: 20,
   },
   titleIntroduction: {
-    fontSize: 26,
+    fontSize: width < 350 ? 20 : 26,
     fontWeight: "500",
     color: "#fff",
   },
   textIntroduction: {
-    fontSize: 16,
+    fontSize: width < 350 ? 13 : 16,
     color: "#2b60ab",
   },
 });
