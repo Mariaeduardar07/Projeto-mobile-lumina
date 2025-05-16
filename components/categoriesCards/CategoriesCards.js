@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
     fontSize: width < 350 ? 18 : 24,
     fontWeight: "500",
     color: "#2b60ab",
+    marginTop: 30,
   },
   cardsCategoriesContainer: {
     flexDirection: "column",
