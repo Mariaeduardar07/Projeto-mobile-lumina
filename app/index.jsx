@@ -23,16 +23,19 @@ export default function Home() {
       description:
         "Dicas e produtos para manter seus cabelos lindos e saudáveis",
       route: "/cuidadosCapilares",
+      image: {uri: "https://img.freepik.com/fotos-premium/garrafa-de-oleo-para-restaurar-e-recuperar-cabelos-danificados-cachos-de-cabelo-e-oleo-de-cabelo-vista-superior_132254-2492.jpg?w=360"}
     },
     {
       title: "Maquiagem",
       description: "Dicas práticas para realçar sua beleza com maquiagem.",
       route: "/maquiagem",
+      image: {uri: "https://panoramafarmaceutico.com.br/wp-content/uploads/2022/08/Venda-de-cosmeticos-importados-supera-patamar-pre-pandemia.jpg"}
     },
     {
       title: "Skin Care",
       description: "Cuidados essenciais para uma pele bonita e bem tratada",
       route: "/skinCare",
+      image: {uri: "https://prismaengenhariajr.com.br/wp-content/uploads/imagens-blog-24.png"}
     },
   ];
 
@@ -79,16 +82,14 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "white",
+    width: "100%",
   },
   bannerIntroduction: {
     borderRadius: 15,
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover",
-    backgroundPosition: "center",
     width: "90%",
     height: 115,
     justifyContent: "center",
-    marginTop: 30,
+    marginTop: 50,
   },
    gradient: {
     flex: 1,
