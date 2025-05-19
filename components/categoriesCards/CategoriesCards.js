@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   StyleSheet,
   Dimensions,
+  ImageBackground,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
@@ -20,16 +21,23 @@ const CategoriesCards = ({ categories, onCategoryPress }) => {
             key={index}
             onPress={() => onCategoryPress(category.route)}
             style={styles.cardCategory}
+            activeOpacity={0.8}
           >
-            <LinearGradient
-              colors={["#2b60ab", "#ffffff00"]}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 1 }}
-              style={styles.cardCategory}
+            <ImageBackground
+              source={category.image}
+              style={styles.cardCategoryImage}
+              imageStyle={{ borderRadius: 15 }}
             >
-              <Text style={styles.titleCategory}>{category.title}</Text>
-              <Text style={styles.textCategory}>{category.description}</Text>
-            </LinearGradient>
+              <LinearGradient
+                colors={["#2b60abcc", "#ffffff00"]}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 1 }}
+                style={styles.cardCategoryGradient}
+              >
+                <Text style={styles.titleCategory}>{category.title}</Text>
+                <Text style={styles.textCategory}>{category.description}</Text>
+              </LinearGradient>
+            </ImageBackground>
           </TouchableOpacity>
         ))}
       </View>
@@ -40,38 +48,63 @@ const CategoriesCards = ({ categories, onCategoryPress }) => {
 const styles = StyleSheet.create({
   categoriasContainer: {
     marginTop: 20,
+    width: "100%",
+  },
+  cardsCategoriesContainer: {
+     width: "100%",
+     marginTop: 10,
+    alignItems: "center", // Centraliza os cards horizontalmente
+    justifyContent: "center", // Opcional: centraliza verticalmente se houver espaço
   },
   titleSectionCategories: {
     fontSize: width < 350 ? 18 : 24,
     fontWeight: "500",
     color: "#2b60ab",
-    marginTop: 30,
-  },
-  cardsCategoriesContainer: {
-    flexDirection: "column",
-    alignItems: "center",
+    alignSelf: "flex-start",
+    marginLeft: 22,
+    marginTop: 50,
     width: "100%",
-    gap: 15,
-    marginTop: 10,
+    alignItems: "center",
+    justifyContent: "center",
   },
   cardCategory: {
     borderRadius: 15,
     width: width * 0.9,
     height: width < 350 ? 90 : 115,
+    overflow: "hidden",
+    marginBottom: 15,
+  },
+  cardCategoryImage: {
+    flex: 1,
+    width: "100%",
+    height: "100%",
     justifyContent: "center",
+  },
+  cardCategoryGradient: {
+    flex: 1,
+    borderRadius: 15,
+    padding: 16,
+    justifyContent: "center",
+    alignItems: "flex-start",
+    width: "100%",
+    height: "100%",
   },
   titleCategory: {
     fontSize: width < 350 ? 18 : 24,
     color: "#fff",
     fontWeight: "bold",
-    marginTop: 20,
-    left: 10,
+    marginBottom: 8,
   },
   textCategory: {
     fontSize: width < 350 ? 12 : 14,
     color: "#fff",
-    width: "90%",
-    left: 10,
+    width: "95%",
+  },
+  imageCategory: {
+    width: 50,
+    height: 50,
+    borderRadius: 10,
+    marginBottom: 8,
   },
 });
 
