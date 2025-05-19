@@ -12,17 +12,23 @@ import CustomButton from "../components/customButton/CustomButton";
 import { ImageBackground } from "react-native";
 
 export default function Login() {
-
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
+  const url = "https://api.example.com/login"; // Substituir pela a API verdadeira e depois testar
+
   async function handleLogin() {
     try {
-      const response = await axios.post(url, { name, email, password });
+      const response = await axios.post(url, {
+        email,
+        password,
+      });
+
       if (response.data) {
         Alert.alert("Login realizado com sucesso!");
+        console.log("Token:", response.data.token); // ou salve no AsyncStorage
         // Aqui você pode redirecionar o usuário para outra tela
       }
     } catch (err) {
@@ -90,7 +96,7 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: "transparent", // Deixe transparente para mostrar a imagem de fundo
   },
-   fundoImage: {
+  fundoImage: {
     flex: 1,
     width: "100%",
     height: "100%",
