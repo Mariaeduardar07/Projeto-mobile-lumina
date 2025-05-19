@@ -43,6 +43,17 @@ export default function RootLayout() {
             ),
           }}
         />
+
+          <Drawer.Screen
+          name="login"
+          options={{
+            drawerLabel: "Login",
+            title: "login",
+            drawerIcon: ({ size, color }) => (
+              <Ionicons name="people-outline" size={size} color={color} />
+            ),
+          }}
+        />
       </Drawer>
   );
 }
