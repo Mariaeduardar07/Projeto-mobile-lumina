@@ -22,19 +22,19 @@ export default function Home() {
       title: "Cuidados Capilares",
       description:
         "Dicas e produtos para manter seus cabelos lindos e saudáveis",
-      route: "/cuidadosCapilares",
+      route: "categoria/cuidadosCapilares",
       image: {uri: "https://img.freepik.com/fotos-premium/garrafa-de-oleo-para-restaurar-e-recuperar-cabelos-danificados-cachos-de-cabelo-e-oleo-de-cabelo-vista-superior_132254-2492.jpg?w=360"}
     },
     {
       title: "Maquiagem",
       description: "Dicas práticas para realçar sua beleza com maquiagem.",
-      route: "/maquiagem",
+      route: "/categoria/maquiagens",
       image: {uri: "https://panoramafarmaceutico.com.br/wp-content/uploads/2022/08/Venda-de-cosmeticos-importados-supera-patamar-pre-pandemia.jpg"}
     },
     {
       title: "Skin Care",
       description: "Cuidados essenciais para uma pele bonita e bem tratada",
-      route: "/skinCare",
+      route: "/categoria/skincare",
       image: {uri: "https://prismaengenhariajr.com.br/wp-content/uploads/imagens-blog-24.png"}
     },
   ];
