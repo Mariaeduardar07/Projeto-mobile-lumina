@@ -25,7 +25,7 @@ export default function CategoriaLayout() {
           drawerLabel: "Maquiagem",
           title: "Maquiagem",
           drawerIcon: ({ size, color }) => (
-            <Ionicons name="color-palette" size={size} color={color} />
+            <Ionicons name="heart-empty" size={size} color={color} />
           ),
         }}
       />
