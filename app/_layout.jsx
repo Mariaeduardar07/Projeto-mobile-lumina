@@ -54,6 +54,16 @@ export default function RootLayout() {
             ),
           }}
         />
+           <Drawer.Screen
+          name="categoria"
+          options={{
+            drawerLabel: "Categoria",
+            title: "Categoria",
+            drawerIcon: ({ size, color }) => (
+              <Ionicons name="list" size={size} color={color} />
+            ),
+          }}
+        />
       </Drawer>
   );
 }

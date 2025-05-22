@@ -9,6 +9,7 @@ import {
   Image,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import { SearchBar } from "react-native-screens";
 
 export default function Hair() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -20,20 +21,7 @@ export default function Hair() {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {/* INCIO DA BARRA DE PESQUISA */}
-      <View style={styles.searchContainer}>
-        <TextInput
-          style={styles.searchInput}
-          placeholder="Search"
-          value={searchQuery}
-          onChangeText={setSearchQuery}
-        />
-        <TouchableOpacity onPress={handleSearch} style={styles.searchButton}>
-          <Image
-            source={require("../assets/Search.png")} // Substitua pelo caminho correto da imagem
-            style={{ width: 20, height: 20 }}
-          />
-        </TouchableOpacity>
-      </View>
+    <SearchBar />
       {/* FIM DA BARRA DE PESQUISA */}
 
       <View style={styles.cardCategoryHairImage}>
@@ -84,7 +72,7 @@ export default function Hair() {
         <Text style={styles.titleQuimica}>Cabelos com Química</Text>
         <Image
           style={styles.imageQuimica}
-          source={require("../assets/quimica.png")}
+          source={require("../../assets/quimica.png")}
         />
         <Text style={styles.describe1}>
           Cabelos com química, referem-se a cabelos que passaram por processos
@@ -106,7 +94,7 @@ export default function Hair() {
         <Text style={styles.titleMechas}>Cabelos com Mechas</Text>
         <Image
           style={styles.imageMechas}
-          source={require("../assets/mechas.png")}
+          source={require("../../assets/mechas.png")}
         />
       
         <Text style={styles.describe1}>
@@ -130,7 +118,7 @@ export default function Hair() {
         <Text style={styles.titleCachos}>Cabelos Cacheados</Text>
         <Image
           style={styles.imageCachos}
-          source={require("../assets/cachos.png")}
+          source={require("../../assets/cachos.png")}
         />
        
         <Text style={styles.describe1}>
@@ -153,7 +141,7 @@ export default function Hair() {
         <Text style={styles.titleOndulado}>Cabelos Ondulados</Text>
         <Image
           style={styles.imageOndulado}
-          source={require("../assets/ondulado.png")}
+          source={require("../../assets/ondulado.png")}
         />
         
         <Text style={styles.describe1}>
@@ -176,7 +164,7 @@ export default function Hair() {
         <Text style={styles.titleCrespo}>Cabelos Crespos</Text>
         <Image
           style={styles.imageCrespo}
-          source={require("../assets/crespo.png")}
+          source={require("../../assets/crespo.png")}
         />
         <Text style={styles.describe1}>
           Cabelos crespos são caracterizados por fios que possuem uma curvatura
