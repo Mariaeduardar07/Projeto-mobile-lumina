@@ -7,7 +7,6 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
-import axios from "axios";
 import CustomButton from "../components/customButton/CustomButton";
 import { ImageBackground } from "react-native";
 
