@@ -15,6 +15,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import SearchBar from "../components/search/Search.js";
 import Banner from "../components/banner/Banner.js";
 
+
 const { width } = Dimensions.get("window");
 
 export default function Curiosity() {
