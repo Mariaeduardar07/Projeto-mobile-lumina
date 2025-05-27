@@ -1,17 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   View,
   Text,
   StyleSheet,
   ScrollView,
+  Image,
 } from "react-native";
 
 import Carousel from "../components/carousel/Carousel.js";
 import SearchBar from "../components/search/Search.js";
 import ObjetivosCarousel from "../components/carouselGoals/CarouselGoals.js";
-
-
-
 
 const carouselData = [
   {
@@ -58,48 +56,105 @@ const carouselData = [
 
 export default function AboutUs() {
   return (
-    <ScrollView contentContainerStyle={{ flexGrow: 1, alignItems: "center", backgroundColor: "white",}}>
+    <ScrollView contentContainerStyle={styles.container}>
       {/* INÍCIO DA BARRA DE PESQUISA */}
-     <SearchBar />
+      <SearchBar />
       {/* FIM DA BARRA DE PESQUISA */}
 
-      <View style={styles.introduction}>
-        <Text style={styles.titleIntroduction}>
-          Seja bem-vinda ao nosso mundo
-        </Text>
-        <Text style={styles.textIntroduction}>
-          Somos cinco amigas unidas pela paixão por beleza, tecnologia e
-          criatividade. A Lumina nasceu para inspirar, compartilhar dicas
-          sinceras e celebrar a liberdade de se sentir bem com quem você é. Com
-          uma Product Owner, uma Scrum Master e três desenvolvedoras, criamos
-          este cantinho com carinho — pra iluminar seu dia com conteúdo feito de
-          coração.
+      {/* CARD DE BOAS-VINDAS */}
+      <View style={styles.welcomeCard}>
+        <Text style={styles.welcomeTitle}>Seja bem-vinda ao nosso mundo</Text>
+        <Text style={styles.welcomeText}>
+          Somos cinco amigas unidas pela paixão por beleza, tecnologia e criatividade. A Lumina nasceu para inspirar, compartilhar dicas sinceras e celebrar a liberdade de se sentir bem com quem você é. Com uma Product Owner, uma Scrum Master e três desenvolvedoras, criamos este cantinho com carinho — pra iluminar seu dia com conteúdo feito de coração.
         </Text>
       </View>
+      {/* FIM DO CARD DE BOAS-VINDAS */}
 
-      <Carousel data={carouselData} autoplayDelay={4000} />
-       <ObjetivosCarousel />
+      <View style={styles.carouselContainer}>
+        <Carousel data={carouselData} autoplayDelay={4000} />
+      </View>
+
+      {/* OBJETIVOS LUMINA COMO CARROSSEL */}
+      <View style={styles.objetivosListaContainer}>
+        <ObjetivosCarousel />
+      </View>
     </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  introduction: {
+  container: {
+    flexGrow: 1,
+    alignItems: "center",
+    backgroundColor: "#ffff",
+    paddingVertical: 20,
+  },
+  welcomeCard: {
     width: "90%",
+    backgroundColor: "#e3f1fa",
+    borderRadius: 18,
+    padding: 22,
+    marginBottom: 25,
+    marginTop: 20,
+    shadowColor: "#2b60ab",
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.15,
+    shadowRadius: 8,
+    elevation: 5,
+  },
+  welcomeTitle: {
+    fontSize: 28,
+    fontWeight: "bold",
+    color: "#2b60ab",
+    marginBottom: 12,
+    textAlign: "center",
+    letterSpacing: 1,
+  },
+  welcomeText: {
+    fontSize: 18,
+    color: "#222",
+    textAlign: "justify",
+    lineHeight: 26,
+  },
+  carouselContainer: {
+    width: "100%",
+    alignItems: "center",
+    marginBottom: 0,
+  },
+  objetivosListaContainer: {
+    width: "100%",
+    marginTop: 30,
+    marginBottom: 30,
+    alignItems: "center",
+  },
+  introduction: {
+    width: "92%",
     marginBottom: 20,
+    alignItems: "center",
+    backgroundColor: "#fff",
+    borderRadius: 18,
+    padding: 22,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.10,
+    shadowRadius: 6,
+    elevation: 4,
   },
   titleIntroduction: {
     fontSize: 26,
-    fontWeight: "400",
+    fontWeight: "700",
     textAlign: "justify",
-    width: "90%",
     color: "#2b60ab",
+    marginBottom: 12,
+    letterSpacing: 0.5,
+    width: "100%",
   },
   textIntroduction: {
-    fontSize: 18,
-    color: "black",
-    marginTop: 10,
+    fontSize: 17,
+    color: "#333",
+    marginTop: 2,
     textAlign: "justify",
-    width: "90%",
+    width: "100%",
+    lineHeight: 24,
   },
 });

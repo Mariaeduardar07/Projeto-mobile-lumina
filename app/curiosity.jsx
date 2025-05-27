@@ -189,6 +189,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "space-between",
+    overflow: "hidden",
+    justifyContent: "center",
+    alignItems: "flex-start", // Garante alinhamento à esquerda
   },
   polaroidCard: {
     backgroundColor: "#fff",

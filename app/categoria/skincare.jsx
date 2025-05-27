@@ -31,7 +31,7 @@ export default function Hair() {
           end={{ x: 1, y: 1 }}
           style={styles.cardCategoryHairGradient}
         >
-          <Text style={styles.titleHair}>Cuidados Capilares</Text>
+          <Text style={styles.titleHair}>Skincare</Text>
         </LinearGradient>
       </View>
       <View style={styles.cardCategoryLisos}>
