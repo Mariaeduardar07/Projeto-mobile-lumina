@@ -68,6 +68,16 @@ export default function RootLayout() {
             ),
           }}
         />
+           <Drawer.Screen
+          name="curiosity"
+          options={{
+            drawerLabel: "Feed",
+            title: "Feed",
+            drawerIcon: ({ size, color }) => (
+              <Ionicons name="eye-outline" size={size} color={color} />
+            ),
+          }}
+        />
       </Drawer>
   );
 }
