@@ -1,19 +1,51 @@
-import Banner from "../components/banner/Banner.js";
-
-import SearchBar from "../components/search/Search.js";
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  ScrollView,
+  Image,
+  Pressable,
+  Modal,
+  TextInput,
+  StyleSheet,
+  Dimensions,
+  ImageBackground,
+} from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { useRouter } from "expo-router";
-import { StyleSheet, ScrollView, View, ImageBackground, Dimensions, Text } from "react-native";
+import SearchBar from "../components/search/Search.js";
+import Banner from "../components/banner/Banner.js";
 
 const { width } = Dimensions.get("window");
 
 export default function Curiosity() {
-  const router = useRouter();
+  const [posts, setPosts] = useState([]);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [contentModalVisible, setContentModalVisible] = useState(false);
+  const [newTitle, setNewTitle] = useState("");
+  const [newContent, setNewContent] = useState("");
+  const [newImageUrl, setNewImageUrl] = useState("");
+  const [selectedPost, setSelectedPost] = useState(null);
+
+  const addPost = () => {
+    if (!newTitle || !newImageUrl || !newContent) return;
+    const newPost = {
+      id: Date.now().toString(),
+      title: newTitle,
+      content: newContent,
+      imageUrl: newImageUrl,
+    };
+    setPosts([newPost, ...posts]);
+    setNewTitle("");
+    setNewContent("");
+    setNewImageUrl("");
+    setModalVisible(false);
+  };
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <SearchBar />
 
-      <View>
+      {/* Banner de Introdução */}
       <View style={styles.bannerIntroduction}>
         <ImageBackground
           source={{
@@ -29,106 +61,205 @@ export default function Curiosity() {
             style={styles.gradient}
           >
             <Banner
-              title="Curiosidades"
+              title="Seja bem vindo ao blog Lumina"
               text="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
             />
           </LinearGradient>
         </ImageBackground>
       </View>
 
-      <View style={styles.polaroidCard}>
-        <ImageBackground
-          source={{
-            uri: "https://braehaircare.vtexassets.com/arquivos/ids/160327-1200-auto?v=638798887459970000&width=1200&height=auto&aspect=true",
-          }}
-          style={styles.polaroidImage}
-          // imageStyle={{ borderTopLeftRadius: 10, borderTopRightRadius: 10 }}
-        />
-        <View style={styles.polaroidCaptionContainer}>
-          <Text style={styles.polaroidTitle}>Os top3 melhores protetores da braé</Text>
-          <Text style={styles.polaroidTitlesub}>conheça os queridinho da Braé tudo isso em um só clique</Text>
+      {/* Botão de adicionar post */}
+      <Pressable style={styles.addButton} onPress={() => setModalVisible(true)}>
+        <Text style={styles.addButtonText}>+ Adicionar Post</Text>
+      </Pressable>
 
-        </View>
+      {/* Lista de Polaroids */}
+      <View style={styles.postsContainer}>
+        {posts.map((post) => (
+          <Pressable
+            key={post.id}
+            onPress={() => {
+              setSelectedPost(post);
+              setContentModalVisible(true);
+            }}
+            style={styles.polaroidCard}
+          >
+            <Image
+              source={{ uri: post.imageUrl }}
+              style={styles.polaroidImage}
+            />
+            <View style={styles.polaroidCaptionContainer}>
+              <Text style={styles.polaroidTitle}>{post.title}</Text>
+            </View>
+          </Pressable>
+        ))}
       </View>
-</View>
+
+      {/* Modal de criação de post */}
+      <Modal visible={modalVisible} animationType="slide" transparent>
+        <View style={styles.modalOverlay}>
+          <View style={styles.modalContainer}>
+            <Text style={styles.modalTitle}>+ Novo Post</Text>
+            <TextInput
+              placeholder="Título"
+              value={newTitle}
+              onChangeText={setNewTitle}
+              style={styles.input}
+            />
+            <TextInput
+              placeholder="URL da Imagem"
+              value={newImageUrl}
+              onChangeText={setNewImageUrl}
+              style={styles.input}
+            />
+            <TextInput
+              placeholder="Conteúdo"
+              value={newContent}
+              onChangeText={setNewContent}
+              multiline
+              style={[styles.input, { height: 80 }]}
+            />
+            <View style={styles.modalButtons}>
+              <Pressable onPress={addPost} style={styles.saveButton}>
+                <Text style={styles.saveText}>Adicionar</Text>
+              </Pressable>
+              <Pressable
+                onPress={() => setModalVisible(false)}
+                style={styles.cancelButton}
+              >
+                <Text style={styles.cancelText}>Cancelar</Text>
+              </Pressable>
+            </View>
+          </View>
+        </View>
+      </Modal>
+
+      {/* Modal de Conteúdo do Post */}
+      <Modal visible={contentModalVisible} animationType="fade" transparent>
+        <View style={styles.modalOverlay}>
+          <View style={styles.contentModal}>
+            <Text style={styles.modalTitle}>{selectedPost?.title}</Text>
+            <Text style={styles.contentText}>{selectedPost?.content}</Text>
+            <Pressable
+              onPress={() => setContentModalVisible(false)}
+              style={styles.closeButton}
+            >
+              <Text style={styles.closeText}>Fechar</Text>
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
     </ScrollView>
   );
 }
 
-
-
 const styles = StyleSheet.create({
-  //Estilo geral da página
   container: {
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "white",
-    width: "100%",
+    padding: 10,
+    backgroundColor: "#f3f8fa",
   },
   bannerIntroduction: {
-    borderRadius: 15,
-    width: "90%",
-    height: 115,
+    marginVertical: 15,
+  },
+  bannerImage: {
+    height: 200,
     justifyContent: "center",
-    marginTop: 50,
+    borderRadius: 15,
+    overflow: "hidden",
   },
   gradient: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "flex-start", // Alinha o texto à esquerda
     paddingHorizontal: 20,
-    width: 400,
-  },
-  bannerImage: {
-    width: 400,
-    height: 200,
     borderRadius: 15,
+  },
+  addButton: {
+    backgroundColor: "#4a90e2",
+    padding: 12,
+    marginVertical: 10,
+    borderRadius: 10,
+    alignItems: "center",
+  },
+  addButtonText: {
+    color: "white",
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+  postsContainer: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-between",
     overflow: "hidden",
     justifyContent: "center",
     alignItems: "flex-start", // Garante alinhamento à esquerda
   },
   polaroidCard: {
-    width: 180,
     backgroundColor: "#fff",
-    // borderRadius: 10,
+    borderRadius: 10,
+    width: width * 0.44,
+    marginBottom: 15,
     shadowColor: "#000",
-    shadowOpacity: 0.2,
     shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 6,
-    marginTop: 75,
-    
-    // // elevation: 5,
-    // margin: 20,
-    // alignItems: "center",
-    
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 4,
+    overflow: "hidden",
   },
   polaroidImage: {
-    width: 180,
+    width: "100%",
     height: 150,
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
-    backgroundColor: "#eee",
+    resizeMode: "cover",
   },
   polaroidCaptionContainer: {
-    width: "100%",
-    paddingVertical: 12,
-    paddingHorizontal: 8,
-    alignItems: "center",
-    borderBottomLeftRadius: 10,
-    borderBottomRightRadius: 10,
+    padding: 8,
+    backgroundColor: "#fefefe",
   },
   polaroidTitle: {
-    // fontWeight: "bold",
-    fontSize: 11,
-    color: "#333",
+    fontWeight: "bold",
+    fontSize: 14,
     textAlign: "center",
-    textDecorationLine: "underline",
+    color: "#333",
   },
-  polaroidTitlesub: {
-    // fontWeight: "bold",
-    fontSize: 8,
-    color: "#333",
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: "rgba(0,0,0,0.5)",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  modalContainer: {
+    width: "90%",
+    backgroundColor: "#fff",
+    borderRadius: 12,
+    padding: 20,
+  },
+  modalTitle: {
+    fontSize: 18,
+    fontWeight: "bold",
+    marginBottom: 12,
     textAlign: "center",
-    marginTop: 5,
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: "#ccc",
+    borderRadius: 8,
+    padding: 10,
+    marginBottom: 10,
+  },
+  contentModal: {
+    flex: 1,
+    backgroundColor: "white",
+    padding: 20,
+  },
+  contentTitle: {
+    fontSize: 22,
+    fontWeight: "bold",
+    color: "#4a90e2", // Cor do título
+    marginBottom: 10,
+    textAlign: "center",
+  },
+  contentText: {
+    fontSize: 16,
+    textAlign: "justify", // Justificado
+    color: "#333",
   },
 });

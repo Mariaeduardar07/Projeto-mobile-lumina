@@ -10,6 +10,8 @@ import {
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { SearchBar } from "react-native-screens";
+import CustomButton from "../../components/customButton/CustomButton";
+
 
 export default function Hair() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -59,6 +61,7 @@ export default function Hair() {
           Clique no botão abaixo para baixar nosso PDF exclusivo com dicas essenciais de skincare para peles secas!
           Descubra cuidados e produtos ideais para restaurar a hidratação, fortalecer a barreira cutânea e manter a pele nutrida e macia. Tudo para conquistar uma pele saudável, luminosa e protegida contra o ressecamento!
         </Text>
+        <CustomButton title="Baixe PDF" />
       </View>
 
       {/*-----------quimica--------------*/}
@@ -80,6 +83,7 @@ export default function Hair() {
           Clique no botão abaixo para baixar nosso PDF exclusivo com dicas essenciais de skincare para peles mistas!
           Aprenda como equilibrar a oleosidade da zona T e hidratar as áreas mais secas com os produtos certos. Tudo para deixar sua pele uniforme, fresca e saudável em todas as regiões do rosto!
         </Text>
+        <CustomButton title="Baixe PDF" />
       </View>
 
       {/*-----------mechas--------*/}
@@ -89,7 +93,79 @@ export default function Hair() {
           style={styles.imageMechas}
           source={require("../../assets/pele-oleosa.png")}
         />
+        <Text style={styles.describe1}>
+          Cabelos com mechas, são aqueles que passam por um processo de
+          coloração onde algumas seções do cabelo recebem tons mais claros ou
+          mais escuros do que a cor natural dos fios.{" "}
+        </Text>
+      </View>
+      <View style={styles.Dicas}>
+        <Text style={styles.titleDicas}>Dicas:</Text>
+        <Text style={styles.lineDicas}>__________________________________</Text>
+        <Text style={styles.describeDicas}>
+          Clique no botão abaixo para baixar nosso PDF exclusivo com dicas
+          essenciais para seu tipo ideal de cabelos contendo, produtos para
+          cronograma capilar e muito mais!
+        </Text>
+        <CustomButton title="Baixe PDF" />
+      </View>
 
+      {/*-----------cachos--------*/}
+      <View style={styles.containerCachos}>
+        <Text style={styles.titleCachos}>Cabelos Cacheados</Text>
+        <Image
+          style={styles.imageCachos}
+          source={require("../../assets/cachos.png")}
+        />
+       
+        <Text style={styles.describe1}>
+          Cabelos cacheados são caracterizados por fios que formam cachos ou
+          ondas de forma natural.{" "}
+        </Text>
+      </View>
+      <View style={styles.Dicas}>
+        <Text style={styles.titleDicas}>Dicas:</Text>
+        <Text style={styles.lineDicas}>__________________________________</Text>
+        <Text style={styles.describeDicas}>
+          Clique no botão abaixo para baixar nosso PDF exclusivo com dicas
+          essenciais para seu tipo ideal de cabelos contendo, produtos para
+          cronograma capilar e muito mais!
+        </Text>
+        <CustomButton title="Baixe PDF" />
+      </View>
+
+      {/*-----------ondulados--------*/}
+      <View style={styles.containerOndulado}>
+        <Text style={styles.titleOndulado}>Cabelos Ondulados</Text>
+        <Image
+          style={styles.imageOndulado}
+          source={require("../../assets/ondulado.png")}
+        />
+        
+        <Text style={styles.describe1}>
+          Os cabelos ondulados, possuem uma textura que se situa entre os fios
+          lisos e os cacheados. Eles formam ondas suaves, com movimento natural.{" "}
+        </Text>
+      </View>
+      <View style={styles.Dicas}>
+        <Text style={styles.titleDicas}>Dicas:</Text>
+        <Text style={styles.lineDicas}>__________________________________</Text>
+        <Text style={styles.describeDicas}>
+          Clique no botão abaixo para baixar nosso PDF exclusivo com dicas
+          essenciais para seu tipo ideal de cabelos contendo, produtos para
+          cronograma capilar e muito mais!
+        </Text>
+      <CustomButton title="Baixe PDF" />
+      
+      </View>
+
+      {/*-----------crespos--------*/}
+      <View style={styles.containerCrespo}>
+        <Text style={styles.titleCrespo}>Cabelos Crespos</Text>
+        <Image
+          style={styles.imageCrespo}
+          source={require("../../assets/crespo.png")}
+        />
         <Text style={styles.describe1}>
           Peles oleosas têm produção elevada de sebo, resultando em brilho excessivo, poros dilatados e tendência a acne e cravos. A textura costuma ser mais espessa e úmida ao toque.
         </Text>
@@ -101,6 +177,7 @@ export default function Hair() {
           Clique no botão abaixo para baixar nosso PDF exclusivo com dicas essenciais de skincare para peles oleosas!
           Conheça os melhores cuidados para controlar o brilho, reduzir poros e prevenir acne sem agredir a pele. Tudo para manter seu rosto limpo, sequinho e com aspecto saudável ao longo do dia!
         </Text>
+        <CustomButton title="Baixe PDF" />
       </View>
     </ScrollView>
   );
