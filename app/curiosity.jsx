@@ -29,7 +29,7 @@ export default function Curiosity() {
             style={styles.gradient}
           >
             <Banner
-              title="Seja bem vindo ao blog Lumina"
+              title="Curiosidades"
               text="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
             />
           </LinearGradient>
@@ -45,14 +45,11 @@ export default function Curiosity() {
 const styles = StyleSheet.create({
   //Estilo geral da página
   container: {
-    // justifyContent: "center",
+    justifyContent: "center",
     alignItems: "center",
-    flex: 1,
-    backgroundColor: "#fff",
-    marginTop: -40, // dudu q pois duda
+    backgroundColor: "white",
+    width: "100%",
   },
-  
-  
   bannerIntroduction: {
     borderRadius: 15,
     width: "90%",
@@ -60,8 +57,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     marginTop: 50,
   },
-
-  
   gradient: {
     flex: 1,
     justifyContent: "center",
@@ -77,6 +72,4 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "flex-start", // Garante alinhamento à esquerda
   }
-
-
 });
