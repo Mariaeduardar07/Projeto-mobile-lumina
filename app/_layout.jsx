@@ -54,7 +54,7 @@ export default function RootLayout() {
             drawerLabel: "Login",
             title: "login",
             drawerIcon: ({ size, color }) => (
-              <Ionicons name="people-outline" size={size} color={color} />
+              <Ionicons name="log-in-outline" size={size} color={color} />
             ),
           }}
         />

@@ -1,7 +1,6 @@
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import {
     View,
-    FlatList,
     Text,
     StyleSheet,
     Dimensions,
@@ -39,51 +38,17 @@ const objetivos = [
 ];
 
 const ObjetivosCarousel = () => {
-    const [activeIndex, setActiveIndex] = useState(0);
-    const viewConfigRef = useRef({ viewAreaCoveragePercentThreshold: 50 });
-
-    const onViewableItemsChanged = useRef(({ viewableItems }) => {
-        if (viewableItems.length > 0) {
-            setActiveIndex(viewableItems[0].index);
-        }
-    });
-
-    const renderItem = ({ item }) => (
-        <View style={styles.card}>
-            {item.icon}
-            <Text style={styles.cardText}>{item.title}</Text>
-        </View>
-    );
-
-    const renderPagination = () => (
-        <View style={styles.paginationContainer}>
-            {objetivos.map((_, i) => (
-                <View
-                    key={i}
-                    style={[
-                        styles.paginationDot,
-                        { backgroundColor: i === activeIndex ? '#2563eb' : '#d1d5db' },
-                    ]}
-                />
-            ))}
-        </View>
-    );
-
     return (
         <View style={styles.wrapper}>
             <Text style={styles.header}>#OBJETIVOSLUMINA</Text>
-            <FlatList
-                data={objetivos}
-                renderItem={renderItem}
-                horizontal
-                pagingEnabled
-                showsHorizontalScrollIndicator={false}
-                onViewableItemsChanged={onViewableItemsChanged.current}
-                viewabilityConfig={viewConfigRef.current}
-                keyExtractor={(item) => item.id}
-                style={styles.carousel}
-            />
-            {renderPagination()}
+            <View style={styles.lista}>
+                {objetivos.map((item) => (
+                    <View key={item.id} style={styles.card}>
+                        {item.icon}
+                        <Text style={styles.cardText}>{item.title}</Text>
+                    </View>
+                ))}
+            </View>
         </View>
     );
 };
@@ -92,6 +57,7 @@ const styles = StyleSheet.create({
     wrapper: {
         alignItems: 'center',
         marginTop: 30,
+        width: '100%',
     },
     header: {
         fontSize: 18,
@@ -99,15 +65,16 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginBottom: 20,
     },
-    carousel: {
-        flexGrow: 0,
+    lista: {
+        width: '100%',
+        alignItems: 'center',
     },
     card: {
         width: width * 0.9,
         backgroundColor: '#eaf4ff',
         borderRadius: 20,
         padding: 24,
-        marginHorizontal: width * 0.05,
+        marginBottom: 18,
         justifyContent: 'center',
         alignItems: 'center',
         height: 180,
@@ -122,17 +89,6 @@ const styles = StyleSheet.create({
         fontSize: 14,
         color: '#374151',
         textAlign: 'center',
-    },
-    paginationContainer: {
-        flexDirection: 'row',
-        justifyContent: 'center',
-        marginTop: 12,
-    },
-    paginationDot: {
-        width: 8,
-        height: 8,
-        borderRadius: 4,
-        marginHorizontal: 4,
     },
 });
 
