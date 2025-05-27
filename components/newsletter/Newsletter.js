@@ -26,7 +26,8 @@ const Newsletter = () => {
       <h2 style={{
         color: '#2563ad',
         fontWeight: '600',
-        marginBottom: '24px'
+        marginBottom: '24px',
+        fontfamily: 'Arial, sans-serif',
       }}>
         Receba dicas exclusivas de autocuidado
       </h2>
@@ -50,7 +51,7 @@ const Newsletter = () => {
           style={{
             background: '#2563ad',
             color: '#fff',
-            fontWeight: 'bold',
+           
             border: 'none',
             borderRadius: '2px',
             padding: '10px 28px',
