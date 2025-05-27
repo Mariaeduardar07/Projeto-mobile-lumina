@@ -1,89 +1,59 @@
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import {
     View,
-    FlatList,
     Text,
     StyleSheet,
     Dimensions,
+    ScrollView,
 } from 'react-native';
-import { MaterialCommunityIcons, Feather, FontAwesome, Entypo } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 
 const { width } = Dimensions.get('window');
 
 const objetivos = [
     {
-        id: '1',
-        icon: <MaterialCommunityIcons name="check-decagram" size={40} color="#2563eb" />,
-        title: "Garantir a qualidade e excelência em cada entrega.",
-    },
-    {
-        id: '2',
-        icon: <Feather name="users" size={40} color="#2563eb" />,
-        title: "Promover a colaboração e o trabalho em equipe.",
-    },
-    {
-        id: '3',
-        icon: <Feather name="lightbulb" size={40} color="#2563eb" />,
-        title: "Inovar e criar soluções criativas para nossos desafios.",
-    },
-    {
-        id: '4',
-        icon: <FontAwesome name="star" size={40} color="#2563eb" />,
-        title: "Alcançar reconhecimento por meio de resultados excepcionais.",
-    },
-    {
-        id: '5',
-        icon: <Entypo name="heart" size={40} color="#2563eb" />,
-        title: "Fomentar um ambiente de trabalho saudável e inclusivo.",
-    },
+    id: '1',
+    icon: <Ionicons name="book-outline" size={40} color="#2563eb" />,
+    title: "Entregar conteúdos de qualidade que inspirem o autocuidado.",
+},
+{
+    id: '2',
+    icon: <Ionicons name="chatbubbles-outline" size={40} color="#2563eb" />,
+    title: "Construir uma comunidade acolhedora e colaborativa.",
+},
+{
+    id: '3',
+    icon: <Ionicons name="bulb-outline" size={40} color="#2563eb" />,
+    title: "Criar soluções criativas que promovam o autoconhecimento.",
+},
+{
+    id: '4',
+    icon: <Ionicons name="ribbon-outline" size={40} color="#2563eb" />,
+    title: "Inspirar e transformar vidas por meio de experiências significativas.",
+},
+{
+    id: '5',
+    icon: <Ionicons name="heart-outline" size={40} color="#2563eb" />,
+    title: "Cultivar um espaço digital saudável, inclusivo e elegante.",
+}
+
 ];
 
-const ObjetivosCarousel = () => {
-    const [activeIndex, setActiveIndex] = useState(0);
-    const viewConfigRef = useRef({ viewAreaCoveragePercentThreshold: 50 });
-
-    const onViewableItemsChanged = useRef(({ viewableItems }) => {
-        if (viewableItems.length > 0) {
-            setActiveIndex(viewableItems[0].index);
-        }
-    });
-
-    const renderItem = ({ item }) => (
-        <View style={styles.card}>
-            {item.icon}
-            <Text style={styles.cardText}>{item.title}</Text>
-        </View>
-    );
-
-    const renderPagination = () => (
-        <View style={styles.paginationContainer}>
-            {objetivos.map((_, i) => (
-                <View
-                    key={i}
-                    style={[
-                        styles.paginationDot,
-                        { backgroundColor: i === activeIndex ? '#2563eb' : '#d1d5db' },
-                    ]}
-                />
-            ))}
-        </View>
-    );
-
+const ObjetivosCards = () => {
     return (
         <View style={styles.wrapper}>
             <Text style={styles.header}>#OBJETIVOSLUMINA</Text>
-            <FlatList
-                data={objetivos}
-                renderItem={renderItem}
-                horizontal
-                pagingEnabled
-                showsHorizontalScrollIndicator={false}
-                onViewableItemsChanged={onViewableItemsChanged.current}
-                viewabilityConfig={viewConfigRef.current}
-                keyExtractor={(item) => item.id}
-                style={styles.carousel}
-            />
-            {renderPagination()}
+            <ScrollView
+                contentContainerStyle={{ alignItems: 'center' }}
+                showsVerticalScrollIndicator={false}
+            >
+                {objetivos.map((item) => (
+                    <View key={item.id} style={styles.card}>
+                        {item.icon}
+                        <Text style={styles.cardText}>{item.title}</Text>
+                    </View>
+                ))}
+            </ScrollView>
         </View>
     );
 };
@@ -99,15 +69,12 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginBottom: 20,
     },
-    carousel: {
-        flexGrow: 0,
-    },
     card: {
         width: width * 0.9,
-        backgroundColor: '#eaf4ff',
+        backgroundColor: '#e3f1fa',
         borderRadius: 20,
         padding: 24,
-        marginHorizontal: width * 0.05,
+        marginBottom: 18,
         justifyContent: 'center',
         alignItems: 'center',
         height: 180,
@@ -123,17 +90,6 @@ const styles = StyleSheet.create({
         color: '#374151',
         textAlign: 'center',
     },
-    paginationContainer: {
-        flexDirection: 'row',
-        justifyContent: 'center',
-        marginTop: 12,
-    },
-    paginationDot: {
-        width: 8,
-        height: 8,
-        borderRadius: 4,
-        marginHorizontal: 4,
-    },
 });
 
-export default ObjetivosCarousel;
+export default ObjetivosCards;
