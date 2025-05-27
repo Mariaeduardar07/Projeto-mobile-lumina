@@ -4,13 +4,49 @@ import {
     Text,
     StyleSheet,
     Dimensions,
+    ScrollView,
 } from 'react-native';
-import { MaterialCommunityIcons, Feather, FontAwesome, Entypo } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 
 const { width } = Dimensions.get('window');
 
 const objetivos = [
     {
+    id: '1',
+    icon: <Ionicons name="book-outline" size={40} color="#2563eb" />,
+    title: "Entregar conteúdos de qualidade que inspirem o autocuidado.",
+},
+{
+    id: '2',
+    icon: <Ionicons name="chatbubbles-outline" size={40} color="#2563eb" />,
+    title: "Construir uma comunidade acolhedora e colaborativa.",
+},
+{
+    id: '3',
+    icon: <Ionicons name="bulb-outline" size={40} color="#2563eb" />,
+    title: "Criar soluções criativas que promovam o autoconhecimento.",
+},
+{
+    id: '4',
+    icon: <Ionicons name="ribbon-outline" size={40} color="#2563eb" />,
+    title: "Inspirar e transformar vidas por meio de experiências significativas.",
+},
+{
+    id: '5',
+    icon: <Ionicons name="heart-outline" size={40} color="#2563eb" />,
+    title: "Cultivar um espaço digital saudável, inclusivo e elegante.",
+}
+
+];
+
+const ObjetivosCards = () => {
+    return (
+        <View style={styles.wrapper}>
+            <Text style={styles.header}>#OBJETIVOSLUMINA</Text>
+            <ScrollView
+                contentContainerStyle={{ alignItems: 'center' }}
+                showsVerticalScrollIndicator={false}
+            >
         id: '1',
         icon: <MaterialCommunityIcons name="check-decagram" size={40} color="#2563eb" />,
         title: "Garantir a qualidade e excelência em cada entrega.",
@@ -48,6 +84,7 @@ const ObjetivosCarousel = () => {
                         <Text style={styles.cardText}>{item.title}</Text>
                     </View>
                 ))}
+            </ScrollView>
             </View>
         </View>
     );
@@ -71,7 +108,7 @@ const styles = StyleSheet.create({
     },
     card: {
         width: width * 0.9,
-        backgroundColor: '#eaf4ff',
+        backgroundColor: '#e3f1fa',
         borderRadius: 20,
         padding: 24,
         marginBottom: 18,
@@ -92,4 +129,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default ObjetivosCarousel;
+export default ObjetivosCards;

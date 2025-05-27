@@ -21,7 +21,7 @@ export default function Hair() {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {/* INCIO DA BARRA DE PESQUISA */}
-    <SearchBar />
+      <SearchBar />
       {/* FIM DA BARRA DE PESQUISA */}
 
       <View style={styles.cardCategoryHairImage}>
@@ -31,7 +31,7 @@ export default function Hair() {
           end={{ x: 1, y: 1 }}
           style={styles.cardCategoryHairGradient}
         >
-          <Text style={styles.titleHair}>Cuidados Capilares</Text>
+          <Text style={styles.titleHair}>Maquiagens</Text>
         </LinearGradient>
       </View>
       <View style={styles.cardCategoryLisos}>
@@ -43,141 +43,63 @@ export default function Hair() {
         ></LinearGradient>
       </View>
       <View style={styles.containerLiso}>
-        <Text style={styles.titleLiso}>Cabelos Lisos</Text>
-        <Image
+        <Text style={styles.titleLiso}>Pele</Text>
+         <Image
           style={styles.imageLiso}
-          source={{
-            uri: "https://uploads.folhavitoria.com.br/2025/02/31iDrZV7-Copia-de-CORTE-DE-FOTOS-4-2-png.webp",
-          }}
+          source={require("../../assets/pele-maquiagem.png")}
         />
         <Text style={styles.describe1}>
-          Cabelos lisos são aqueles que possuem uma estrutura capilar reta, sem
-          ondulações ou cachos. A textura do fio é suave e uniforme, sem curvas
-          ou frizz.{" "}
+          A maquiagem na pele é a base de qualquer produção, sendo essencial para criar um acabamento uniforme, disfarçar imperfeições e realçar os traços naturais do rosto. Mais do que estética, ela contribui para a autoestima, oferecendo uma aparência saudável, iluminada e bem cuidada.{" "}
         </Text>
       </View>
       <View style={styles.Dicas}>
         <Text style={styles.titleDicas}>Dicas:</Text>
         <Text style={styles.lineDicas}>__________________________________</Text>
         <Text style={styles.describeDicas}>
-          Clique no botão abaixo para baixar nosso PDF exclusivo com dicas
-          essenciais para seu tipo ideal de cabelos contendo, produtos para
-          cronograma capilar e muito mais!
+          Clique no botão abaixo para baixar nosso PDF exclusivo com dicas essenciais para uma maquiagem perfeita na pele!
+          Você vai encontrar orientações práticas e sugestões de produtos para usar base, corretivo, pó, blush, contorno e iluminador, aprendendo como realçar sua beleza de forma natural e duradoura. Ideal para todos os tipos de pele!
         </Text>
       </View>
 
       {/*-----------quimica--------------*/}
 
       <View style={styles.containerQuimica}>
-        <Text style={styles.titleQuimica}>Cabelos com Química</Text>
+        <Text style={styles.titleQuimica}>Olhos</Text>
         <Image
           style={styles.imageQuimica}
-          source={require("../../assets/quimica.png")}
+          source={require("../../assets/eyes.png")}
         />
         <Text style={styles.describe1}>
-          Cabelos com química, referem-se a cabelos que passaram por processos
-          químicos para alterar sua estrutura ou cor.{"#"}
+          A maquiagem nos olhos é uma das etapas mais expressivas da make, responsável por destacar o olhar e transmitir personalidade. Com os produtos certos, é possível criar desde visuais discretos e elegantes até produções marcantes e ousadas.
         </Text>
       </View>
       <View style={styles.Dicas}>
         <Text style={styles.titleDicas}>Dicas:</Text>
         <Text style={styles.lineDicas}>__________________________________</Text>
         <Text style={styles.describeDicas}>
-          Clique no botão abaixo para baixar nosso PDF exclusivo com dicas
-          essenciais para seu tipo ideal de cabelos contendo, produtos para
-          cronograma capilar e muito mais!
+          Clique no botão abaixo para baixar nosso PDF exclusivo com dicas essenciais para realçar ainda mais o seu olhar!
+          Você vai encontrar orientações práticas e sugestões de produtos para usar rímel, sombra, lápis de olho e delineador, aprendendo como criar olhos sutis até marcantes e poderosos. Tudo pensado para valorizar seu estilo e destacar sua beleza!
         </Text>
       </View>
 
       {/*-----------mechas--------*/}
       <View style={styles.containerMechas}>
-        <Text style={styles.titleMechas}>Cabelos com Mechas</Text>
+        <Text style={styles.titleMechas}>Boca</Text>
         <Image
           style={styles.imageMechas}
-          source={require("../../assets/mechas.png")}
+          source={require("../../assets/lip.png")}
         />
-      
-        <Text style={styles.describe1}>
-          Cabelos com mechas, são aqueles que passam por um processo de
-          coloração onde algumas seções do cabelo recebem tons mais claros ou
-          mais escuros do que a cor natural dos fios.{" "}
-        </Text>
-      </View>
-      <View style={styles.Dicas}>
-        <Text style={styles.titleDicas}>Dicas:</Text>
-        <Text style={styles.lineDicas}>__________________________________</Text>
-        <Text style={styles.describeDicas}>
-          Clique no botão abaixo para baixar nosso PDF exclusivo com dicas
-          essenciais para seu tipo ideal de cabelos contendo, produtos para
-          cronograma capilar e muito mais!
-        </Text>
-      </View>
 
-      {/*-----------cachos--------*/}
-      <View style={styles.containerCachos}>
-        <Text style={styles.titleCachos}>Cabelos Cacheados</Text>
-        <Image
-          style={styles.imageCachos}
-          source={require("../../assets/cachos.png")}
-        />
-       
         <Text style={styles.describe1}>
-          Cabelos cacheados são caracterizados por fios que formam cachos ou
-          ondas de forma natural.{" "}
+          A maquiagem para a boca é um dos pontos de destaque em qualquer produção. Ela pode transformar completamente o visual, transmitindo elegância, ousadia ou suavidade, tudo depende da escolha dos produtos e da forma de aplicação.
         </Text>
       </View>
       <View style={styles.Dicas}>
         <Text style={styles.titleDicas}>Dicas:</Text>
         <Text style={styles.lineDicas}>__________________________________</Text>
         <Text style={styles.describeDicas}>
-          Clique no botão abaixo para baixar nosso PDF exclusivo com dicas
-          essenciais para seu tipo ideal de cabelos contendo, produtos para
-          cronograma capilar e muito mais!
-        </Text>
-      </View>
-
-      {/*-----------ondulados--------*/}
-      <View style={styles.containerOndulado}>
-        <Text style={styles.titleOndulado}>Cabelos Ondulados</Text>
-        <Image
-          style={styles.imageOndulado}
-          source={require("../../assets/ondulado.png")}
-        />
-        
-        <Text style={styles.describe1}>
-          Os cabelos ondulados, possuem uma textura que se situa entre os fios
-          lisos e os cacheados. Eles formam ondas suaves, com movimento natural.{" "}
-        </Text>
-      </View>
-      <View style={styles.Dicas}>
-        <Text style={styles.titleDicas}>Dicas:</Text>
-        <Text style={styles.lineDicas}>__________________________________</Text>
-        <Text style={styles.describeDicas}>
-          Clique no botão abaixo para baixar nosso PDF exclusivo com dicas
-          essenciais para seu tipo ideal de cabelos contendo, produtos para
-          cronograma capilar e muito mais!
-        </Text>
-      </View>
-
-      {/*-----------crespos--------*/}
-      <View style={styles.containerCrespo}>
-        <Text style={styles.titleCrespo}>Cabelos Crespos</Text>
-        <Image
-          style={styles.imageCrespo}
-          source={require("../../assets/crespo.png")}
-        />
-        <Text style={styles.describe1}>
-          Cabelos crespos são caracterizados por fios que possuem uma curvatura
-          muito apertada, o que resulta em um formato mais compacto e volumoso.{" "}
-        </Text>
-      </View>
-      <View style={styles.Dicas}>
-        <Text style={styles.titleDicas}>Dicas:</Text>
-        <Text style={styles.lineDicas}>__________________________________</Text>
-        <Text style={styles.describeDicas}>
-          Clique no botão abaixo para baixar nosso PDF exclusivo com dicas
-          essenciais para seu tipo ideal de cabelos contendo, produtos para
-          cronograma capilar e muito mais!
+          Clique no botão abaixo para baixar nosso PDF exclusivo com dicas essenciais para destacar sua boca com charme e estilo!
+          Descubra truques e produtos ideais para batom, batom líquido e gloss labial, aprendendo como valorizar seus lábios com acabamento perfeito, cor intensa e longa duração. Tudo para criar desde um visual natural e delicado até uma boca poderosa e marcante!
         </Text>
       </View>
     </ScrollView>
