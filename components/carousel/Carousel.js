@@ -102,13 +102,12 @@ const styles = StyleSheet.create({
     },
     slide: {
         width,
-        height: '100%',
         justifyContent: 'center',
         alignItems: 'center',
     },
     slideImage: {
         width: "90%", // Largura da imagem
-        height: "80%", // Altura da imagem
+        height: "100%", // Altura da imagem
         borderRadius: 10, // Bordas arredondadas
     },
     textContainer: {

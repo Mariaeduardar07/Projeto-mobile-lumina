@@ -1,6 +1,10 @@
-import { Image, View, StyleSheet } from "react-native";
+import { Image, View, StyleSheet, Dimensions } from "react-native";
 import { Drawer } from "expo-router/drawer";
 import { Ionicons } from "@expo/vector-icons";
+
+
+const { width } = Dimensions.get("window");
+
 
 export default function RootLayout() {
   return (
@@ -50,7 +54,7 @@ export default function RootLayout() {
             drawerLabel: "Login",
             title: "login",
             drawerIcon: ({ size, color }) => (
-              <Ionicons name="people-outline" size={size} color={color} />
+              <Ionicons name="log-in-outline" size={size} color={color} />
             ),
           }}
         />
@@ -70,13 +74,17 @@ export default function RootLayout() {
 
 const styles = StyleSheet.create({
   headerContainer: {
-    flexDirection: "row",
     alignItems: "center",
-    padding: '60%',
-    flex: 1,
+    justifyContent: "center",
+    width: "100%",
+    height: 60,
   },
   logoPrincipal: {
-    height: 50,
-    width: 150,
+    height: 90,
+    width: 160,
+    marginTop: 10,
+    justifyContent: "center",
+    alignItems: "center",
+    resizeMode: "contain",
   },
 });
