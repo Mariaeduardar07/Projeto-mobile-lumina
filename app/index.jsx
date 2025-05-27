@@ -11,6 +11,7 @@ import CategoriesCards from "../components/categoriesCards/CategoriesCards.js";
 import SearchBar from "../components/search/Search.js";
 import { LinearGradient } from "expo-linear-gradient";
 import { useRouter } from "expo-router";
+import Newsletter from "../components/newsletter/Newsletter.js";
 
 const { width } = Dimensions.get("window");
 
@@ -73,6 +74,7 @@ export default function Home() {
         categories={categories}
         onCategoryPress={handleCategoryPress}
       />
+      <Newsletter />
     </ScrollView>
   );
 }
