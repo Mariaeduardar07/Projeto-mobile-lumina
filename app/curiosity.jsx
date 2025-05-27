@@ -86,7 +86,6 @@ const styles = StyleSheet.create({
     overflow: "hidden",
     justifyContent: "center",
     alignItems: "flex-start", // Garante alinhamento à esquerda
-  }
   },
   polaroidCard: {
     width: 180,
