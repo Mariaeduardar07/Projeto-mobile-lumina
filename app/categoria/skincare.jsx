@@ -21,7 +21,7 @@ export default function Hair() {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {/* INCIO DA BARRA DE PESQUISA */}
-    <SearchBar />
+      <SearchBar />
       {/* FIM DA BARRA DE PESQUISA */}
 
       <View style={styles.cardCategoryHairImage}>
@@ -43,141 +43,63 @@ export default function Hair() {
         ></LinearGradient>
       </View>
       <View style={styles.containerLiso}>
-        <Text style={styles.titleLiso}>Cabelos Lisos</Text>
-        <Image
-          style={styles.imageLiso}
-          source={{
-            uri: "https://uploads.folhavitoria.com.br/2025/02/31iDrZV7-Copia-de-CORTE-DE-FOTOS-4-2-png.webp",
-          }}
+        <Text style={styles.titleLiso}>Peles secas</Text>
+         <Image
+          style={styles.imageQuimica}
+          source={require("../../assets/pele-seca.png")}
         />
         <Text style={styles.describe1}>
-          Cabelos lisos são aqueles que possuem uma estrutura capilar reta, sem
-          ondulações ou cachos. A textura do fio é suave e uniforme, sem curvas
-          ou frizz.{" "}
+          Peles secas são caracterizadas por uma textura mais áspera, falta de viço e tendência ao ressecamento e descamação. A superfície da pele costuma ser mais fina e sem oleosidade natural, o que pode deixá-la com aparência opaca e sensação de repuxamento.
         </Text>
       </View>
       <View style={styles.Dicas}>
         <Text style={styles.titleDicas}>Dicas:</Text>
         <Text style={styles.lineDicas}>__________________________________</Text>
         <Text style={styles.describeDicas}>
-          Clique no botão abaixo para baixar nosso PDF exclusivo com dicas
-          essenciais para seu tipo ideal de cabelos contendo, produtos para
-          cronograma capilar e muito mais!
+          Clique no botão abaixo para baixar nosso PDF exclusivo com dicas essenciais de skincare para peles secas!
+          Descubra cuidados e produtos ideais para restaurar a hidratação, fortalecer a barreira cutânea e manter a pele nutrida e macia. Tudo para conquistar uma pele saudável, luminosa e protegida contra o ressecamento!
         </Text>
       </View>
 
       {/*-----------quimica--------------*/}
 
       <View style={styles.containerQuimica}>
-        <Text style={styles.titleQuimica}>Cabelos com Química</Text>
+        <Text style={styles.titleQuimica}>Peles Mistas</Text>
         <Image
           style={styles.imageQuimica}
-          source={require("../../assets/quimica.png")}
+          source={require("../../assets/pele-mista.png")}
         />
         <Text style={styles.describe1}>
-          Cabelos com química, referem-se a cabelos que passaram por processos
-          químicos para alterar sua estrutura ou cor.{"#"}
+          Peles mistas apresentam características de dois tipos de pele: oleosidade concentrada na zona T (testa, nariz e queixo) e ressecamento nas outras áreas do rosto, como bochechas.
         </Text>
       </View>
       <View style={styles.Dicas}>
         <Text style={styles.titleDicas}>Dicas:</Text>
         <Text style={styles.lineDicas}>__________________________________</Text>
         <Text style={styles.describeDicas}>
-          Clique no botão abaixo para baixar nosso PDF exclusivo com dicas
-          essenciais para seu tipo ideal de cabelos contendo, produtos para
-          cronograma capilar e muito mais!
+          Clique no botão abaixo para baixar nosso PDF exclusivo com dicas essenciais de skincare para peles mistas!
+          Aprenda como equilibrar a oleosidade da zona T e hidratar as áreas mais secas com os produtos certos. Tudo para deixar sua pele uniforme, fresca e saudável em todas as regiões do rosto!
         </Text>
       </View>
 
       {/*-----------mechas--------*/}
       <View style={styles.containerMechas}>
-        <Text style={styles.titleMechas}>Cabelos com Mechas</Text>
+        <Text style={styles.titleMechas}>Peles oleosas</Text>
         <Image
           style={styles.imageMechas}
-          source={require("../../assets/mechas.png")}
+          source={require("../../assets/pele-oleosa.png")}
         />
-      
-        <Text style={styles.describe1}>
-          Cabelos com mechas, são aqueles que passam por um processo de
-          coloração onde algumas seções do cabelo recebem tons mais claros ou
-          mais escuros do que a cor natural dos fios.{" "}
-        </Text>
-      </View>
-      <View style={styles.Dicas}>
-        <Text style={styles.titleDicas}>Dicas:</Text>
-        <Text style={styles.lineDicas}>__________________________________</Text>
-        <Text style={styles.describeDicas}>
-          Clique no botão abaixo para baixar nosso PDF exclusivo com dicas
-          essenciais para seu tipo ideal de cabelos contendo, produtos para
-          cronograma capilar e muito mais!
-        </Text>
-      </View>
 
-      {/*-----------cachos--------*/}
-      <View style={styles.containerCachos}>
-        <Text style={styles.titleCachos}>Cabelos Cacheados</Text>
-        <Image
-          style={styles.imageCachos}
-          source={require("../../assets/cachos.png")}
-        />
-       
         <Text style={styles.describe1}>
-          Cabelos cacheados são caracterizados por fios que formam cachos ou
-          ondas de forma natural.{" "}
+          Peles oleosas têm produção elevada de sebo, resultando em brilho excessivo, poros dilatados e tendência a acne e cravos. A textura costuma ser mais espessa e úmida ao toque.
         </Text>
       </View>
       <View style={styles.Dicas}>
         <Text style={styles.titleDicas}>Dicas:</Text>
         <Text style={styles.lineDicas}>__________________________________</Text>
         <Text style={styles.describeDicas}>
-          Clique no botão abaixo para baixar nosso PDF exclusivo com dicas
-          essenciais para seu tipo ideal de cabelos contendo, produtos para
-          cronograma capilar e muito mais!
-        </Text>
-      </View>
-
-      {/*-----------ondulados--------*/}
-      <View style={styles.containerOndulado}>
-        <Text style={styles.titleOndulado}>Cabelos Ondulados</Text>
-        <Image
-          style={styles.imageOndulado}
-          source={require("../../assets/ondulado.png")}
-        />
-        
-        <Text style={styles.describe1}>
-          Os cabelos ondulados, possuem uma textura que se situa entre os fios
-          lisos e os cacheados. Eles formam ondas suaves, com movimento natural.{" "}
-        </Text>
-      </View>
-      <View style={styles.Dicas}>
-        <Text style={styles.titleDicas}>Dicas:</Text>
-        <Text style={styles.lineDicas}>__________________________________</Text>
-        <Text style={styles.describeDicas}>
-          Clique no botão abaixo para baixar nosso PDF exclusivo com dicas
-          essenciais para seu tipo ideal de cabelos contendo, produtos para
-          cronograma capilar e muito mais!
-        </Text>
-      </View>
-
-      {/*-----------crespos--------*/}
-      <View style={styles.containerCrespo}>
-        <Text style={styles.titleCrespo}>Cabelos Crespos</Text>
-        <Image
-          style={styles.imageCrespo}
-          source={require("../../assets/crespo.png")}
-        />
-        <Text style={styles.describe1}>
-          Cabelos crespos são caracterizados por fios que possuem uma curvatura
-          muito apertada, o que resulta em um formato mais compacto e volumoso.{" "}
-        </Text>
-      </View>
-      <View style={styles.Dicas}>
-        <Text style={styles.titleDicas}>Dicas:</Text>
-        <Text style={styles.lineDicas}>__________________________________</Text>
-        <Text style={styles.describeDicas}>
-          Clique no botão abaixo para baixar nosso PDF exclusivo com dicas
-          essenciais para seu tipo ideal de cabelos contendo, produtos para
-          cronograma capilar e muito mais!
+          Clique no botão abaixo para baixar nosso PDF exclusivo com dicas essenciais de skincare para peles oleosas!
+          Conheça os melhores cuidados para controlar o brilho, reduzir poros e prevenir acne sem agredir a pele. Tudo para manter seu rosto limpo, sequinho e com aspecto saudável ao longo do dia!
         </Text>
       </View>
     </ScrollView>
