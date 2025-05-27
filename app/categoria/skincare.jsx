@@ -10,6 +10,8 @@ import {
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { SearchBar } from "react-native-screens";
+import CustomButton from "../../components/customButton/CustomButton";
+
 
 export default function Hair() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -64,6 +66,7 @@ export default function Hair() {
           essenciais para seu tipo ideal de cabelos contendo, produtos para
           cronograma capilar e muito mais!
         </Text>
+        <CustomButton title="Baixe PDF" />
       </View>
 
       {/*-----------quimica--------------*/}
@@ -87,6 +90,7 @@ export default function Hair() {
           essenciais para seu tipo ideal de cabelos contendo, produtos para
           cronograma capilar e muito mais!
         </Text>
+        <CustomButton title="Baixe PDF" />
       </View>
 
       {/*-----------mechas--------*/}
@@ -111,6 +115,7 @@ export default function Hair() {
           essenciais para seu tipo ideal de cabelos contendo, produtos para
           cronograma capilar e muito mais!
         </Text>
+        <CustomButton title="Baixe PDF" />
       </View>
 
       {/*-----------cachos--------*/}
@@ -134,6 +139,7 @@ export default function Hair() {
           essenciais para seu tipo ideal de cabelos contendo, produtos para
           cronograma capilar e muito mais!
         </Text>
+        <CustomButton title="Baixe PDF" />
       </View>
 
       {/*-----------ondulados--------*/}
@@ -157,6 +163,8 @@ export default function Hair() {
           essenciais para seu tipo ideal de cabelos contendo, produtos para
           cronograma capilar e muito mais!
         </Text>
+      <CustomButton title="Baixe PDF" />
+      
       </View>
 
       {/*-----------crespos--------*/}
@@ -179,6 +187,7 @@ export default function Hair() {
           essenciais para seu tipo ideal de cabelos contendo, produtos para
           cronograma capilar e muito mais!
         </Text>
+        <CustomButton title="Baixe PDF" />
       </View>
     </ScrollView>
   );
