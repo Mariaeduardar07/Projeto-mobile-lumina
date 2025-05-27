@@ -1,17 +1,12 @@
-import React from "react";
-import {
-  ScrollView,
-  View,
-  StyleSheet,
-  ImageBackground,
-  Dimensions,
-} from "react-native";
+import React, { useState } from "react";
+import { ScrollView, View, StyleSheet, Text, TouchableOpacity, Alert, Dimensions, ImageBackground } from "react-native"; // Removido 'selectedOption'
 import Banner from "../components/banner/Banner.js";
 import CategoriesCards from "../components/categoriesCards/CategoriesCards.js";
 import SearchBar from "../components/search/Search.js";
 import { LinearGradient } from "expo-linear-gradient";
 import { useRouter } from "expo-router";
 import Newsletter from "../components/newsletter/Newsletter.js";
+import Forms from "../components/forms/Forms.js"; 
 
 const { width } = Dimensions.get("window");
 
@@ -42,6 +37,14 @@ export default function Home() {
 
   const handleCategoryPress = (route) => {
     router.push(route);
+  };
+
+  const handleFeedbackSubmit = () => {
+    if (selectedOption) {
+      Alert.alert("Obrigado pelo feedback!", `Você selecionou: ${selectedOption}`);
+    } else {
+      Alert.alert("Por favor, selecione uma opção.");
+    }
   };
 
   return (
@@ -75,6 +78,7 @@ export default function Home() {
         onCategoryPress={handleCategoryPress}
       />
       <Newsletter />
+      <Forms     />
     </ScrollView>
   );
 }
@@ -93,18 +97,5 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     marginTop: 50,
   },
-   gradient: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "flex-start", // Alinha o texto à esquerda
-    paddingHorizontal: 20,
-  },
-  bannerImage: {
-    width: "100%",
-    height: 200,
-    borderRadius: 15,
-    overflow: "hidden",
-    justifyContent: "center",
-    alignItems: "flex-start", // Garante alinhamento à esquerda
-  },
+  
 });
