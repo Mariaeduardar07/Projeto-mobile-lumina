@@ -3,7 +3,7 @@ import Banner from "../components/banner/Banner.js";
 import SearchBar from "../components/search/Search.js";
 import { LinearGradient } from "expo-linear-gradient";
 import { useRouter } from "expo-router";
-import { StyleSheet, ScrollView, View, ImageBackground, Dimensions } from "react-native";
+import { StyleSheet, ScrollView, View, ImageBackground, Dimensions, Text } from "react-native";
 
 const { width } = Dimensions.get("window");
 
@@ -34,6 +34,21 @@ export default function Curiosity() {
             />
           </LinearGradient>
         </ImageBackground>
+      </View>
+
+      <View style={styles.polaroidCard}>
+        <ImageBackground
+          source={{
+            uri: "https://braehaircare.vtexassets.com/arquivos/ids/160327-1200-auto?v=638798887459970000&width=1200&height=auto&aspect=true",
+          }}
+          style={styles.polaroidImage}
+          // imageStyle={{ borderTopLeftRadius: 10, borderTopRightRadius: 10 }}
+        />
+        <View style={styles.polaroidCaptionContainer}>
+          <Text style={styles.polaroidTitle}>Os top3 melhores protetores da braé</Text>
+          <Text style={styles.polaroidTitlesub}>conheça os queridinho da Braé tudo isso em um só clique</Text>
+
+        </View>
       </View>
 </View>
     </ScrollView>
@@ -72,4 +87,49 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "flex-start", // Garante alinhamento à esquerda
   }
+  },
+  polaroidCard: {
+    width: 180,
+    backgroundColor: "#fff",
+    // borderRadius: 10,
+    shadowColor: "#000",
+    shadowOpacity: 0.2,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 6,
+    marginTop: 75,
+    
+    // // elevation: 5,
+    // margin: 20,
+    // alignItems: "center",
+    
+  },
+  polaroidImage: {
+    width: 180,
+    height: 150,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    backgroundColor: "#eee",
+  },
+  polaroidCaptionContainer: {
+    width: "100%",
+    paddingVertical: 12,
+    paddingHorizontal: 8,
+    alignItems: "center",
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
+  },
+  polaroidTitle: {
+    // fontWeight: "bold",
+    fontSize: 11,
+    color: "#333",
+    textAlign: "center",
+    textDecorationLine: "underline",
+  },
+  polaroidTitlesub: {
+    // fontWeight: "bold",
+    fontSize: 8,
+    color: "#333",
+    textAlign: "center",
+    marginTop: 5,
+  },
 });
