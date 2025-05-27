@@ -10,30 +10,30 @@ export default function CategoriaLayout() {
       }}
     >
       <Drawer.Screen
-        name="cabelo"
+        name="cuidadosCapilares"
         options={{
-          drawerLabel: "Cabelo",
-          title: "Cabelo",
+          drawerLabel: "Cuidados Capilares",
+          title: "Cuidados Capilares",
           drawerIcon: ({ size, color }) => (
-            <Ionicons name="cut" size={size} color={color} />
+            <Ionicons name="cut-outline" size={size} color={color} />
           ),
         }}
       />
       <Drawer.Screen
-        name="maquiagem"
+        name="maquiagens"
         options={{
-          drawerLabel: "Maquiagem",
-          title: "Maquiagem",
+          drawerLabel: "Maquiagens",
+          title: "Maquiagens",
           drawerIcon: ({ size, color }) => (
-            <Ionicons name="heart-empty" size={size} color={color} />
+            <Ionicons name="sparkles-outline" size={size} color={color} />
           ),
         }}
       />
       <Drawer.Screen
         name="skincare"
         options={{
-          drawerLabel: "Skin Care",
-          title: "Skin Care",
+          drawerLabel: "Skincare",
+          title: "Skincare",
           drawerIcon: ({ size, color }) => (
             <Ionicons name="leaf" size={size} color={color} />
           ),
