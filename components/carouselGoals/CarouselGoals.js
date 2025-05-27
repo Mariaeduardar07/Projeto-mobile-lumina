@@ -12,31 +12,30 @@ const { width } = Dimensions.get('window');
 
 const objetivos = [
     {
-    id: '1',
-    icon: <Ionicons name="book-outline" size={40} color="#2563eb" />,
-    title: "Entregar conteúdos de qualidade que inspirem o autocuidado.",
-},
-{
-    id: '2',
-    icon: <Ionicons name="chatbubbles-outline" size={40} color="#2563eb" />,
-    title: "Construir uma comunidade acolhedora e colaborativa.",
-},
-{
-    id: '3',
-    icon: <Ionicons name="bulb-outline" size={40} color="#2563eb" />,
-    title: "Criar soluções criativas que promovam o autoconhecimento.",
-},
-{
-    id: '4',
-    icon: <Ionicons name="ribbon-outline" size={40} color="#2563eb" />,
-    title: "Inspirar e transformar vidas por meio de experiências significativas.",
-},
-{
-    id: '5',
-    icon: <Ionicons name="heart-outline" size={40} color="#2563eb" />,
-    title: "Cultivar um espaço digital saudável, inclusivo e elegante.",
-}
-
+        id: '1',
+        icon: <Ionicons name="book-outline" size={40} color="#2563eb" />,
+        title: "Entregar conteúdos de qualidade que inspirem o autocuidado.",
+    },
+    {
+        id: '2',
+        icon: <Ionicons name="chatbubbles-outline" size={40} color="#2563eb" />,
+        title: "Construir uma comunidade acolhedora e colaborativa.",
+    },
+    {
+        id: '3',
+        icon: <Ionicons name="bulb-outline" size={40} color="#2563eb" />,
+        title: "Criar soluções criativas que promovam o autoconhecimento.",
+    },
+    {
+        id: '4',
+        icon: <Ionicons name="ribbon-outline" size={40} color="#2563eb" />,
+        title: "Inspirar e transformar vidas por meio de experiências significativas.",
+    },
+    {
+        id: '5',
+        icon: <Ionicons name="heart-outline" size={40} color="#2563eb" />,
+        title: "Cultivar um espaço digital saudável, inclusivo e elegante.",
+    },
 ];
 
 const ObjetivosCards = () => {
@@ -47,37 +46,6 @@ const ObjetivosCards = () => {
                 contentContainerStyle={{ alignItems: 'center' }}
                 showsVerticalScrollIndicator={false}
             >
-        id: '1',
-        icon: <MaterialCommunityIcons name="check-decagram" size={40} color="#2563eb" />,
-        title: "Garantir a qualidade e excelência em cada entrega.",
-    },
-    {
-        id: '2',
-        icon: <Feather name="users" size={40} color="#2563eb" />,
-        title: "Promover a colaboração e o trabalho em equipe.",
-    },
-    {
-        id: '3',
-        icon: <Feather name="lightbulb" size={40} color="#2563eb" />,
-        title: "Inovar e criar soluções criativas para nossos desafios.",
-    },
-    {
-        id: '4',
-        icon: <FontAwesome name="star" size={40} color="#2563eb" />,
-        title: "Alcançar reconhecimento por meio de resultados excepcionais.",
-    },
-    {
-        id: '5',
-        icon: <Entypo name="heart" size={40} color="#2563eb" />,
-        title: "Fomentar um ambiente de trabalho saudável e inclusivo.",
-    },
-];
-
-const ObjetivosCarousel = () => {
-    return (
-        <View style={styles.wrapper}>
-            <Text style={styles.header}>#OBJETIVOSLUMINA</Text>
-            <View style={styles.lista}>
                 {objetivos.map((item) => (
                     <View key={item.id} style={styles.card}>
                         {item.icon}
@@ -85,7 +53,6 @@ const ObjetivosCarousel = () => {
                     </View>
                 ))}
             </ScrollView>
-            </View>
         </View>
     );
 };
@@ -101,10 +68,6 @@ const styles = StyleSheet.create({
         color: '#1e3a8a',
         fontWeight: 'bold',
         marginBottom: 20,
-    },
-    lista: {
-        width: '100%',
-        alignItems: 'center',
     },
     card: {
         width: width * 0.9,
