@@ -4,10 +4,10 @@ import {
   View,
   Text,
   StyleSheet,
-  TextInput,
-  TouchableOpacity,
   Image,
+  Dimensions,
 } from "react-native";
+const { width, height } = Dimensions.get("window");
 import { LinearGradient } from "expo-linear-gradient";
 import { SearchBar } from "react-native-screens";
 import Banner from "../../components/banner/Banner.js";
@@ -104,160 +104,71 @@ export default function Hair() {
     </ScrollView>
   );
 }
+
 const styles = StyleSheet.create({
-  //Estilo geral da página
   container: {
     justifyContent: "center",
     alignItems: "center",
-    // flex: 1,
     backgroundColor: "white",
   },
-  // Estilo para a barra de busca
-  searchContainer: {
-    marginTop: 80,
-    flexDirection: "row",
-    alignItems: "center",
-    borderRadius: 10,
-    paddingHorizontal: 10,
-    width: "90%",
-    height: 40,
-    marginBottom: 20,
-  },
-  searchInput: {
-    flex: 1,
-    height: 40,
-    backgroundColor: "#fff",
-    borderRadius: 20,
-    paddingHorizontal: 10,
-    borderWidth: 2,
-    borderColor: "#8b8b8b",
-    color: "#8b8b8b",
-  },
-  searchButton: {
-    backgroundColor: "#a7d5ec",
-    borderRadius: 20,
-    padding: 10,
-    marginLeft: 5,
-  },
-
-  // Estilo para a introdução da página
-  introduction: {
-    width: "90%",
-    height: 200,
-    backgroundColor: "#a7d6ed",
-    borderRadius: 15,
-    padding: 20,
-  },
-  titleIntroduction: {
-    fontSize: 26,
-    fontWeight: "500",
-    color: "#fff",
-  },
-  textIntroduction: {
-    fontSize: 16,
-    color: "#2b60ab",
-  },
-
-  // CARD DE CABELO
-  cardCategoryHairImage: {
-    backgroundImage:
-      "url(https://a-static.mlcdn.com.br/1500x1500/shampoo-low-poo-keune-care-confident-curl-300ml/lordperfumaria/8719281109778/642a8a0c388537c7a9a7fe0c3dbdf6dc.jpeg)",
-    gap: 10,
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    height: 160, // Defina uma altura fixa ou ajustável
-    justifyContent: "center",
-    width: "90%",
-  },
-  cardCategoryHairGradient: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    width: "90%",
-  },
-
-  titleHair: {
-    fontSize: 24,
-    color: "#fff",
-    fontWeight: "bold",
-    marginTop: 20,
-    left: 10,
-    textAlign: "center",
-  },
-  // lisos
   containerLiso: {
-    flex: 1,
-    display: "flex",
-    marginLeft: 20,
+    width: width * 0.9, // 90% da largura da tela
+    margin: 10,
   },
   titleLiso: {
-    fontSize: 17,
+    fontSize: width * 0.05, // Tamanho da fonte baseado na largura da tela
     color: "#65a2bf",
     marginTop: 20,
   },
-
   imageLiso: {
-    width: "90%",
-    height: 160,
+    width: "100%", // Largura total do contêiner
+    height: height * 0.2, // Altura em proporção à altura da tela
     borderRadius: 10,
     marginTop: 20,
   },
-
   describe1: {
-    fontSize: 14,
-    color: "#2b60ab",
-    marginTop: 15,
-
+    fontSize: width * 0.04, // Tamanho da fonte dinâmico
     color: "black",
-    width: "90%",
+    marginTop: 15,
+    width: "100%",
     textAlign: "justify",
-    alignItems: "center",
-    justifyContent: "center",
   },
   Dicas: {
-    width: "90%",
+    width: width * 0.9,
   },
-
   titleDicas: {
-    fontSize: 24,
+    fontSize: width * 0.05,
     color: "#65a2bf",
     marginTop: 60,
   },
-
   lineDicas: {
-    fontSize: 24,
+    fontSize: width * 0.05,
     color: "#65a2bf",
-    width: "90%",
-    marginTop: -16 /**edu que colocou */,
+    width: "100%",
+    marginTop: -16,
   },
-
   describeDicas: {
-    fontSize: 14,
+    fontSize: width * 0.04,
     color: "black",
     marginTop: 15,
-    width: "90%",
+    width: "100%",
     textAlign: "justify",
-    alignItems: "center",
-    justifyContent: "center",
   },
-
   // quimica
 
   containerQuimica: {
-    flex: 1,
-    display: "flex",
-    marginLeft: 20,
+    width: width * 0.9, // 90% da largura da tela
+    margin: 10,
   },
   titleQuimica: {
-    fontSize: 17,
+    fontSize: width * 0.05, // Tamanho da fonte baseado na largura da tela
     color: "#65a2bf",
     marginTop: 20,
   },
 
   imageQuimica: {
-    width: "90%",
-    height: 160,
+    width: "100%", // Largura total do contêiner
+    height: height * 0.2, // Altura em proporção à altura da tela
     borderRadius: 10,
     marginTop: 20,
   },
@@ -265,19 +176,18 @@ const styles = StyleSheet.create({
   // mechas
 
   containerMechas: {
-    flex: 1,
-    display: "flex",
-    marginLeft: 20,
+    width: width * 0.9, // 90% da largura da tela
+    margin: 10,
   },
   titleMechas: {
-    fontSize: 17,
+    fontSize: width * 0.05, // Tamanho da fonte baseado na largura da tela
     color: "#65a2bf",
     marginTop: 20,
   },
 
   imageMechas: {
-    width: "90%",
-    height: 160,
+    width: "100%", // Largura total do contêiner
+    height: height * 0.2, // Altura em proporção à altura da tela
     borderRadius: 10,
     marginTop: 20,
   },
@@ -285,19 +195,18 @@ const styles = StyleSheet.create({
   // cachos
 
   containerCachos: {
-    flex: 1,
-    display: "flex",
-    marginLeft: 20,
+    width: width * 0.9, // 90% da largura da tela
+    margin: 10,
   },
   titleCachos: {
-    fontSize: 17,
+    fontSize: width * 0.05, // Tamanho da fonte baseado na largura da tela
     color: "#65a2bf",
     marginTop: 20,
   },
 
   imageCachos: {
-    width: "90%",
-    height: 160,
+    width: "100%", // Largura total do contêiner
+    height: height * 0.2, // Altura em proporção à altura da tela
     borderRadius: 10,
     marginTop: 20,
   },
@@ -305,19 +214,18 @@ const styles = StyleSheet.create({
   //ondulados
 
   containerOndulado: {
-    flex: 1,
-    display: "flex",
-    marginLeft: 20,
+    width: width * 0.9, // 90% da largura da tela
+    margin: 10,
   },
   titleOndulado: {
-    fontSize: 17,
+    fontSize: width * 0.05, // Tamanho da fonte baseado na largura da tela
     color: "#65a2bf",
     marginTop: 20,
   },
 
   imageOndulado: {
-    width: "90%",
-    height: 160,
+    width: "100%", // Largura total do contêiner
+    height: height * 0.2, // Altura em proporção à altura da tela
     borderRadius: 10,
     marginTop: 20,
   },
@@ -325,19 +233,18 @@ const styles = StyleSheet.create({
   //crespos
 
   containerCrespo: {
-    flex: 1,
-    display: "flex",
-    marginLeft: 20,
+    width: width * 0.9, // 90% da largura da tela
+    margin: 10,
   },
   titleCrespo: {
-    fontSize: 17,
+    fontSize: width * 0.05, // Tamanho da fonte baseado na largura da tela
     color: "#65a2bf",
     marginTop: 20,
   },
 
   imageCrespo: {
-    width: "90%",
-    height: 160,
+    width: "100%", // Largura total do contêiner
+    height: height * 0.2, // Altura em proporção à altura da tela
     borderRadius: 10,
     marginTop: 20,
   },
