@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { SearchBar } from "react-native-screens";
+import Banner from "../../components/banner/Banner.js";
 
 export default function Hair() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -24,16 +25,14 @@ export default function Hair() {
       <SearchBar />
       {/* FIM DA BARRA DE PESQUISA */}
 
-      <View style={styles.cardCategoryHairImage}>
-        <LinearGradient
-          colors={["#2b60ab", "#ffffff00"]}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 1 }}
-          style={styles.cardCategoryHairGradient}
-        >
-          <Text style={styles.titleHair}>Maquiagens</Text>
-        </LinearGradient>
-      </View>
+     <Banner
+        title="Maquiagem"
+        text="Bem-vindo à seção Maquiagens do Lumina."
+        image={{
+          uri: "https://www.estadao.com.br/recomenda/wp-content/uploads/2024/06/AdobeStock_273553300_Preview.jpeg.webp",
+        }}
+        gradientColors={["rgba(0, 0, 0, 0)", "rgb(167, 213, 236)"]}
+      />
       <View style={styles.cardCategoryLisos}>
         <LinearGradient
           colors={["#2b60ab", "#ffffff00"]}

@@ -11,6 +11,9 @@ import {
 import { LinearGradient } from "expo-linear-gradient";
 import { SearchBar } from "react-native-screens";
 import CustomButton from "../../components/customButton/CustomButton";
+// import SearchBar from "../../components/search/Search";
+import Banner from "../../components/banner/Banner.js";
+
 export default function Hair() {
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -24,16 +27,14 @@ export default function Hair() {
     <SearchBar />
       {/* FIM DA BARRA DE PESQUISA */}
 
-      <View style={styles.cardCategoryHairImage}>
-        <LinearGradient
-          colors={["#2b60ab", "#ffffff00"]}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 1 }}
-          style={styles.cardCategoryHairGradient}
-        >
-          <Text style={styles.titleHair}>Cuidados Capilares</Text>
-        </LinearGradient>
-      </View>
+      <Banner
+        title="Cuidados Capilares"
+        text="Bem-vindo à seção Cuidado Capilar do Lumina."
+        image={{
+          uri: "https://media.istockphoto.com/id/1024577076/pt/foto/full-frame-of-professional-hair-dresser-tools-on-white-background.jpg?s=170667a&w=0&k=20&c=xbXLKh6xn3iqWJ23tni9CuDlxxhKP89n6Y8UZCJ401U=",
+        }}
+        gradientColors={["rgba(0, 0, 0, 0)", "rgb(167, 213, 236)"]}
+      />
       <View style={styles.cardCategoryLisos}>
         <LinearGradient
           colors={["#2b60ab", "#ffffff00"]}

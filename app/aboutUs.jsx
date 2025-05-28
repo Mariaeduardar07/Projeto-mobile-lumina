@@ -4,7 +4,6 @@ import {
   Text,
   StyleSheet,
   ScrollView,
-  Image,
 } from "react-native";
 
 import Carousel from "../components/carousel/Carousel.js";

@@ -11,8 +11,7 @@ import {
 import { LinearGradient } from "expo-linear-gradient";
 import { SearchBar } from "react-native-screens";
 import CustomButton from "../../components/customButton/CustomButton";
-
-
+import Banner from "../../components/banner/Banner";
 export default function Hair() {
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -26,16 +25,14 @@ export default function Hair() {
       <SearchBar />
       {/* FIM DA BARRA DE PESQUISA */}
 
-      <View style={styles.cardCategoryHairImage}>
-        <LinearGradient
-          colors={["#2b60ab", "#ffffff00"]}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 1 }}
-          style={styles.cardCategoryHairGradient}
-        >
-          <Text style={styles.titleHair}>Skincare</Text>
-        </LinearGradient>
-      </View>
+      <Banner
+        title="SKIN CARE"
+        text="Bem-vindo à seção Skin Care do Lumina."
+        image={{
+          uri: "https://privatelabelbrazil.com.br/wp-content/uploads/2024/04/skincare-de-marca-propria-scaled.jpg",
+        }}
+        gradientColors={["rgba(0, 0, 0, 0)", "rgb(167, 213, 236)"]}
+      />
       <View style={styles.cardCategoryLisos}>
         <LinearGradient
           colors={["#2b60ab", "#ffffff00"]}
@@ -46,20 +43,26 @@ export default function Hair() {
       </View>
       <View style={styles.containerLiso}>
         <Text style={styles.titleLiso}>Peles secas</Text>
-         <Image
+        <Image
           style={styles.imageQuimica}
           source={require("../../assets/pele-seca.png")}
         />
         <Text style={styles.describe1}>
-          Peles secas são caracterizadas por uma textura mais áspera, falta de viço e tendência ao ressecamento e descamação. A superfície da pele costuma ser mais fina e sem oleosidade natural, o que pode deixá-la com aparência opaca e sensação de repuxamento.
+          Peles secas são caracterizadas por uma textura mais áspera, falta de
+          viço e tendência ao ressecamento e descamação. A superfície da pele
+          costuma ser mais fina e sem oleosidade natural, o que pode deixá-la
+          com aparência opaca e sensação de repuxamento.
         </Text>
       </View>
       <View style={styles.Dicas}>
         <Text style={styles.titleDicas}>Dicas:</Text>
         <Text style={styles.lineDicas}>__________________________________</Text>
         <Text style={styles.describeDicas}>
-          Clique no botão abaixo para baixar nosso PDF exclusivo com dicas essenciais de skincare para peles secas!
-          Descubra cuidados e produtos ideais para restaurar a hidratação, fortalecer a barreira cutânea e manter a pele nutrida e macia. Tudo para conquistar uma pele saudável, luminosa e protegida contra o ressecamento!
+          Clique no botão abaixo para baixar nosso PDF exclusivo com dicas
+          essenciais de skincare para peles secas! Descubra cuidados e produtos
+          ideais para restaurar a hidratação, fortalecer a barreira cutânea e
+          manter a pele nutrida e macia. Tudo para conquistar uma pele saudável,
+          luminosa e protegida contra o ressecamento!
         </Text>
         <CustomButton title="Baixe PDF" />
       </View>
@@ -73,15 +76,20 @@ export default function Hair() {
           source={require("../../assets/pele-mista.png")}
         />
         <Text style={styles.describe1}>
-          Peles mistas apresentam características de dois tipos de pele: oleosidade concentrada na zona T (testa, nariz e queixo) e ressecamento nas outras áreas do rosto, como bochechas.
+          Peles mistas apresentam características de dois tipos de pele:
+          oleosidade concentrada na zona T (testa, nariz e queixo) e
+          ressecamento nas outras áreas do rosto, como bochechas.
         </Text>
       </View>
       <View style={styles.Dicas}>
         <Text style={styles.titleDicas}>Dicas:</Text>
         <Text style={styles.lineDicas}>__________________________________</Text>
         <Text style={styles.describeDicas}>
-          Clique no botão abaixo para baixar nosso PDF exclusivo com dicas essenciais de skincare para peles mistas!
-          Aprenda como equilibrar a oleosidade da zona T e hidratar as áreas mais secas com os produtos certos. Tudo para deixar sua pele uniforme, fresca e saudável em todas as regiões do rosto!
+          Clique no botão abaixo para baixar nosso PDF exclusivo com dicas
+          essenciais de skincare para peles mistas! Aprenda como equilibrar a
+          oleosidade da zona T e hidratar as áreas mais secas com os produtos
+          certos. Tudo para deixar sua pele uniforme, fresca e saudável em todas
+          as regiões do rosto!
         </Text>
         <CustomButton title="Baixe PDF" />
       </View>
@@ -117,7 +125,7 @@ export default function Hair() {
           style={styles.imageCachos}
           source={require("../../assets/cachos.png")}
         />
-       
+
         <Text style={styles.describe1}>
           Cabelos cacheados são caracterizados por fios que formam cachos ou
           ondas de forma natural.{" "}
@@ -141,7 +149,7 @@ export default function Hair() {
           style={styles.imageOndulado}
           source={require("../../assets/ondulado.png")}
         />
-        
+
         <Text style={styles.describe1}>
           Os cabelos ondulados, possuem uma textura que se situa entre os fios
           lisos e os cacheados. Eles formam ondas suaves, com movimento natural.{" "}
@@ -155,8 +163,7 @@ export default function Hair() {
           essenciais para seu tipo ideal de cabelos contendo, produtos para
           cronograma capilar e muito mais!
         </Text>
-      <CustomButton title="Baixe PDF" />
-      
+        <CustomButton title="Baixe PDF" />
       </View>
 
       {/*-----------crespos--------*/}
@@ -167,15 +174,20 @@ export default function Hair() {
           source={require("../../assets/crespo.png")}
         />
         <Text style={styles.describe1}>
-          Peles oleosas têm produção elevada de sebo, resultando em brilho excessivo, poros dilatados e tendência a acne e cravos. A textura costuma ser mais espessa e úmida ao toque.
+          Peles oleosas têm produção elevada de sebo, resultando em brilho
+          excessivo, poros dilatados e tendência a acne e cravos. A textura
+          costuma ser mais espessa e úmida ao toque.
         </Text>
       </View>
       <View style={styles.Dicas}>
         <Text style={styles.titleDicas}>Dicas:</Text>
         <Text style={styles.lineDicas}>__________________________________</Text>
         <Text style={styles.describeDicas}>
-          Clique no botão abaixo para baixar nosso PDF exclusivo com dicas essenciais de skincare para peles oleosas!
-          Conheça os melhores cuidados para controlar o brilho, reduzir poros e prevenir acne sem agredir a pele. Tudo para manter seu rosto limpo, sequinho e com aspecto saudável ao longo do dia!
+          Clique no botão abaixo para baixar nosso PDF exclusivo com dicas
+          essenciais de skincare para peles oleosas! Conheça os melhores
+          cuidados para controlar o brilho, reduzir poros e prevenir acne sem
+          agredir a pele. Tudo para manter seu rosto limpo, sequinho e com
+          aspecto saudável ao longo do dia!
         </Text>
         <CustomButton title="Baixe PDF" />
       </View>
@@ -190,52 +202,6 @@ const styles = StyleSheet.create({
     // flex: 1,
     backgroundColor: "white",
   },
-  // Estilo para a barra de busca
-  searchContainer: {
-    marginTop: 80,
-    flexDirection: "row",
-    alignItems: "center",
-    borderRadius: 10,
-    paddingHorizontal: 10,
-    width: "90%",
-    height: 40,
-    marginBottom: 20,
-  },
-  searchInput: {
-    flex: 1,
-    height: 40,
-    backgroundColor: "#fff",
-    borderRadius: 20,
-    paddingHorizontal: 10,
-    borderWidth: 2,
-    borderColor: "#8b8b8b",
-    color: "#8b8b8b",
-  },
-  searchButton: {
-    backgroundColor: "#a7d5ec",
-    borderRadius: 20,
-    padding: 10,
-    marginLeft: 5,
-  },
-
-  // Estilo para a introdução da página
-  introduction: {
-    width: "90%",
-    height: 200,
-    backgroundColor: "#a7d6ed",
-    borderRadius: 15,
-    padding: 20,
-  },
-  titleIntroduction: {
-    fontSize: 26,
-    fontWeight: "500",
-    color: "#fff",
-  },
-  textIntroduction: {
-    fontSize: 16,
-    color: "#2b60ab",
-  },
-
   // CARD DE CABELO
   cardCategoryHairImage: {
     backgroundImage:
