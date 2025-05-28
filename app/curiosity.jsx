@@ -13,7 +13,7 @@ import {
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import SearchBar from "../components/search/Search.js";
-import Banner from "../components/banner/Banner.js";
+import Banner from "../components/banner/Banner";
 
 
 const { width } = Dimensions.get("window");
@@ -142,24 +142,10 @@ export default function Curiosity() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    padding: 10,
+    container: {
+    alignItems: "center",
     backgroundColor: "#f3f8fa",
-  },
-  bannerIntroduction: {
-    marginVertical: 15,
-  },
-  bannerImage: {
-    height: 200,
-    justifyContent: "center",
-    borderRadius: 15,
-    overflow: "hidden",
-  },
-  gradient: {
-    flex: 1,
-    justifyContent: "center",
-    paddingHorizontal: 20,
-    borderRadius: 15,
+    paddingBottom: 20,
   },
   addButton: {
     backgroundColor: "#4a90e2",
@@ -170,22 +156,19 @@ const styles = StyleSheet.create({
   },
   addButtonText: {
     color: "white",
-    fontSize: 16,
+    fontSize: width * 0.04, // Tamanho dinâmico
     fontWeight: "bold",
   },
   postsContainer: {
     flexDirection: "row",
     flexWrap: "wrap",
-    justifyContent: "space-between",
-    overflow: "hidden",
     justifyContent: "center",
-    alignItems: "flex-start", // Garante alinhamento à esquerda
   },
   polaroidCard: {
     backgroundColor: "#fff",
     borderRadius: 10,
     width: width * 0.44,
-    marginBottom: 15,
+    margin: 5,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
@@ -204,7 +187,7 @@ const styles = StyleSheet.create({
   },
   polaroidTitle: {
     fontWeight: "bold",
-    fontSize: 14,
+    fontSize: width * 0.036, // Tamanho dinâmico
     textAlign: "center",
     color: "#333",
   },
@@ -221,7 +204,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   modalTitle: {
-    fontSize: 18,
+    fontSize: width * 0.05, // Tamanho dinâmico
     fontWeight: "bold",
     marginBottom: 12,
     textAlign: "center",
@@ -239,15 +222,15 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   contentTitle: {
-    fontSize: 22,
+    fontSize: width * 0.05, // Tamanho dinâmico
     fontWeight: "bold",
-    color: "#4a90e2", // Cor do título
+    color: "#4a90e2",
     marginBottom: 10,
     textAlign: "center",
   },
   contentText: {
-    fontSize: 16,
-    textAlign: "justify", // Justificado
+    fontSize: width * 0.04, // Tamanho dinâmico
+    textAlign: "justify",
     color: "#333",
   },
 });

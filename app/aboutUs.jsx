@@ -4,11 +4,15 @@ import {
   Text,
   StyleSheet,
   ScrollView,
+  Dimensions,
 } from "react-native";
+
+const { width, height } = Dimensions.get("window");
 
 import Carousel from "../components/carousel/Carousel.js";
 import SearchBar from "../components/search/Search.js";
 import ObjetivosCarousel from "../components/carouselGoals/CarouselGoals.js";
+
 
 const carouselData = [
   {
@@ -89,7 +93,7 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
   },
   welcomeCard: {
-    width: "90%",
+    width: width * 0.9,
     backgroundColor: "#e3f1fa",
     borderRadius: 18,
     padding: 22,
@@ -102,7 +106,7 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   welcomeTitle: {
-    fontSize: 28,
+    fontSize: width * 0.07, // Ajustando o tamanho da fonte
     fontWeight: "bold",
     color: "#2b60ab",
     marginBottom: 12,
@@ -110,7 +114,7 @@ const styles = StyleSheet.create({
     letterSpacing: 1,
   },
   welcomeText: {
-    fontSize: 18,
+    fontSize: width * 0.04, // Ajustando o tamanho da fonte
     color: "#222",
     textAlign: "justify",
     lineHeight: 26,
@@ -118,42 +122,12 @@ const styles = StyleSheet.create({
   carouselContainer: {
     width: "100%",
     alignItems: "center",
-    marginBottom: 0,
+    marginBottom: 20,
   },
   objetivosListaContainer: {
     width: "100%",
     marginTop: 30,
     marginBottom: 30,
     alignItems: "center",
-  },
-  introduction: {
-    width: "92%",
-    marginBottom: 20,
-    alignItems: "center",
-    backgroundColor: "#fff",
-    borderRadius: 18,
-    padding: 22,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.10,
-    shadowRadius: 6,
-    elevation: 4,
-  },
-  titleIntroduction: {
-    fontSize: 26,
-    fontWeight: "700",
-    textAlign: "justify",
-    color: "#2b60ab",
-    marginBottom: 12,
-    letterSpacing: 0.5,
-    width: "100%",
-  },
-  textIntroduction: {
-    fontSize: 17,
-    color: "#333",
-    marginTop: 2,
-    textAlign: "justify",
-    width: "100%",
-    lineHeight: 24,
   },
 });
