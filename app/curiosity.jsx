@@ -144,7 +144,7 @@ export default function Curiosity() {
 const styles = StyleSheet.create({
     container: {
     alignItems: "center",
-    backgroundColor: "#f3f8fa",
+    backgroundColor: "#fff",
     paddingBottom: 20,
   },
   addButton: {

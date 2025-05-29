@@ -1,74 +1,88 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
 
 const Newsletter = () => {
-  const [email, setEmail] = useState('');
-  const [mensagem, setMensagem] = useState('');
+  const [email, setEmail] = useState("");
+  const [mensagem, setMensagem] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     if (!email) {
-      setMensagem('Por favor, insira um e-mail válido.');
+      setMensagem("Por favor, insira um e-mail válido.");
       return;
     }
-    setMensagem('Obrigado por assinar!');
-    setEmail('');
+    setMensagem("Obrigado por assinar!");
+    setEmail("");
   };
 
   return (
-    <div style={{
-      background: '#f3f8fd',
-      padding: '40px 0',
-      textAlign: 'center',
-      margin: '40px auto',
-      maxWidth: '90%',
-      borderRadius: '4px'
-    }}>
-      <h2 style={{
-        color: '#2563ad',
-        fontWeight: '600',
-        marginBottom: '24px',
-        fontfamily: 'Arial, sans-serif',
-      }}>
-        Receba dicas exclusivas de autocuidado
-      </h2>
-      <form onSubmit={handleSubmit} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '12px' }}>
-        <input
-          type="email"
+    <View style={styles.container}>
+      <Text style={styles.title}>Receba dicas exclusivas de autocuidado</Text>
+      <View style={styles.form}>
+        <TextInput
           placeholder="Seu e-mail"
           value={email}
-          onChange={e => setEmail(e.target.value)}
-          style={{
-            padding: '10px 16px',
-            border: 'none',
-            borderRadius: '2px',
-            fontSize: '16px',
-            width: '220px',
-            boxSizing: 'border-box'
-          }}
+          onChangeText={setEmail}
+          style={styles.input}
         />
-        <button
-          type="submit"
-          style={{
-            background: '#2563ad',
-            color: '#fff',
-           
-            border: 'none',
-            borderRadius: '2px',
-            padding: '10px 28px',
-            fontSize: '16px',
-            cursor: 'pointer'
-          }}
-        >
-          Assinar
-        </button>
-      </form>
-      {mensagem && (
-        <div style={{ marginTop: '16px', color: '#2563ad', fontWeight: '500' }}>
-          {mensagem}
-        </div>
-      )}
-    </div>
+        <TouchableOpacity onPress={handleSubmit} style={styles.button}>
+          <Text style={styles.buttonText}>Assinar</Text>
+        </TouchableOpacity>
+      </View>
+      {mensagem ? <Text style={styles.message}>{mensagem}</Text> : null}
+    </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: "#f3f8fd",
+    padding: 24,
+    borderRadius: 8,
+    alignItems: "center",
+    marginVertical: 24,
+    width: "90%",
+    alignSelf: "center",
+  },
+  title: {
+    color: "#2563ad",
+    fontWeight: "600",
+    marginBottom: 18,
+    fontSize: 18,
+    textAlign: "center",
+  },
+  form: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 12,
+    width: "100%",
+    justifyContent: "center",
+  },
+  input: {
+    padding: 10,
+    borderRadius: 4,
+    fontSize: 16,
+    backgroundColor: "#fff",
+    borderWidth: 1,
+    borderColor: "#2563ad",
+    flex: 1,
+    marginRight: 8,
+  },
+  button: {
+    backgroundColor: "#2563ad",
+    borderRadius: 4,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+  },
+  buttonText: {
+    color: "#fff",
+    fontSize: 16,
+  },
+  message: {
+    marginTop: 16,
+    color: "#2563ad",
+    fontWeight: "500",
+    textAlign: "center",
+  },
+});
 
 export default Newsletter;

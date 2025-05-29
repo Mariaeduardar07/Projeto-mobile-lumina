@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
         position: 'absolute', // Sobrepõe a imagem
         bottom: 0, // Fixa na parte inferior da imagem
         width: "90%", // Mesma largura da imagem
-        backgroundColor: 'rgba(167, 214, 237, 0.8)', // Fundo azul translúcido
+        backgroundColor: 'rgb(167, 214, 237)', // Fundo azul translúcido
         paddingVertical: 10,
         paddingHorizontal: 20,
         borderBottomLeftRadius: 10, // Bordas arredondadas no canto inferior esquerdo
