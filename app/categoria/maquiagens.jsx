@@ -33,14 +33,6 @@ export default function Hair() {
         }}
         gradientColors={["rgba(0, 0, 0, 0)", "rgb(167, 213, 236)"]}
       />
-      <View style={styles.cardCategoryLisos}>
-        <LinearGradient
-          colors={["#2b60ab", "#ffffff00"]}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 1 }}
-          style={styles.cardCategoryLisos}
-        ></LinearGradient>
-      </View>
       <View style={styles.containerLiso}>
         <Text style={styles.titleLiso}>Pele</Text>
          <Image
