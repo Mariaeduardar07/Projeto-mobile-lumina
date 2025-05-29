@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
     },
     paginationContainer: {
         position: 'absolute',
-        bottom: 10,
+        marginTop: 350,
         left: 0,
         right: 0,
         flexDirection: 'row',
