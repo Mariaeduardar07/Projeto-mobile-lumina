@@ -144,5 +144,4 @@ const styles = StyleSheet.create({
     width: "100%",
     textAlign: "justify",
   },
-
 });
