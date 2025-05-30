@@ -109,7 +109,7 @@ export default function Hair() {
         />
         <Text style={styles.describe1}>
           Cabelos com química, referem-se a cabelos que passaram por processos
-          químicos para alterar sua estrutura ou cor.{"#"}
+          químicos para alterar sua estrutura ou cor.
         </Text>
       </View>
       <View style={styles.Dicas}>
