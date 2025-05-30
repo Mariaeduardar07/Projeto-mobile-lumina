@@ -11,6 +11,7 @@ const { width, height } = Dimensions.get("window");
 import { LinearGradient } from "expo-linear-gradient";
 import { SearchBar } from "react-native-screens";
 import Banner from "../../components/banner/Banner.js";
+import CustomButton from "../../components/customButton/CustomButton.js";
 
 export default function Hair() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -28,15 +29,12 @@ export default function Hair() {
      <Banner
         title="Maquiagem"
         text="Bem-vindo à seção Maquiagens do Lumina."
-        image={{
-          uri: "https://www.estadao.com.br/recomenda/wp-content/uploads/2024/06/AdobeStock_273553300_Preview.jpeg.webp",
-        }}
         gradientColors={["rgba(0, 0, 0, 0)", "rgb(167, 213, 236)"]}
       />
-      <View style={styles.containerLiso}>
-        <Text style={styles.titleLiso}>Pele</Text>
+      <View style={styles.containerMakeup}>
+        <Text style={styles.titleMakeup}>Pele</Text>
          <Image
-          style={styles.imageLiso}
+          style={styles.imageMakeup}
           source={require("../../assets/pele-maquiagem.png")}
         />
         <Text style={styles.describe1}>
@@ -50,14 +48,13 @@ export default function Hair() {
           Clique no botão abaixo para baixar nosso PDF exclusivo com dicas essenciais para uma maquiagem perfeita na pele!
           Você vai encontrar orientações práticas e sugestões de produtos para usar base, corretivo, pó, blush, contorno e iluminador, aprendendo como realçar sua beleza de forma natural e duradoura. Ideal para todos os tipos de pele!
         </Text>
+        <CustomButton title="Baixe PDF" />
       </View>
 
-      {/*-----------quimica--------------*/}
-
-      <View style={styles.containerQuimica}>
-        <Text style={styles.titleQuimica}>Olhos</Text>
+      <View style={styles.containerMakeup}>
+        <Text style={styles.titleMakeup}>Olhos</Text>
         <Image
-          style={styles.imageQuimica}
+          style={styles.imageMakeup}
           source={require("../../assets/eyes.png")}
         />
         <Text style={styles.describe1}>
@@ -71,13 +68,13 @@ export default function Hair() {
           Clique no botão abaixo para baixar nosso PDF exclusivo com dicas essenciais para realçar ainda mais o seu olhar!
           Você vai encontrar orientações práticas e sugestões de produtos para usar rímel, sombra, lápis de olho e delineador, aprendendo como criar olhos sutis até marcantes e poderosos. Tudo pensado para valorizar seu estilo e destacar sua beleza!
         </Text>
+        <CustomButton title="Baixe PDF" />
       </View>
 
-      {/*-----------mechas--------*/}
-      <View style={styles.containerMechas}>
-        <Text style={styles.titleMechas}>Boca</Text>
+      <View style={styles.containerMakeup}>
+        <Text style={styles.titleMakeup}>Boca</Text>
         <Image
-          style={styles.imageMechas}
+          style={styles.imageMakeup}
           source={require("../../assets/lip.png")}
         />
 
@@ -92,6 +89,7 @@ export default function Hair() {
           Clique no botão abaixo para baixar nosso PDF exclusivo com dicas essenciais para destacar sua boca com charme e estilo!
           Descubra truques e produtos ideais para batom, batom líquido e gloss labial, aprendendo como valorizar seus lábios com acabamento perfeito, cor intensa e longa duração. Tudo para criar desde um visual natural e delicado até uma boca poderosa e marcante!
         </Text>
+        <CustomButton title="Baixe PDF" />
       </View>
     </ScrollView>
   );
@@ -103,16 +101,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "white",
   },
-  containerLiso: {
+  containerMakeup: {
     width: width * 0.9, // 90% da largura da tela
-    margin: 10,
+    margin: 20,
   },
-  titleLiso: {
+  titleMakeup: {
     fontSize: width * 0.05, // Tamanho da fonte baseado na largura da tela
     color: "#65a2bf",
-    marginTop: 20,
+    marginTop: 55,
   },
-  imageLiso: {
+  imageMakeup: {
     width: "100%", // Largura total do contêiner
     height: height * 0.2, // Altura em proporção à altura da tela
     borderRadius: 10,
@@ -131,7 +129,7 @@ const styles = StyleSheet.create({
   titleDicas: {
     fontSize: width * 0.05,
     color: "#65a2bf",
-    marginTop: 60,
+    marginTop: 10,
   },
   lineDicas: {
     fontSize: width * 0.05,
@@ -146,98 +144,5 @@ const styles = StyleSheet.create({
     width: "100%",
     textAlign: "justify",
   },
-  // quimica
 
-  containerQuimica: {
-    width: width * 0.9, // 90% da largura da tela
-    margin: 10,
-  },
-  titleQuimica: {
-    fontSize: width * 0.05, // Tamanho da fonte baseado na largura da tela
-    color: "#65a2bf",
-    marginTop: 20,
-  },
-
-  imageQuimica: {
-    width: "100%", // Largura total do contêiner
-    height: height * 0.2, // Altura em proporção à altura da tela
-    borderRadius: 10,
-    marginTop: 20,
-  },
-
-  // mechas
-
-  containerMechas: {
-    width: width * 0.9, // 90% da largura da tela
-    margin: 10,
-  },
-  titleMechas: {
-    fontSize: width * 0.05, // Tamanho da fonte baseado na largura da tela
-    color: "#65a2bf",
-    marginTop: 20,
-  },
-
-  imageMechas: {
-    width: "100%", // Largura total do contêiner
-    height: height * 0.2, // Altura em proporção à altura da tela
-    borderRadius: 10,
-    marginTop: 20,
-  },
-
-  // cachos
-
-  containerCachos: {
-    width: width * 0.9, // 90% da largura da tela
-    margin: 10,
-  },
-  titleCachos: {
-    fontSize: width * 0.05, // Tamanho da fonte baseado na largura da tela
-    color: "#65a2bf",
-    marginTop: 20,
-  },
-
-  imageCachos: {
-    width: "100%", // Largura total do contêiner
-    height: height * 0.2, // Altura em proporção à altura da tela
-    borderRadius: 10,
-    marginTop: 20,
-  },
-
-  //ondulados
-
-  containerOndulado: {
-    width: width * 0.9, // 90% da largura da tela
-    margin: 10,
-  },
-  titleOndulado: {
-    fontSize: width * 0.05, // Tamanho da fonte baseado na largura da tela
-    color: "#65a2bf",
-    marginTop: 20,
-  },
-
-  imageOndulado: {
-    width: "100%", // Largura total do contêiner
-    height: height * 0.2, // Altura em proporção à altura da tela
-    borderRadius: 10,
-    marginTop: 20,
-  },
-
-  //crespos
-
-  containerCrespo: {
-    width: width * 0.9, // 90% da largura da tela
-    margin: 10,
-  },
-  titleCrespo: {
-    fontSize: width * 0.05, // Tamanho da fonte baseado na largura da tela
-    color: "#65a2bf",
-    marginTop: 20,
-  },
-
-  imageCrespo: {
-    width: "100%", // Largura total do contêiner
-    height: height * 0.2, // Altura em proporção à altura da tela
-    borderRadius: 10,
-    marginTop: 20,
-  },
 });
