@@ -13,35 +13,35 @@ const { width } = Dimensions.get('window');
 const objetivos = [
     {
         id: '1',
-        icon: <Ionicons name="book-outline" size={40} color="#2563eb" />,
-        title: "Entregar conteúdos de qualidade que inspirem o autocuidado.",
+        icon: <Ionicons name="shield-checkmark" size={40} color="#2563eb" />,
+        title: "Garantir a qualidade e excelência em cada entrega.",
     },
     {
         id: '2',
-        icon: <Ionicons name="chatbubbles-outline" size={40} color="#2563eb" />,
-        title: "Construir uma comunidade acolhedora e colaborativa.",
+        icon: <Ionicons name="people-outline" size={40} color="#2563eb" />,
+        title: "Promover a colaboração e o trabalho em equipe.",
     },
     {
         id: '3',
         icon: <Ionicons name="bulb-outline" size={40} color="#2563eb" />,
-        title: "Criar soluções criativas que promovam o autoconhecimento.",
+        title: "Inovar e criar soluções criativas para nossos desafios.",
     },
     {
         id: '4',
         icon: <Ionicons name="ribbon-outline" size={40} color="#2563eb" />,
-        title: "Inspirar e transformar vidas por meio de experiências significativas.",
+        title: "Alcançar reconhecimento por meio de resultados excepcionais.",
     },
     {
         id: '5',
-        icon: <Ionicons name="heart-outline" size={40} color="#2563eb" />,
-        title: "Cultivar um espaço digital saudável, inclusivo e elegante.",
+        icon: <Ionicons name="happy-outline" size={40} color="#2563eb" />,
+        title: "Fomentar um ambiente de trabalho saudável e inclusivo.",
     },
 ];
 
 const ObjetivosCards = () => {
     return (
         <View style={styles.wrapper}>
-            <Text style={styles.header}>#OBJETIVOSLUMINA</Text>
+            <Text style={styles.header}>#OBJETIVOSEQUIPELUMINA</Text>
             <ScrollView
                 contentContainerStyle={{ alignItems: 'center' }}
                 showsVerticalScrollIndicator={false}

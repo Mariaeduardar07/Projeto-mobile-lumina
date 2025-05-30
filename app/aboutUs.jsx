@@ -11,7 +11,7 @@ const { width } = Dimensions.get("window");
 
 import Carousel from "../components/carousel/Carousel.js";
 import SearchBar from "../components/search/Search.js";
-import ObjetivosCarousel from "../components/carouselGoals/CarouselGoals.js";
+import ObjetivosCards from "../components/teamObjectives/TeamObjectives.js";
 
 
 const carouselData = [
@@ -79,7 +79,7 @@ export default function AboutUs() {
 
       {/* OBJETIVOS LUMINA COMO CARROSSEL */}
       <View style={styles.objetivosListaContainer}>
-        <ObjetivosCarousel />
+        <ObjetivosCards />
       </View>
     </ScrollView>
   );

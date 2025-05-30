@@ -16,6 +16,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { useRouter } from "expo-router";
 import Newsletter from "../components/newsletter/Newsletter.js";
 import Forms from "../components/forms/Forms.js";
+import ObjetivosBlog from "../components/blogObjectives/BlogObjectives.js";
 
 const { width } = Dimensions.get("window");
 
@@ -80,6 +81,7 @@ export default function Home() {
         categories={categories}
         onCategoryPress={handleCategoryPress}
       />
+      <ObjetivosBlog />
       <Newsletter />
       <Forms />
     </ScrollView>
