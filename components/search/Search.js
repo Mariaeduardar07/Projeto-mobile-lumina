@@ -33,14 +33,14 @@ const SearchBar = () => {
 
 const styles = StyleSheet.create({
   searchContainer: {
-    marginTop: 10,
+    marginTop: 30,
     flexDirection: "row",
     alignItems: "center",
     borderRadius: 10,
     paddingHorizontal: 10,
     width: "90%",
     height: 40,
-    marginBottom: 20,
+    marginBottom: 40,
   },
   searchInput: {
     flex: 1,

@@ -146,16 +146,20 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#fff",
     paddingBottom: 20,
+
   },
   addButton: {
-    backgroundColor: "#4a90e2",
+    borderColor: "#65a2bf",
+    borderWidth: 2,
+    width: "90%",
     padding: 12,
     marginVertical: 10,
     borderRadius: 10,
     alignItems: "center",
+    marginTop: 50,
   },
   addButtonText: {
-    color: "white",
+    color: "#65a2bf",
     fontSize: width * 0.04, // Tamanho dinâmico
     fontWeight: "bold",
   },
@@ -191,15 +195,35 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "#333",
   },
+  modalButtons: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 10,
+  },
+  saveButton: {
+    backgroundColor: "#65a2bf",
+    padding: 10,
+    borderRadius: 8,
+  },
+  saveText: {
+    color: "white",
+    fontSize: width * 0.04, // Tamanho dinâmico
+  },
+  cancelButton: {
+    borderWidth: 2,
+    borderColor: "#65a2bf",
+    padding: 10,
+    borderRadius: 8,
+  },
   modalOverlay: {
     flex: 1,
-    backgroundColor: "rgba(0,0,0,0.5)",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
     justifyContent: "center",
     alignItems: "center",
   },
   modalContainer: {
     width: "90%",
-    backgroundColor: "#fff",
+    backgroundColor: "white",
     borderRadius: 12,
     padding: 20,
   },
@@ -211,7 +235,7 @@ const styles = StyleSheet.create({
   },
   input: {
     borderWidth: 1,
-    borderColor: "#ccc",
+    borderColor: "#2b60ab",
     borderRadius: 8,
     padding: 10,
     marginBottom: 10,
