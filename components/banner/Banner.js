@@ -53,6 +53,7 @@ const styles = StyleSheet.create({
     height: 200,
     justifyContent: "center",
     overflow: "hidden",
+    marginTop: 50,
   },
   bannerImage: {
     width: "100%",
