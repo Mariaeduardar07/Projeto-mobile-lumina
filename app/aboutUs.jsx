@@ -6,8 +6,10 @@ import {
   ScrollView,
   Dimensions,
 } from "react-native";
-
-const { width } = Dimensions.get("window");
+import fotoDuda from "../assets/duds.png"; 
+import fotoMari from "../assets/mari.png";
+import fotoBalico from "../assets/balico.png";
+ const { width } = Dimensions.get("window");
 
 import Carousel from "../components/carousel/Carousel.js";
 import SearchBar from "../components/search/Search.js";
@@ -19,17 +21,13 @@ const carouselData = [
     id: "1",
     title: "Maria Eduarda Reis",
     subtitle: "Product Owner",
-    image: {
-      uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO8qAjlQxPw9tTb-PNp1ZC9Dr8B9F5arJb-A&s",
-    },
+    image: fotoDuda,
   },
   {
     id: "2",
     title: "Mariana Cardoso",
     subtitle: "Scrum Master",
-    image: {
-      uri: "https://arcosmodels.com/wp-content/uploads/2022/10/AMORA-CAPA-SITE-ARCOS-MODELS-290x380.jpg",
-    },
+    image: fotoMari,
   },
   {
     id: "3",
@@ -51,9 +49,7 @@ const carouselData = [
     id: "5",
     title: "Sophia Balico",
     subtitle: "Desenvolvedora",
-    image: {
-      uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6Iosutfl_DXacS21AHIACfDB9GUoU7huGcb2XwuCaf8CXWEQFXYrKDjx11fpQUVI07Gk&usqp=CAU",
-    },
+    image: fotoBalico,
   },
 ];
 
