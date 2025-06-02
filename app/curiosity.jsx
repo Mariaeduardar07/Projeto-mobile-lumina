@@ -1,52 +1,126 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
-  ScrollView,
-  Image,
+  FlatList,
+  ImageBackground,
   Pressable,
   Modal,
   TextInput,
   StyleSheet,
   Dimensions,
-  ImageBackground,
+  Alert,
+  SafeAreaView,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import SearchBar from "../components/search/Search.js";
-import Banner from "../components/banner/Banner.js";
-
+import SearchBar from "../components/search/Search";
+import Banner from "../components/banner/Banner";
 
 const { width } = Dimensions.get("window");
+const cardWidth = (width - 48) / 2;
 
 export default function Curiosity() {
   const [posts, setPosts] = useState([]);
+  const [filteredPosts, setFilteredPosts] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
   const [contentModalVisible, setContentModalVisible] = useState(false);
   const [newTitle, setNewTitle] = useState("");
   const [newContent, setNewContent] = useState("");
   const [newImageUrl, setNewImageUrl] = useState("");
   const [selectedPost, setSelectedPost] = useState(null);
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const addPost = () => {
-    if (!newTitle || !newImageUrl || !newContent) return;
+  const API_URL = "http://localhost:5000/post";
+
+  const fetchPosts = async () => {
+    try {
+      const response = await fetch(API_URL);
+      const data = await response.json();
+      const reversed = data.reverse();
+      setPosts(reversed);
+      setFilteredPosts(reversed);
+    } catch (error) {
+      console.error("Erro ao buscar posts:", error);
+    }
+  };
+
+  const addPost = async () => {
+    if (!newTitle || !newImageUrl || !newContent) {
+      Alert.alert("Erro", "Preencha todos os campos.");
+      return;
+    }
+
     const newPost = {
-      id: Date.now().toString(),
       title: newTitle,
       content: newContent,
       imageUrl: newImageUrl,
     };
-    setPosts([newPost, ...posts]);
-    setNewTitle("");
-    setNewContent("");
-    setNewImageUrl("");
-    setModalVisible(false);
+
+    try {
+      const response = await fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newPost),
+      });
+
+      if (!response.ok) throw new Error("Erro ao criar post");
+      await fetchPosts();
+      setNewTitle("");
+      setNewContent("");
+      setNewImageUrl("");
+      setModalVisible(false);
+    } catch (error) {
+      console.error("Erro ao adicionar post:", error);
+    }
   };
 
-  return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <SearchBar />
+  const handleSearch = (text) => {
+    setSearchQuery(text);
+    const filtered = posts.filter((post) =>
+      post.title.toLowerCase().includes(text.toLowerCase())
+    );
+    setFilteredPosts(filtered);
+  };
 
-      {/* Banner de Introdução */}
+  useEffect(() => {
+    fetchPosts();
+  }, []);
+
+  const renderItem = ({ item }) => (
+    <Pressable
+      onPress={() => {
+        setSelectedPost(item);
+        setContentModalVisible(true);
+      }}
+      style={styles.card}
+    >
+      <ImageBackground
+        source={{ uri: item.imageUrl }}
+        style={styles.image}
+        imageStyle={{ borderRadius: 16 }}
+      >
+      <View style={styles.mainDoor}>
+        <Text style={styles.title}>{item.title}</Text>
+      </View>
+      </ImageBackground>
+    </Pressable>
+  );
+
+  return (
+    <SafeAreaView style={styles.wrapper}>
+      {/* Cabeçalho fixo */}
+      <View style={styles.header}>
+        <SearchBar value={searchQuery} onChangeText={handleSearch} />
+      </View>
+
+      <FlatList
+        data={filteredPosts}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id.toString()}
+        numColumns={2}
+        columnWrapperStyle={styles.columnWrapper}
+        contentContainerStyle={styles.container}
+        ListHeaderComponent={
       <View style={styles.bannerIntroduction}>
         <ImageBackground
           source={{
@@ -67,200 +141,188 @@ export default function Curiosity() {
             />
           </LinearGradient>
         </ImageBackground>
-      </View>
+      </View>}
+      />
 
-      {/* Botão de adicionar post */}
-      <Pressable style={styles.addButton} onPress={() => setModalVisible(true)}>
-        <Text style={styles.addButtonText}>+ Adicionar Post</Text>
+      {/* FAB fixo */}
+      <Pressable style={styles.fab} onPress={() => setModalVisible(true)}>
+        <Text style={styles.fabText}>+</Text>
       </Pressable>
 
-      {/* Lista de Polaroids */}
-      <View style={styles.postsContainer}>
-        {posts.map((post) => (
-          <Pressable
-            key={post.id}
-            onPress={() => {
-              setSelectedPost(post);
-              setContentModalVisible(true);
-            }}
-            style={styles.polaroidCard}
-          >
-            <Image
-              source={{ uri: post.imageUrl }}
-              style={styles.polaroidImage}
-            />
-            <View style={styles.polaroidCaptionContainer}>
-              <Text style={styles.polaroidTitle}>{post.title}</Text>
-            </View>
-          </Pressable>
-        ))}
-      </View>
-
-      {/* Modal de criação de post */}
+      {/* Modal Criar */}
       <Modal visible={modalVisible} animationType="slide" transparent>
-        <View style={styles.modalOverlay}>
-          <View style={styles.modalContainer}>
-            <Text style={styles.modalTitle}>+ Novo Post</Text>
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <Text style={styles.modalTitle}>Novo Post</Text>
             <TextInput
               placeholder="Título"
               value={newTitle}
               onChangeText={setNewTitle}
               style={styles.input}
+              placeholderTextColor="#aaa"
             />
             <TextInput
-              placeholder="URL da Imagem"
+              placeholder="Imagem (URL)"
               value={newImageUrl}
               onChangeText={setNewImageUrl}
               style={styles.input}
+              placeholderTextColor="#aaa"
             />
             <TextInput
               placeholder="Conteúdo"
               value={newContent}
               onChangeText={setNewContent}
-              multiline
               style={[styles.input, { height: 80 }]}
+              multiline
+              placeholderTextColor="#aaa"
             />
-            <View style={styles.modalButtons}>
-              <Pressable onPress={addPost} style={styles.saveButton}>
-                <Text style={styles.saveText}>Adicionar</Text>
-              </Pressable>
-              <Pressable
-                onPress={() => setModalVisible(false)}
-                style={styles.cancelButton}
-              >
-                <Text style={styles.cancelText}>Cancelar</Text>
-              </Pressable>
-            </View>
-          </View>
-        </View>
-      </Modal>
-
-      {/* Modal de Conteúdo do Post */}
-      <Modal visible={contentModalVisible} animationType="fade" transparent>
-        <View style={styles.modalOverlay}>
-          <View style={styles.contentModal}>
-            <Text style={styles.modalTitle}>{selectedPost?.title}</Text>
-            <Text style={styles.contentText}>{selectedPost?.content}</Text>
-            <Pressable
-              onPress={() => setContentModalVisible(false)}
-              style={styles.closeButton}
-            >
-              <Text style={styles.closeText}>Fechar</Text>
+            <Pressable style={styles.button} onPress={addPost}>
+              <Text style={styles.buttonText}>Publicar</Text>
+            </Pressable>
+            <Pressable onPress={() => setModalVisible(false)}>
+              <Text style={styles.cancelText}>Cancelar</Text>
             </Pressable>
           </View>
         </View>
       </Modal>
-    </ScrollView>
+
+      {/* Modal Conteúdo */}
+      <Modal visible={contentModalVisible} animationType="fade" transparent>
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            {selectedPost && (
+              <>
+                <Text style={styles.modalTitle}>{selectedPost.title}</Text>
+                <Text style={styles.content}>{selectedPost.content}</Text>
+                <Pressable
+                  onPress={() => setContentModalVisible(false)}
+                  style={styles.button}
+                >
+                  <Text style={styles.buttonText}>Fechar</Text>
+                </Pressable>
+              </>
+            )}
+          </View>
+        </View>
+      </Modal>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
+  wrapper: {
+    flex: 1,
+    backgroundColor: "#fff",
+  },
+  header: {
+    paddingHorizontal: 16,
+    paddingVertical: 10,
+    backgroundColor: "#fff",
+    borderBottomWidth: 1,
+    borderBottomColor: "#eee",
+    zIndex: 10,
+  },
   container: {
+    paddingHorizontal: 16,
+    paddingBottom: 120,
+  },
+  columnWrapper: {
+    justifyContent: "space-between",
+    marginTop: 16,
+  },
+  mainDoor: {
+    flex: 1,
+    justifyContent: "flex-end",
     padding: 10,
-    backgroundColor: "#f3f8fa",
+    backgroundColor: "rgba(0,0,0,0.3)",
   },
-  bannerIntroduction: {
-    marginVertical: 15,
-  },
-  bannerImage: {
-    height: 200,
-    justifyContent: "center",
-    borderRadius: 15,
+  card: {
+    width: cardWidth,
+    borderRadius: 16,
     overflow: "hidden",
+    backgroundColor: "#f9f9f9",
+    elevation: 3,
+  },
+  image: {
+    height: 160,
+    justifyContent: "flex-end",
   },
   gradient: {
-    flex: 1,
-    justifyContent: "center",
-    paddingHorizontal: 20,
-    borderRadius: 15,
+    padding: 15,
+    backgroundColor: "#a7d5ec",
   },
-  addButton: {
-    backgroundColor: "#4a90e2",
-    padding: 12,
-    marginVertical: 10,
-    borderRadius: 10,
-    alignItems: "center",
-  },
-  addButtonText: {
-    color: "white",
-    fontSize: 16,
-    fontWeight: "bold",
-  },
-  postsContainer: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "space-between",
-    overflow: "hidden",
-    justifyContent: "center",
-    alignItems: "flex-start", // Garante alinhamento à esquerda
-  },
-  polaroidCard: {
-    backgroundColor: "#fff",
-    borderRadius: 10,
-    width: width * 0.44,
-    marginBottom: 15,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 4,
-    elevation: 4,
-    overflow: "hidden",
-  },
-  polaroidImage: {
-    width: "100%",
-    height: 150,
-    resizeMode: "cover",
-  },
-  polaroidCaptionContainer: {
-    padding: 8,
-    backgroundColor: "#fefefe",
-  },
-  polaroidTitle: {
-    fontWeight: "bold",
-    fontSize: 14,
-    textAlign: "center",
-    color: "#333",
-  },
-  modalOverlay: {
-    flex: 1,
-    backgroundColor: "rgba(0,0,0,0.5)",
-    justifyContent: "center",
-    alignItems: "center",
+  title: {
+    color: "#fff",
+    fontSize: 10,
+    fontWeight: "600",
   },
   modalContainer: {
-    width: "90%",
+    flex: 1,
+    justifyContent: "center",
+    backgroundColor: "rgba(0,0,0,0.4)",
+  },
+  modalContent: {
+    margin: 20,
+    padding: 24,
     backgroundColor: "#fff",
-    borderRadius: 12,
-    padding: 20,
+    borderRadius: 16,
+    shadowColor: "#000",
+    shadowOpacity: 0.15,
+    shadowRadius: 8,
+    elevation: 10,
   },
   modalTitle: {
-    fontSize: 18,
-    fontWeight: "bold",
+    fontSize: 20,
+    fontWeight: "600",
     marginBottom: 12,
-    textAlign: "center",
+    color: "#333",
   },
   input: {
     borderWidth: 1,
     borderColor: "#ccc",
-    borderRadius: 8,
+    borderRadius: 12,
     padding: 10,
-    marginBottom: 10,
+    marginBottom: 12,
+    fontSize: 14,
+    color: "#444",
+    backgroundColor: "#fafafa",
   },
-  contentModal: {
-    flex: 1,
-    backgroundColor: "white",
-    padding: 20,
+  button: {
+    backgroundColor: "#6C63FF",
+    padding: 12,
+    borderRadius: 12,
+    alignItems: "center",
+    marginBottom: 8,
   },
-  contentTitle: {
-    fontSize: 22,
-    fontWeight: "bold",
-    color: "#4a90e2", // Cor do título
-    marginBottom: 10,
+  buttonText: {
+    color: "#fff",
+    fontWeight: "600",
+  },
+  cancelText: {
     textAlign: "center",
+    color: "#999",
+    fontSize: 14,
   },
-  contentText: {
-    fontSize: 16,
-    textAlign: "justify", // Justificado
-    color: "#333",
+  content: {
+    fontSize: 15,
+    marginBottom: 16,
+    color: "#444",
+  },
+  fab: {
+    position: "absolute",
+    bottom: 24,
+    right: 24,
+    backgroundColor: "#2b60ab",
+    width: 70,
+    height: 70,
+    borderRadius: 32,
+    justifyContent: "center",
+    alignItems: "center",
+    elevation: 6,
+  },
+  fabText: {
+    color: "#fff",
+    fontSize: 28,
+    fontWeight: "bold",
   },
 });
