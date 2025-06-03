@@ -124,10 +124,11 @@ export default function Curiosity() {
       <Banner
         title="Curiosidade"
         text="Bem-vindo à seção post do Lumina."
-        image={{
-          uri: "https://privatelabelbrazil.com.br/wp-content/uploads/2024/04/skincare-de-marca-propria-scaled.jpg",
-        }}
-        gradientColors={["rgba(0, 0, 0, 0)", "rgb(167, 213, 236)"]}
+        gradientColors={[
+          "rgba(167,213,236,0.8)",
+          "rgba(43,96,171,1)",
+          "rgba(167,213,236,0.8)"
+        ]}
       />}
       />
 
