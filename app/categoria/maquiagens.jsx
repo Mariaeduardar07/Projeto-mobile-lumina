@@ -26,27 +26,39 @@ export default function Hair() {
       <SearchBar />
       {/* FIM DA BARRA DE PESQUISA */}
 
-     <Banner
-        title="Maquiagem"
-        text="Bem-vindo à seção Maquiagens do Lumina."
-        gradientColors={["rgba(0, 0, 0, 0)", "rgb(167, 213, 236)"]}
+      <Banner
+        title="Cuidados Capilares"
+        text="Bem-vindo à seção Cuidado Capilar do Lumina."
+        gradientColors={[
+          "rgba(167,213,236,0.8)",
+          "rgba(43,96,171,1)",
+          "rgba(167,213,236,0.8)"
+        ]}
       />
       <View style={styles.containerMakeup}>
         <Text style={styles.titleMakeup}>Pele</Text>
-         <Image
+        <Image
           style={styles.imageMakeup}
           source={require("../../assets/pele-maquiagem.png")}
         />
         <Text style={styles.describe1}>
-          A maquiagem na pele é a base de qualquer produção, sendo essencial para criar um acabamento uniforme, disfarçar imperfeições e realçar os traços naturais do rosto. Mais do que estética, ela contribui para a autoestima, oferecendo uma aparência saudável, iluminada e bem cuidada.{" "}
+          A maquiagem na pele é a base de qualquer produção, sendo essencial
+          para criar um acabamento uniforme, disfarçar imperfeições e realçar os
+          traços naturais do rosto. Mais do que estética, ela contribui para a
+          autoestima, oferecendo uma aparência saudável, iluminada e bem
+          cuidada.{" "}
         </Text>
       </View>
       <View style={styles.Dicas}>
         <Text style={styles.titleDicas}>Dicas:</Text>
         <Text style={styles.lineDicas}>__________________________________</Text>
         <Text style={styles.describeDicas}>
-          Clique no botão abaixo para baixar nosso PDF exclusivo com dicas essenciais para uma maquiagem perfeita na pele!
-          Você vai encontrar orientações práticas e sugestões de produtos para usar base, corretivo, pó, blush, contorno e iluminador, aprendendo como realçar sua beleza de forma natural e duradoura. Ideal para todos os tipos de pele!
+          Clique no botão abaixo para baixar nosso PDF exclusivo com dicas
+          essenciais para uma maquiagem perfeita na pele! Você vai encontrar
+          orientações práticas e sugestões de produtos para usar base,
+          corretivo, pó, blush, contorno e iluminador, aprendendo como realçar
+          sua beleza de forma natural e duradoura. Ideal para todos os tipos de
+          pele!
         </Text>
         <CustomButton title="Baixe PDF" />
       </View>
@@ -58,15 +70,22 @@ export default function Hair() {
           source={require("../../assets/eyes.png")}
         />
         <Text style={styles.describe1}>
-          A maquiagem nos olhos é uma das etapas mais expressivas da make, responsável por destacar o olhar e transmitir personalidade. Com os produtos certos, é possível criar desde visuais discretos e elegantes até produções marcantes e ousadas.
+          A maquiagem nos olhos é uma das etapas mais expressivas da make,
+          responsável por destacar o olhar e transmitir personalidade. Com os
+          produtos certos, é possível criar desde visuais discretos e elegantes
+          até produções marcantes e ousadas.
         </Text>
       </View>
       <View style={styles.Dicas}>
         <Text style={styles.titleDicas}>Dicas:</Text>
         <Text style={styles.lineDicas}>__________________________________</Text>
         <Text style={styles.describeDicas}>
-          Clique no botão abaixo para baixar nosso PDF exclusivo com dicas essenciais para realçar ainda mais o seu olhar!
-          Você vai encontrar orientações práticas e sugestões de produtos para usar rímel, sombra, lápis de olho e delineador, aprendendo como criar olhos sutis até marcantes e poderosos. Tudo pensado para valorizar seu estilo e destacar sua beleza!
+          Clique no botão abaixo para baixar nosso PDF exclusivo com dicas
+          essenciais para realçar ainda mais o seu olhar! Você vai encontrar
+          orientações práticas e sugestões de produtos para usar rímel, sombra,
+          lápis de olho e delineador, aprendendo como criar olhos sutis até
+          marcantes e poderosos. Tudo pensado para valorizar seu estilo e
+          destacar sua beleza!
         </Text>
         <CustomButton title="Baixe PDF" />
       </View>
@@ -79,15 +98,22 @@ export default function Hair() {
         />
 
         <Text style={styles.describe1}>
-          A maquiagem para a boca é um dos pontos de destaque em qualquer produção. Ela pode transformar completamente o visual, transmitindo elegância, ousadia ou suavidade, tudo depende da escolha dos produtos e da forma de aplicação.
+          A maquiagem para a boca é um dos pontos de destaque em qualquer
+          produção. Ela pode transformar completamente o visual, transmitindo
+          elegância, ousadia ou suavidade, tudo depende da escolha dos produtos
+          e da forma de aplicação.
         </Text>
       </View>
       <View style={styles.Dicas}>
         <Text style={styles.titleDicas}>Dicas:</Text>
         <Text style={styles.lineDicas}>__________________________________</Text>
         <Text style={styles.describeDicas}>
-          Clique no botão abaixo para baixar nosso PDF exclusivo com dicas essenciais para destacar sua boca com charme e estilo!
-          Descubra truques e produtos ideais para batom, batom líquido e gloss labial, aprendendo como valorizar seus lábios com acabamento perfeito, cor intensa e longa duração. Tudo para criar desde um visual natural e delicado até uma boca poderosa e marcante!
+          Clique no botão abaixo para baixar nosso PDF exclusivo com dicas
+          essenciais para destacar sua boca com charme e estilo! Descubra
+          truques e produtos ideais para batom, batom líquido e gloss labial,
+          aprendendo como valorizar seus lábios com acabamento perfeito, cor
+          intensa e longa duração. Tudo para criar desde um visual natural e
+          delicado até uma boca poderosa e marcante!
         </Text>
         <CustomButton title="Baixe PDF" />
       </View>

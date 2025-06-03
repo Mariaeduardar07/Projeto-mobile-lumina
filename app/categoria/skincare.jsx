@@ -28,7 +28,11 @@ export default function Hair() {
       <Banner
         title="SKIN CARE"
         text="Bem-vindo à seção Skin Care do Lumina."
-        gradientColors={["rgba(0, 0, 0, 0)", "rgb(167, 213, 236)"]}
+        gradientColors={[
+          "rgba(167,213,236,0.8)",
+          "rgba(43,96,171,1)",
+          "rgba(167,213,236,0.8)"
+        ]}
       />
       <View style={styles.containerSkincare}>
         <Text style={styles.titleSkincare}>Peles secas</Text>

@@ -30,7 +30,11 @@ export default function Hair() {
       <Banner
         title="Cuidados Capilares"
         text="Bem-vindo à seção Cuidado Capilar do Lumina."
-        gradientColors={["rgba(0, 0, 0, 0)", "rgb(167, 213, 236)"]}
+        gradientColors={[
+          "rgba(167,213,236,0.8)",
+          "rgba(43,96,171,1)",
+          "rgba(167,213,236,0.8)"
+        ]}
       />
       <View style={styles.containerCabelos}>
         <Text style={styles.titleCabelos}>Cabelos Lisos</Text>
