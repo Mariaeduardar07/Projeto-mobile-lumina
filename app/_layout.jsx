@@ -10,12 +10,10 @@ export default function RootLayout() {
   return (
       <Drawer
         screenOptions={{
-          // contentStyle: { backgroundColor: "red" },
           headerTintColor: "#2b60ab",
           headerStyle: {
             backgroundColor: "#ffffff",
           },
-
           headerTitle: () => (
             <View style={styles.headerContainer}>
               <Image
@@ -24,6 +22,12 @@ export default function RootLayout() {
               />
             </View>
           ),
+          drawerActiveTintColor: "#2b60ab",    // Cor do texto ativo
+          drawerInactiveTintColor: "#888",  // Cor do texto inativo
+          drawerItemStyle: {
+            marginVertical: 8,
+            borderRadius: 10,
+          },
         }}
       >
         <Drawer.Screen
@@ -31,61 +35,63 @@ export default function RootLayout() {
           options={{
             drawerLabel: "Início",
             title: "Home",
-            drawerIcon: ({ size, color }) => (
-              <Ionicons name="home" size={size} color={color} />
+            drawerIcon: ({ size }) => (
+              <Ionicons name="home" size={size} color="#2b60ab" />
             ),
           }}
         />
-
+        <Drawer.Screen
+          name="categoria"
+          options={{
+            drawerLabel: "Categoria",
+            title: "Categoria",
+            drawerIcon: ({ size }) => (
+              <Ionicons name="list" size={size} color="#2b60ab" />
+            ),
+          }}
+        />
         <Drawer.Screen
           name="aboutUs"
           options={{
             drawerLabel: "Sobre nós",
             title: "Sobre nós",
-            drawerIcon: ({ size, color }) => (
-              <Ionicons name="people-outline" size={size} color={color} />
+            drawerIcon: ({ size }) => (
+              <Ionicons name="people-outline" size={size} color="#2b60ab" />
             ),
           }}
         />
-
-          <Drawer.Screen
-          name="login"
-          options={{
-            drawerLabel: "Login",
-            title: "login",
-            drawerIcon: ({ size, color }) => (
-              <Ionicons name="log-in-outline" size={size} color={color} />
-            ),
-          }}
-        />
-           <Drawer.Screen
-          name="categoria"
-          options={{
-            drawerLabel: "Categoria",
-            title: "Categoria",
-            drawerIcon: ({ size, color }) => (
-              <Ionicons name="list" size={size} color={color} />
-            ),
-          }}
-        />
-           <Drawer.Screen
+        <Drawer.Screen
           name="curiosity"
           options={{
             drawerLabel: "Feed",
             title: "Feed",
-            drawerIcon: ({ size, color }) => (
-              <Ionicons name="eye-outline" size={size} color={color} />
+            drawerIcon: ({ size }) => (
+              <Ionicons name="eye-outline" size={size} color="#2b60ab" />
             ),
           }}
         />
-           <Drawer.Screen
+        <Drawer.Screen
           name="contact"
           options={{
             drawerLabel: "Contato",
             title: "Contato",
-            drawerIcon: ({ size, color }) => (
-              <Ionicons name="call" size={size} color={color} />
+            drawerIcon: ({ size }) => (
+              <Ionicons name="call" size={size} color="#2b60ab" />
             ),
+          }}
+        />
+        <Drawer.Screen
+          name="login"
+          options={{
+            drawerLabel: "Login",
+            title: "login",
+            drawerIcon: ({ size }) => (
+              <Ionicons name="log-in-outline" size={size} color="#2b60ab" />
+            ),
+            drawerItemStyle: {
+              marginTop: 480, // Espaço grande acima do Login
+              borderRadius: 10,
+            },
           }}
         />
       </Drawer>
