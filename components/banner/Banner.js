@@ -8,7 +8,7 @@ const Banner = ({
   title = "Título padrão",
   text = "Texto padrão",
   image,
-  gradientColors = ["#ffffff00", "#a7d5ec"],
+  gradientColors = ["rgba(0,0,0,0.6)", "rgba(167,213,236,0.8)"],
   style,
   imageStyle,
   children,
@@ -23,8 +23,8 @@ const Banner = ({
         >
           <LinearGradient
             colors={gradientColors}
-            start={{ x: 0, y: 0.5 }}
-            end={{ x: 1, y: 0.5 }}
+            start={{ x: 0, y: 1}}
+            end={{ x: 0, y: 1}}
             style={styles.gradient}
           >
             {children ? children : (
@@ -51,9 +51,9 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     width: "100%",
     height: 200,
-    minHeight: 150,
     justifyContent: "center",
     overflow: "hidden",
+    marginTop: 50,
   },
   bannerImage: {
     width: "100%",
@@ -69,14 +69,14 @@ const styles = StyleSheet.create({
   titleIntroduction: {
     fontSize: width < 350 ? 25 : 30,
     fontWeight: "500",
-    color: "white",
+    color: "#2b60ab",
     textAlign: "justify",
     width: "100%",
     marginBottom: 8,
   },
   textIntroduction: {
     fontSize: width < 350 ? 15 : 18,
-    color: "#2b60ab",
+    color: "#000",
     textAlign: "justify",
     width: "100%",
   },
