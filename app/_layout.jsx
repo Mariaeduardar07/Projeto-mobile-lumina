@@ -78,6 +78,16 @@ export default function RootLayout() {
             ),
           }}
         />
+           <Drawer.Screen
+          name="contact"
+          options={{
+            drawerLabel: "Contato",
+            title: "Contato",
+            drawerIcon: ({ size, color }) => (
+              <Ionicons name="call" size={size} color={color} />
+            ),
+          }}
+        />
       </Drawer>
   );
 }
