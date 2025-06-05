@@ -45,7 +45,8 @@ const styles = StyleSheet.create({
     height: 200,
     justifyContent: "center",
     overflow: "hidden",
-    marginTop: 50,
+    marginTop: 15,
+    marginBottom: 15,
   },
   gradient: {
     flex: 1,
@@ -55,10 +56,9 @@ const styles = StyleSheet.create({
   },
   titleIntroduction: {
     fontSize: width < 350 ? 25 : 30,
-    fontWeight: "500",
-    color: "#2b60ab",
-    textAlign: "justify",
-    width: "100%",
+    fontWeight: "700", // mais destaque
+    color: "#fff", // branco para contraste
+    textAlign: "left", // ou "center"
     marginBottom: 8,
   },
   textIntroduction: {

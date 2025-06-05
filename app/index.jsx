@@ -1,18 +1,13 @@
 import React, { useState } from "react";
 import {
   ScrollView,
-  View,
   StyleSheet,
-  Text,
-  TouchableOpacity,
   Alert,
   Dimensions,
-  ImageBackground,
 } from "react-native"; // Removido 'selectedOption'
 import Banner from "../components/banner/Banner.js";
 import CategoriesCards from "../components/categoriesCards/CategoriesCards.js";
 import SearchBar from "../components/search/Search.js";
-import { LinearGradient } from "expo-linear-gradient";
 import { useRouter } from "expo-router";
 import Newsletter from "../components/newsletter/Newsletter.js";
 import Forms from "../components/forms/Forms.js";
