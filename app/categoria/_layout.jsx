@@ -6,7 +6,18 @@ export default function CategoriaLayout() {
     <Drawer
       screenOptions={{
         headerTintColor: "#2b60ab",
-        headerStyle: { backgroundColor: "#ffffff" },
+        headerStyle: {
+          backgroundColor: "#ffffff",
+        },
+        drawerActiveTintColor: "#2b60ab",
+        drawerInactiveTintColor: "#888",
+        drawerItemStyle: {
+          marginVertical: 8,
+          borderRadius: 12,
+        },
+        drawerContentContainerStyle: {
+          paddingTop: 32, // Espaço entre o topo e o primeiro item
+        },
       }}
     >
       <Drawer.Screen

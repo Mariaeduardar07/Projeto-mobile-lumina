@@ -8,11 +8,10 @@ import {
   Modal,
   TextInput,
   StyleSheet,
-  Dimensions,
   Alert,
   SafeAreaView,
+  Dimensions,
 } from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
 import SearchBar from "../components/search/Search";
 import Banner from "../components/banner/Banner";
 
@@ -99,9 +98,9 @@ export default function Curiosity() {
         style={styles.image}
         imageStyle={{ borderRadius: 16 }}
       >
-      <View style={styles.mainDoor}>
-        <Text style={styles.title}>{item.title}</Text>
-      </View>
+        <View style={styles.mainDoor}>
+          <Text style={styles.title}>{item.title}</Text>
+        </View>
       </ImageBackground>
     </Pressable>
   );
@@ -121,15 +120,17 @@ export default function Curiosity() {
         columnWrapperStyle={styles.columnWrapper}
         contentContainerStyle={styles.container}
         ListHeaderComponent={
-      <Banner
-        title="Curiosidade"
-        text="Bem-vindo à seção post do Lumina."
-        gradientColors={[
-          "rgba(167,213,236,0.8)",
-          "rgba(43,96,171,1)",
-          "rgba(167,213,236,0.8)"
-        ]}
-      />}
+          <Banner
+            style={styles.introduction}
+            title="Curiosidade"
+            text="Bem-vindo à seção post do Lumina."
+            gradientColors={[
+              "rgba(167,213,236,0.8)",
+              "rgba(43,96,171,1)",
+              "rgba(167,213,236,0.8)",
+            ]}
+          />
+        }
       />
 
       {/* FAB fixo */}
@@ -198,119 +199,122 @@ export default function Curiosity() {
 }
 
 const styles = StyleSheet.create({
-  wrapper: {
-    flex: 1,
-    backgroundColor: "#fff",
-  },
-  header: {
-    paddingHorizontal: 16,
-    paddingVertical: 10,
-    backgroundColor: "#fff",
-    borderBottomWidth: 1,
-    borderBottomColor: "#eee",
-    zIndex: 10,
-  },
-  container: {
-    paddingHorizontal: 16,
-    paddingBottom: 120,
-  },
-  columnWrapper: {
-    justifyContent: "space-between",
-    marginTop: 16,
-  },
-  mainDoor: {
-    flex: 1,
-    justifyContent: "flex-end",
-    padding: 10,
-    backgroundColor: "rgba(0,0,0,0.3)",
-  },
-  card: {
-    width: cardWidth,
-    borderRadius: 16,
-    overflow: "hidden",
-    backgroundColor: "#f9f9f9",
-    elevation: 3,
-  },
-  image: {
-    height: 160,
-    justifyContent: "flex-end",
-  },
-  gradient: {
-    padding: 15,
-    backgroundColor: "#a7d5ec",
-  },
-  title: {
-    color: "#fff",
-    fontSize: 10,
-    fontWeight: "600",
-  },
-  modalContainer: {
-    flex: 1,
-    justifyContent: "center",
-    backgroundColor: "rgba(0,0,0,0.4)",
-  },
-  modalContent: {
-    margin: 20,
-    padding: 24,
-    backgroundColor: "#fff",
-    borderRadius: 16,
-    shadowColor: "#000",
-    shadowOpacity: 0.15,
-    shadowRadius: 8,
-    elevation: 10,
-  },
-  modalTitle: {
-    fontSize: 20,
-    fontWeight: "600",
-    marginBottom: 12,
-    color: "#333",
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: "#ccc",
-    borderRadius: 12,
-    padding: 10,
-    marginBottom: 12,
-    fontSize: 14,
-    color: "#444",
-    backgroundColor: "#fafafa",
-  },
-  button: {
-    backgroundColor: "#6C63FF",
-    padding: 12,
-    borderRadius: 12,
-    alignItems: "center",
-    marginBottom: 8,
-  },
-  buttonText: {
-    color: "#fff",
-    fontWeight: "600",
-  },
-  cancelText: {
-    textAlign: "center",
-    color: "#999",
-    fontSize: 14,
-  },
-  content: {
-    fontSize: 15,
+    wrapper: {
+      flex: 1,
+      backgroundColor: "#fff",
+      width: "100%",
+    },
+    container: {
+      paddingHorizontal: 16,
+      paddingBottom: 16,
+      paddingTop: 10,
+    },
+    header: {
+      paddingHorizontal: 16,
+      paddingVertical: 10,
+      backgroundColor: "#fff",
+      borderBottomWidth: 1,
+      borderBottomColor: "#eee",
+      zIndex: 10,
+    },
+    columnWrapper: {
+      justifyContent: "space-between",
+      marginBottom: 16,
+    },
+    mainDoor: {
+      flex: 1,
+      justifyContent: "flex-end",
+      padding: 10,
+      backgroundColor: "rgba(0,0,0,0.3)",
+    },
+    card: {
+      width: cardWidth,
+      borderRadius: 16,
+      overflow: "hidden",
+      backgroundColor: "#f9f9f9",
+      elevation: 3,
+      marginBottom: 16,
+    },
+    image: {
+      height: width < 400 ? 120 : 160,
+      justifyContent: "flex-end",
+    },
+    title: {
+      color: "#fff",
+      fontSize: width < 350 ? 10 : 11,
+      fontWeight: "600",
+    },
+    modalContainer: {
+      flex: 1,
+      justifyContent: "center",
+      backgroundColor: "rgba(0,0,0,0.4)",
+    },
+    modalContent: {
+      margin: 20,
+      padding: 24,
+      backgroundColor: "#fff",
+      borderRadius: 16,
+      shadowColor: "#000",
+      shadowOpacity: 0.15,
+      shadowRadius: 8,
+      elevation: 10,
+    },
+    modalTitle: {
+      fontSize: 20,
+      fontWeight: "600",
+      marginBottom: 12,
+      color: "#333",
+    },
+    input: {
+      borderWidth: 1,
+      borderColor: "#ccc",
+      borderRadius: 12,
+      padding: 10,
+      marginBottom: 12,
+      fontSize: 14,
+      color: "#444",
+      backgroundColor: "#fafafa",
+    },
+    button: {
+      backgroundColor: "#6C63FF",
+      padding: 12,
+      borderRadius: 12,
+      alignItems: "center",
+      marginBottom: 8,
+    },
+    buttonText: {
+      color: "#fff",
+      fontWeight: "600",
+    },
+    cancelText: {
+      textAlign: "center",
+      color: "#999",
+      fontSize: 14,
+    },
+    content: {
+      fontSize: 15,
+      marginBottom: 16,
+      color: "#444",
+    },
+    fab: {
+      position: "absolute",
+      bottom: 24,
+      right: 24,
+      backgroundColor: "#2b60ab",
+      width: 70,
+      height: 70,
+      borderRadius: 32,
+      justifyContent: "center",
+      alignItems: "center",
+      elevation: 6,
+    },
+    fabText: {
+      color: "#fff",
+      fontSize: 28,
+      fontWeight: "bold",
+    },
+  introduction: {
+    width: "100%",
     marginBottom: 16,
-    color: "#444",
-  },
-  fab: {
-    position: "absolute",
-    bottom: 24,
-    right: 24,
-    backgroundColor: "#2b60ab",
-    width: 70,
-    height: 70,
-    borderRadius: 32,
-    justifyContent: "center",
-    alignItems: "center",
-    elevation: 6,
-  },
-  fabText: {
-    color: "#fff",
-    fontSize: 28,
-    fontWeight: "bold",
   },
 });

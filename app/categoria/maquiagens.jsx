@@ -8,9 +8,8 @@ import {
   Dimensions,
 } from "react-native";
 const { width, height } = Dimensions.get("window");
-import { LinearGradient } from "expo-linear-gradient";
-import { SearchBar } from "react-native-screens";
 import Banner from "../../components/banner/Banner.js";
+import SearchBar from "../../components/search/Search";
 import CustomButton from "../../components/customButton/CustomButton.js";
 
 export default function Hair() {
@@ -27,7 +26,8 @@ export default function Hair() {
       {/* FIM DA BARRA DE PESQUISA */}
 
       <Banner
-        title="Cuidados Capilares"
+        style={styles.introductionBanner}
+        title="Maquiagem"
         text="Bem-vindo à seção Cuidado Capilar do Lumina."
         gradientColors={[
           "rgba(167,213,236,0.8)",
@@ -127,6 +127,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "white",
   },
+  introductionBanner: {
+    width: width - 32,
+    alignSelf: "center",
+    marginTop: 15,
+  },
   containerMakeup: {
     width: width * 0.9, // 90% da largura da tela
     margin: 20,
@@ -134,7 +139,7 @@ const styles = StyleSheet.create({
   titleMakeup: {
     fontSize: width * 0.05, // Tamanho da fonte baseado na largura da tela
     color: "#65a2bf",
-    marginTop: 55,
+    marginTop: 10,
   },
   imageMakeup: {
     width: "100%", // Largura total do contêiner
