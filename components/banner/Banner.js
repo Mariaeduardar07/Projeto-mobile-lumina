@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
   },
   textIntroduction: {
     fontSize: width < 350 ? 15 : 18,
-    color: "#000",
+    color: "#fff",
     textAlign: "justify",
     width: "100%",
   },
