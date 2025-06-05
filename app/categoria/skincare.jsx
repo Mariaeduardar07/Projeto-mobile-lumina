@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Dimensions,
   Image,
+  Linking,
 } from "react-native";
 const { width, height } = Dimensions.get("window");
 import CustomButton from "../../components/customButton/CustomButton";
@@ -18,6 +19,10 @@ export default function Hair() {
     console.log("Buscando por:", searchQuery);
   };
 
+  const openPDF = (url) => {
+    Linking.openURL(url);
+  };
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {/* INCIO DA BARRA DE PESQUISA */}
@@ -25,12 +30,10 @@ export default function Hair() {
       {/* FIM DA BARRA DE PESQUISA */}
 
       <Banner
-      style={styles.introductionBanner}
+        style={styles.introductionBanner}
         title="SKIN CARE"
         text="Bem-vindo à seção Skin Care do Lumina."
-        gradientColors={[
-           "rgb(141, 185, 209)","rgba(167,213,236,0.8)",
-        ]}
+        gradientColors={["rgb(141, 185, 209)", "rgba(167,213,236,0.8)"]}
       />
       <View style={styles.containerSkincare}>
         <Text style={styles.titleSkincare}>Peles secas</Text>
@@ -55,7 +58,14 @@ export default function Hair() {
           manter a pele nutrida e macia. Tudo para conquistar uma pele saudável,
           luminosa e protegida contra o ressecamento!
         </Text>
-        <CustomButton title="Baixe PDF" />
+        <CustomButton
+          title="Baixe PDF"
+          onPress={() =>
+            openPDF(
+              "https://drive.google.com/file/d/1zqi0gFte0yLMTtnMVykS7FByXIxZIq2l/view?usp=sharing"
+            )
+          }
+        />
       </View>
 
       <View style={styles.containerSkincare}>
@@ -80,7 +90,14 @@ export default function Hair() {
           certos. Tudo para deixar sua pele uniforme, fresca e saudável em todas
           as regiões do rosto!
         </Text>
-        <CustomButton title="Baixe PDF" />
+        <CustomButton
+          title="Baixe PDF"
+          onPress={() =>
+            openPDF(
+              "https://drive.google.com/file/d/1a529P5lW1embPWvdu55h2miF3fcC_spP/view?usp=sharing"
+            )
+          }
+        />
       </View>
 
       <View style={styles.containerSkincare}>
@@ -105,7 +122,14 @@ export default function Hair() {
           com os produtos certos. Tudo para deixar sua pele sequinha,
           equilibrada e saudável ao longo do dia!
         </Text>
-        <CustomButton title="Baixe PDF" />
+        <CustomButton
+          title="Baixe PDF"
+          onPress={() =>
+            openPDF(
+              "https://drive.google.com/file/d/14ftjEB6fP4wdGZbLIGUj7wo9P2dOP8CL/view?usp=sharing"
+            )
+          }
+        />
       </View>
     </ScrollView>
   );
