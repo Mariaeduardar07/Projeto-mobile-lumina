@@ -29,9 +29,7 @@ export default function Hair() {
         title="SKIN CARE"
         text="Bem-vindo à seção Skin Care do Lumina."
         gradientColors={[
-          "rgba(167,213,236,0.8)",
-          "rgba(43,96,171,1)",
-          "rgba(167,213,236,0.8)"
+           "rgb(141, 185, 209)","rgba(167,213,236,0.8)",
         ]}
       />
       <View style={styles.containerSkincare}>

@@ -124,12 +124,10 @@ export default function Curiosity() {
             style={styles.introduction}
             title="Curiosidade"
             text="Bem-vindo à seção post do Lumina."
-            gradientColors={[
-              "rgba(167,213,236,0.8)",
-              "rgba(43,96,171,1)",
-              "rgba(167,213,236,0.8)",
-            ]}
-          />
+          gradientColors={[
+           "rgb(141, 185, 209)","rgba(167,213,236,0.8)",
+        ]}
+      />
         }
       />
 
