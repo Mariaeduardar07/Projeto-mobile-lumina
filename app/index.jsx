@@ -4,7 +4,7 @@ import {
   StyleSheet,
   Alert,
   Dimensions,
-} from "react-native"; // Removido 'selectedOption'
+} from "react-native";
 import Banner from "../components/banner/Banner.js";
 import CategoriesCards from "../components/categoriesCards/CategoriesCards.js";
 import SearchBar from "../components/search/Search.js";
