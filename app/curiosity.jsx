@@ -276,7 +276,7 @@ const styles = StyleSheet.create({
       backgroundColor: "#fafafa",
     },
     button: {
-      backgroundColor: "#6C63FF",
+      backgroundColor: "#2b60ab",
       padding: 12,
       borderRadius: 12,
       alignItems: "center",
