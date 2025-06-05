@@ -1,7 +1,6 @@
 import { Image, View, StyleSheet, Dimensions } from "react-native";
 import { Drawer } from "expo-router/drawer";
 import { Ionicons } from "@expo/vector-icons";
-import { BiCategory } from "react-icons/bi";
 
 
 const { width } = Dimensions.get("window");
@@ -47,7 +46,7 @@ export default function RootLayout() {
             drawerLabel: "Categoria",
             title: "Categoria",
             drawerIcon: ({ size }) => (
-              <BiCategory size={size} color="#2b60ab" />
+              <Ionicons name="list-outline" size={size} color="#2b60ab" />
             ),
           }}
         />
