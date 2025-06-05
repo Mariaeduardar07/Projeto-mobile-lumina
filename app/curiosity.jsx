@@ -123,7 +123,7 @@ export default function Curiosity() {
           <Banner
             style={styles.introduction}
             title="Curiosidade"
-            text="Bem-vindo à seção post do Lumina."
+            text="Bem-vinda à seção post do Lumina."
           gradientColors={[
            "rgb(141, 185, 209)","rgba(167,213,236,0.8)",
         ]}
