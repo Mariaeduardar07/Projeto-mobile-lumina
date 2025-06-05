@@ -6,17 +6,24 @@ import {
   StyleSheet,
   Image,
   Dimensions,
+  Linking
 } from "react-native";
 import CustomButton from "../../components/customButton/CustomButton";
 import SearchBar from "../../components/search/Search";
 import Banner from "../../components/banner/Banner.js";
+import {Link} from "expo-router";
 const { width, height } = Dimensions.get("window");
+
 
 export default function Hair() {
   const [searchQuery, setSearchQuery] = useState("");
 
   const handleSearch = () => {
     console.log("Buscando por:", searchQuery);
+  };
+
+  const openPDF = (url) => {
+    Linking.openURL(url);
   };
 
   return (
@@ -55,7 +62,12 @@ export default function Hair() {
           essenciais para seu tipo ideal de cabelos contendo, produtos para
           cronograma capilar e muito mais!
         </Text>
-        <CustomButton title="Baixe PDF" />
+         <CustomButton
+          title="Baixe PDF"
+          onPress={() =>
+            openPDF("https://drive.google.com/file/d/1UWC2l1SX3dUd9KzQdoPX0QZpC4IwG-D-/view?usp=sharing")
+          }
+        />
       </View>
 
       <View style={styles.containerCabelos}>
@@ -78,7 +90,12 @@ export default function Hair() {
           essenciais para seu tipo ideal de cabelos contendo, produtos para
           cronograma capilar e muito mais!
         </Text>
-        <CustomButton title="Baixe PDF" />
+         <CustomButton
+          title="Baixe PDF"
+          onPress={() =>
+            openPDF("https://drive.google.com/file/d/1qY6NkYE6UFrVVZj6vmStgDNrdAg7pe8V/view?usp=sharing")
+          }
+        />
       </View>
 
       <View style={styles.containerCabelos}>
@@ -100,28 +117,12 @@ export default function Hair() {
           essenciais para seu tipo ideal de cabelos contendo, produtos para
           cronograma capilar e muito mais!
         </Text>
-        <CustomButton title="Baixe PDF" />
-      </View>
-      <View style={styles.containerCabelos}>
-        <Text style={styles.titleCabelos}>Cabelos com Química</Text>
-        <Image
-          style={styles.imageCabelos}
-          source={require("../../assets/quimica.png")}
+         <CustomButton
+          title="Baixe PDF"
+          onPress={() =>
+            openPDF("https://drive.google.com/file/d/1qY6NkYE6UFrVVZj6vmStgDNrdAg7pe8V/view?usp=sharing")
+          }
         />
-        <Text style={styles.describe1}>
-          Cabelos com química, referem-se a cabelos que passaram por processos
-          químicos para alterar sua estrutura ou cor.
-        </Text>
-      </View>
-      <View style={styles.Dicas}>
-        <Text style={styles.titleDicas}>Dicas:</Text>
-        <Text style={styles.lineDicas}>__________________________________</Text>
-        <Text style={styles.describeDicas}>
-          Clique no botão abaixo para baixar nosso PDF exclusivo com dicas
-          essenciais para seu tipo ideal de cabelos contendo, produtos para
-          cronograma capilar e muito mais!
-        </Text>
-        <CustomButton title="Baixe PDF" />
       </View>
     </ScrollView>
   );
