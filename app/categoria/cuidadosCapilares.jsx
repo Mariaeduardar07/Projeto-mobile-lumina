@@ -6,7 +6,7 @@ import {
   StyleSheet,
   Image,
   Dimensions,
-  Linking
+  Linking,
 } from "react-native";
 import CustomButton from "../../components/customButton/CustomButton";
 import SearchBar from "../../components/search/Search";
@@ -17,26 +17,29 @@ const dados = [
   {
     id: "1",
     tipo: "Cabelos Lisos",
-    descricao: "Cabelos lisos são aqueles que possuem uma estrutura capilar reta, sem ondulações ou cachos. A textura do fio é suave e uniforme, sem curvas ou frizz.",
+    descricao:
+      "Cabelos lisos são aqueles que possuem uma estrutura capilar reta, sem ondulações ou cachos. A textura do fio é suave e uniforme, sem curvas ou frizz.",
     imagem: {
       uri: "https://uploads.folhavitoria.com.br/2025/02/31iDrZV7-Copia-de-CORTE-DE-FOTOS-4-2-png.webp",
     },
-    pdf: "https://drive.google.com/file/d/1UWC2l1SX3dUd9KzQdoPX0QZpC4IwG-D-/view?usp=sharing"
+    pdf: "https://drive.google.com/file/d/1UWC2l1SX3dUd9KzQdoPX0QZpC4IwG-D-/view?usp=sharing",
   },
   {
     id: "2",
     tipo: "Cabelos Cacheados",
-    descricao: "Cabelos cacheados são caracterizados por fios que formam cachos ou ondas de forma natural.",
+    descricao:
+      "Cabelos cacheados são caracterizados por fios que formam cachos ou ondas de forma natural.",
     imagem: require("../../assets/cachos.png"),
-    pdf: "https://drive.google.com/file/d/1qY6NkYE6UFrVVZj6vmStgDNrdAg7pe8V/view?usp=sharing"
+    pdf: "https://drive.google.com/file/d/1qY6NkYE6UFrVVZj6vmStgDNrdAg7pe8V/view?usp=sharing",
   },
   {
     id: "3",
     tipo: "Cabelos Crespos",
-    descricao: "Cabelos crespos são caracterizados por fios que possuem uma curvatura muito apertada, o que resulta em um formato mais compacto e volumoso.",
+    descricao:
+      "Cabelos crespos são caracterizados por fios que possuem uma curvatura muito apertada, o que resulta em um formato mais compacto e volumoso.",
     imagem: require("../../assets/crespo.png"),
-    pdf: "https://drive.google.com/file/d/1qY6NkYE6UFrVVZj6vmStgDNrdAg7pe8V/view?usp=sharing"
-  }
+    pdf: "https://drive.google.com/file/d/1qY6NkYE6UFrVVZj6vmStgDNrdAg7pe8V/view?usp=sharing",
+  },
 ];
 
 export default function Hair() {
@@ -45,7 +48,7 @@ export default function Hair() {
 
   const handleSearch = (query) => {
     setSearchQuery(query);
-    const resultado = dados.filter(item =>
+    const resultado = dados.filter((item) =>
       item.tipo.toLowerCase().includes(query.toLowerCase())
     );
     setLista(resultado);
@@ -65,35 +68,27 @@ export default function Hair() {
         style={styles.introductionBanner}
         title="Cuidados Capilares"
         text="Bem-vindo à seção Cuidado Capilar do Lumina."
-        gradientColors={[
-          "rgb(141, 185, 209)", "rgba(167,213,236,0.8)",
-        ]}
+        gradientColors={["rgb(141, 185, 209)", "rgba(167,213,236,0.8)"]}
       />
 
-      {lista.map(item => (
+      {lista.map((item) => (
         <View key={item.id}>
           <View style={styles.containerCabelos}>
             <Text style={styles.titleCabelos}>{item.tipo}</Text>
-            <Image
-              style={styles.imageCabelos}
-              source={item.imagem}
-            />
-            <Text style={styles.describe1}>
-              {item.descricao}
-            </Text>
+            <Image style={styles.imageCabelos} source={item.imagem} />
+            <Text style={styles.describe1}>{item.descricao}</Text>
           </View>
           <View style={styles.Dicas}>
-            <Text style={styles.titleDicas}>Dicas:</Text>
-            <Text style={styles.lineDicas}>__________________________________</Text>
+            <View style={styles.dicasHeader}>
+              <Text style={styles.titleDicas}>Dicas:</Text>
+              <View style={styles.decorativeLine} />
+            </View>
             <Text style={styles.describeDicas}>
               Clique no botão abaixo para baixar nosso PDF exclusivo com dicas
               essenciais para seu tipo ideal de cabelos contendo, produtos para
               cronograma capilar e muito mais!
             </Text>
-            <CustomButton
-              title="Baixe PDF"
-              onPress={() => openPDF(item.pdf)}
-            />
+            <CustomButton title="Baixe PDF" onPress={() => openPDF(item.pdf)} />
           </View>
         </View>
       ))}
@@ -106,18 +101,20 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "white",
+    width: "100%",
   },
   introductionBanner: {
     width: width - 32,
     alignSelf: "center",
     marginTop: 15,
   },
-  containerCabelos: {
-    width: width * 0.9, // 90% da largura da tela
-    margin: 10,
-  },
+ containerCabelos: {
+  width: width * 0.9,
+  marginTop: 10,
+  marginBottom: 0,
+},
   titleCabelos: {
-   fontSize: width < 350 ? 18 : 24,
+    fontSize: width < 350 ? 18 : 24,
     fontWeight: "500",
     color: "#2b60ab",
     alignSelf: "flex-start",
@@ -138,24 +135,32 @@ const styles = StyleSheet.create({
     width: "100%",
     textAlign: "justify",
   },
-  Dicas: {
-    width: width * 0.9,
+Dicas: {
+  width: width * 0.9,
+  marginBottom: 30,
+},
+  dicasHeader: {
+    alignSelf: "flex-start",
+    marginTop: 30,
+    marginBottom: 8, // Menor espaço para ficar igual ao exemplo
   },
   titleDicas: {
-    fontSize: width * 0.05,
+    fontSize: 22,
     color: "#65a2bf",
-    marginTop: 10,
+    marginBottom: 2, // Espaço pequeno entre texto e linha
   },
-  lineDicas: {
-    fontSize: width * 0.05,
-    color: "#65a2bf",
-    width: "100%",
-    marginTop: -16,
+  decorativeLine: {
+    width: 55, // Ajuste para o tamanho desejado
+    height: 4,
+    backgroundColor: "#65a2bf",
+    borderRadius: 2,
+    marginLeft: 2, // Pequeno ajuste para alinhar com o texto
+    marginTop: 0,
   },
   describeDicas: {
     fontSize: width * 0.04,
     color: "black",
-    marginTop: 15,
+    marginTop: 5,
     width: "100%",
     textAlign: "justify",
   },
