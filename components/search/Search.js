@@ -7,12 +7,16 @@ import {
   Image,
 } from "react-native";
 
-const SearchBar = () => {
-    const [searchQuery, setSearchQuery] = useState("");
-  
-    const handleSearch = () => {
-      console.log("Buscando por:", searchQuery);
-    };
+// SearchBar agora recebe uma função onSearch por prop
+const SearchBar = ({ onSearch }) => {
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSearch = () => {
+    if (onSearch) {
+      onSearch(searchQuery); // Chama a função recebida por prop
+    }
+  };
+
   return (
     <View style={styles.searchContainer}>
       <TextInput
@@ -23,7 +27,7 @@ const SearchBar = () => {
       />
       <TouchableOpacity onPress={handleSearch} style={styles.searchButton}>
         <Image
-          source={require("../../assets/Search.png")} // Substitua pelo caminho correto da imagem
+          source={require("../../assets/Search.png")}
           style={{ width: 20, height: 20 }}
         />
       </TouchableOpacity>
