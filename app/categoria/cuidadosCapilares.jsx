@@ -143,9 +143,13 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   titleCabelos: {
-    fontSize: width * 0.05, // Tamanho da fonte baseado na largura da tela
-    color: "#65a2bf",
-    marginTop: 10,
+   fontSize: width < 350 ? 18 : 24,
+    fontWeight: "500",
+    color: "#2b60ab",
+    alignSelf: "flex-start",
+    marginTop: 5,
+    width: "100%",
+    textAlign: "left", // alinhamento à esquerda
   },
   imageCabelos: {
     width: "100%", // Largura total do contêiner
