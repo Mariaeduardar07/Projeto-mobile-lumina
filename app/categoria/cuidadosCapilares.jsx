@@ -13,10 +13,12 @@ import SearchBar from "../../components/search/Search";
 import Banner from "../../components/banner/Banner.js";
 const { width, height } = Dimensions.get("window");
 
+// Adicione as palavras-chave para cada tipo de cabelo
 const dados = [
   {
     id: "1",
     tipo: "Cabelos Lisos",
+    keywords: ["liso", "lisos", "cabelo liso", "cabelos lisos", "reto", "sem ondas"],
     descricao: "Cabelos lisos são aqueles que possuem uma estrutura capilar reta, sem ondulações ou cachos. A textura do fio é suave e uniforme, sem curvas ou frizz.",
     imagem: {
       uri: "https://uploads.folhavitoria.com.br/2025/02/31iDrZV7-Copia-de-CORTE-DE-FOTOS-4-2-png.webp",
@@ -26,6 +28,7 @@ const dados = [
   {
     id: "2",
     tipo: "Cabelos Cacheados",
+    keywords: ["cacheado", "cacheados", "cabelo cacheado", "cachos", "ondulado", "ondas"],
     descricao: "Cabelos cacheados são caracterizados por fios que formam cachos ou ondas de forma natural.",
     imagem: require("../../assets/cachos.png"),
     pdf: "https://drive.google.com/file/d/1qY6NkYE6UFrVVZj6vmStgDNrdAg7pe8V/view?usp=sharing"
@@ -33,6 +36,7 @@ const dados = [
   {
     id: "3",
     tipo: "Cabelos Crespos",
+    keywords: ["crespo", "crespos", "cabelo crespo", "afro", "volumoso"],
     descricao: "Cabelos crespos são caracterizados por fios que possuem uma curvatura muito apertada, o que resulta em um formato mais compacto e volumoso.",
     imagem: require("../../assets/crespo.png"),
     pdf: "https://drive.google.com/file/d/1qY6NkYE6UFrVVZj6vmStgDNrdAg7pe8V/view?usp=sharing"
@@ -45,8 +49,14 @@ export default function Hair() {
 
   const handleSearch = (query) => {
     setSearchQuery(query);
+    if (!query) {
+      setLista(dados);
+      return;
+    }
+    const lower = query.toLowerCase();
     const resultado = dados.filter(item =>
-      item.tipo.toLowerCase().includes(query.toLowerCase())
+      item.tipo.toLowerCase().includes(lower) ||
+      (item.keywords && item.keywords.some(k => k.includes(lower) || lower.includes(k)))
     );
     setLista(resultado);
   };
@@ -64,39 +74,46 @@ export default function Hair() {
       <Banner
         style={styles.introductionBanner}
         title="Cuidados Capilares"
-        text="Bem-vindo à seção Cuidado Capilar do Lumina."
+        text="Bem-vinda à seção de Cuidados Capilares do Lumina."
         gradientColors={[
           "rgb(141, 185, 209)", "rgba(167,213,236,0.8)",
         ]}
       />
 
-      {lista.map(item => (
-        <View key={item.id}>
-          <View style={styles.containerCabelos}>
-            <Text style={styles.titleCabelos}>{item.tipo}</Text>
-            <Image
-              style={styles.imageCabelos}
-              source={item.imagem}
-            />
-            <Text style={styles.describe1}>
-              {item.descricao}
-            </Text>
+      {lista.length === 0 ? (
+        <Banner
+          title="Nada encontrado"
+          text="Nenhum tipo de cabelo corresponde à sua pesquisa."
+        />
+      ) : (
+        lista.map(item => (
+          <View key={item.id}>
+            <View style={styles.containerCabelos}>
+              <Text style={styles.titleCabelos}>{item.tipo}</Text>
+              <Image
+                style={styles.imageCabelos}
+                source={item.imagem}
+              />
+              <Text style={styles.describe1}>
+                {item.descricao}
+              </Text>
+            </View>
+            <View style={styles.Dicas}>
+              <Text style={styles.titleDicas}>Dicas:</Text>
+              <Text style={styles.lineDicas}>__________________________________</Text>
+              <Text style={styles.describeDicas}>
+                Clique no botão abaixo para baixar nosso PDF exclusivo com dicas
+                essenciais para seu tipo ideal de cabelos contendo, produtos para
+                cronograma capilar e muito mais!
+              </Text>
+              <CustomButton
+                title="Baixe PDF"
+                onPress={() => openPDF(item.pdf)}
+              />
+            </View>
           </View>
-          <View style={styles.Dicas}>
-            <Text style={styles.titleDicas}>Dicas:</Text>
-            <Text style={styles.lineDicas}>__________________________________</Text>
-            <Text style={styles.describeDicas}>
-              Clique no botão abaixo para baixar nosso PDF exclusivo com dicas
-              essenciais para seu tipo ideal de cabelos contendo, produtos para
-              cronograma capilar e muito mais!
-            </Text>
-            <CustomButton
-              title="Baixe PDF"
-              onPress={() => openPDF(item.pdf)}
-            />
-          </View>
-        </View>
-      ))}
+        ))
+      )}
     </ScrollView>
   );
 }
