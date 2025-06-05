@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Image,
   Dimensions,
+  Linking
 } from "react-native";
 const { width, height } = Dimensions.get("window");
 import Banner from "../../components/banner/Banner.js";
@@ -18,6 +19,10 @@ export default function Hair() {
   const handleSearch = () => {
     console.log("Buscando por:", searchQuery);
   };
+
+    const openPDF = (url) => {
+      Linking.openURL(url);
+    };
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -44,7 +49,7 @@ export default function Hair() {
           para criar um acabamento uniforme, disfarçar imperfeições e realçar os
           traços naturais do rosto. Mais do que estética, ela contribui para a
           autoestima, oferecendo uma aparência saudável, iluminada e bem
-          cuidada.{" "}
+          cuidada.
         </Text>
       </View>
       <View style={styles.Dicas}>
@@ -58,7 +63,12 @@ export default function Hair() {
           sua beleza de forma natural e duradoura. Ideal para todos os tipos de
           pele!
         </Text>
-        <CustomButton title="Baixe PDF" />
+           <CustomButton
+                  title="Baixe PDF"
+                  onPress={() =>
+                    openPDF("https://drive.google.com/file/d/1gxS3n-QyKpY3z_ekwJjCC1_0ZNWZ_Qsf/view?usp=sharing")
+                  }
+                />
       </View>
 
       <View style={styles.containerMakeup}>
@@ -85,18 +95,23 @@ export default function Hair() {
           marcantes e poderosos. Tudo pensado para valorizar seu estilo e
           destacar sua beleza!
         </Text>
-        <CustomButton title="Baixe PDF" />
+           <CustomButton
+                  title="Baixe PDF"
+                  onPress={() =>
+                    openPDF("https://drive.google.com/file/d/1Dpra4Q583mHCIjmIqkOdRZzRBoNIkKNC/view?usp=sharing")
+                  }
+                />
       </View>
 
       <View style={styles.containerMakeup}>
-        <Text style={styles.titleMakeup}>Boca</Text>
+        <Text style={styles.titleMakeup}>Lábios</Text>
         <Image
           style={styles.imageMakeup}
           source={require("../../assets/lip.png")}
         />
 
         <Text style={styles.describe1}>
-          A maquiagem para a boca é um dos pontos de destaque em qualquer
+          A maquiagem para os lábios é um dos pontos de destaque em qualquer
           produção. Ela pode transformar completamente o visual, transmitindo
           elegância, ousadia ou suavidade, tudo depende da escolha dos produtos
           e da forma de aplicação.
@@ -107,13 +122,18 @@ export default function Hair() {
         <Text style={styles.lineDicas}>__________________________________</Text>
         <Text style={styles.describeDicas}>
           Clique no botão abaixo para baixar nosso PDF exclusivo com dicas
-          essenciais para destacar sua boca com charme e estilo! Descubra
+          essenciais para destacar seus lábios com charme e estilo! Descubra
           truques e produtos ideais para batom, batom líquido e gloss labial,
           aprendendo como valorizar seus lábios com acabamento perfeito, cor
           intensa e longa duração. Tudo para criar desde um visual natural e
           delicado até uma boca poderosa e marcante!
         </Text>
-        <CustomButton title="Baixe PDF" />
+           <CustomButton
+                  title="Baixe PDF"
+                  onPress={() =>
+                    openPDF("https://drive.google.com/file/d/18lEDRxOkx9mYV_T3vGJzPBexmaGO9eDt/view?usp=sharing")
+                  }
+                />
       </View>
     </ScrollView>
   );

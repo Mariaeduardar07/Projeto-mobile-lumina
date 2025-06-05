@@ -11,7 +11,6 @@ import {
 import CustomButton from "../../components/customButton/CustomButton";
 import SearchBar from "../../components/search/Search";
 import Banner from "../../components/banner/Banner.js";
-import {Link} from "expo-router";
 const { width, height } = Dimensions.get("window");
 
 
