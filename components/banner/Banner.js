@@ -7,7 +7,7 @@ const { width } = Dimensions.get("window");
 const Banner = ({
   title = "Título padrão",
   text = "Texto padrão",
-  gradientColors = ["rgba(167,213,236,0.8)"," #2b60ab", "rgba(167,213,236,0.8)"],
+  gradientColors = ["rgba(167, 213, 236, 0.49)","rgba(167,213,236,0.8)",],
   style,
   children,
 }) => {
@@ -57,13 +57,13 @@ const styles = StyleSheet.create({
   titleIntroduction: {
     fontSize: width < 350 ? 25 : 30,
     fontWeight: "700", // mais destaque
-    color: "#fff", // branco para contraste
+    color: "#f4f4f4", // branco para contraste
     textAlign: "left", // ou "center"
     marginBottom: 8,
   },
   textIntroduction: {
     fontSize: width < 350 ? 15 : 18,
-    color: "#fff",
+    color: "#ffff",
     textAlign: "justify",
     width: "100%",
   },
