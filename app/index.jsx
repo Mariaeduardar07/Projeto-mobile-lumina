@@ -5,6 +5,7 @@ import {
   Alert,
   Dimensions,
 } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 import Banner from "../components/banner/Banner.js";
 import CategoriesCards from "../components/categoriesCards/CategoriesCards.js";
 import SearchBar from "../components/search/Search.js";
@@ -14,6 +15,8 @@ import Forms from "../components/forms/Forms.js";
 import ObjetivosBlog from "../components/blogObjectives/BlogObjectives.js";
 
 const { width } = Dimensions.get("window");
+
+
 
 export default function Home() {
   const router = useRouter();
@@ -45,6 +48,34 @@ export default function Home() {
       },
     },
   ];
+
+  const objetivos = [
+  {
+    id: '1',
+    icon: <Ionicons name="book-outline" size={48} color="#fff" />,
+    title: "Entregar conteúdos de qualidade que inspirem o autocuidado..",
+  },
+  {
+    id: '2',
+    icon: <Ionicons name="chatbubbles-outline" size={48} color="#fff" />,
+    title: "Promover a colaboração e o trabalho em equipe.",
+  },
+  {
+    id: '3',
+    icon: <Ionicons name="bulb-outline" size={48} color="#fff" />,
+    title: "Construir uma comunidade acolhedora e colaborativa.",
+  },
+  {
+    id: '4',
+    icon: <Ionicons name="ribbon-outline" size={48} color="#fff" />,
+    title: "Inspirar e transformar vidas por meio de experiências significativas.",
+  },
+  {
+    id: '5',
+    icon: <Ionicons name="heart-outline" size={48} color="#fff" />,
+    title: "Cultivar um espaço digital saudável, inclusivo e elegante.",
+  },
+];
 
   const handleCategoryPress = (route) => {
     router.push(route);
@@ -78,7 +109,7 @@ export default function Home() {
         categories={categories}
         onCategoryPress={handleCategoryPress}
       />
-      <ObjetivosBlog />
+      <ObjetivosBlog data={objetivos} />
       <Newsletter />
       <Forms />
     </ScrollView>
