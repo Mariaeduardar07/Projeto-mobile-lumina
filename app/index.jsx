@@ -53,7 +53,7 @@ export default function Home() {
   const handleFeedbackSubmit = () => {
     if (selectedOption) {
       Alert.alert(
-        "Obrigado pelo feedback!",
+        "Obrigada pelo feedback!",
         `Você selecionou: ${selectedOption}`
       );
     } else {
