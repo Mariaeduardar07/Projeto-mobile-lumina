@@ -5,7 +5,6 @@ import {
   StyleSheet,
   Dimensions,
   Animated,
-  FlatList,
   TouchableOpacity,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
@@ -93,19 +92,7 @@ const BlogObjectives = () => {
     );
   };
 
-  const renderPagination = () => (
-    <View style={styles.paginationContainer}>
-      {objetivos.map((_, i) => (
-        <Animated.View
-          key={i}
-          style={[
-            styles.paginationDot,
-            i === activeIndex && styles.paginationDotActive,
-          ]}
-        />
-      ))}
-    </View>
-  );
+  // Removido o renderPagination
 
   return (
     <View style={styles.container}>
@@ -152,8 +139,7 @@ const BlogObjectives = () => {
           <Ionicons name="chevron-forward" size={28} color="#2563eb" />
         </TouchableOpacity>
       </View>
-
-      {renderPagination()}
+      {/* Bolinhas removidas */}
     </View>
   );
 };
@@ -221,28 +207,7 @@ const styles = StyleSheet.create({
     lineHeight: 28,
     marginTop: 8,
   },
-  paginationContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 24,
-  },
-  paginationDot: {
-    width: 12,
-    height: 12,
-    borderRadius: 6,
-    marginHorizontal: 5,
-    backgroundColor: '#cbd5e1',
-    borderWidth: 2,
-    borderColor: '#e0e7ef',
-  },
-  paginationDotActive: {
-    backgroundColor: '#2b60ab',
-    borderColor: '#2b60ab',
-    width: 20,
-    height: 12,
-    borderRadius: 6,
-  },
+  // Os estilos de paginação podem ser removidos se quiser
 });
 
 export default BlogObjectives;

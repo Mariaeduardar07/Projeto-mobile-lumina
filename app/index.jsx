@@ -5,6 +5,7 @@ import {
   Alert,
   Dimensions,
 } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 import Banner from "../components/banner/Banner.js";
 import CategoriesCards from "../components/categoriesCards/CategoriesCards.js";
 import SearchBar from "../components/search/Search.js";
@@ -14,6 +15,8 @@ import Forms from "../components/forms/Forms.js";
 import ObjetivosBlog from "../components/blogObjectives/BlogObjectives.js";
 
 const { width } = Dimensions.get("window");
+
+
 
 export default function Home() {
   const router = useRouter();
