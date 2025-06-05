@@ -16,7 +16,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const url = "https://api.example.com/login"; // Substituir pela a API verdadeira e depois testar
+  const url = "http://localhost:5000/auth/register"; 
 
   async function handleLogin() {
     try {
