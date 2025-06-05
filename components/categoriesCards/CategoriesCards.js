@@ -47,7 +47,6 @@ const CategoriesCards = ({ categories, onCategoryPress }) => {
 
 const styles = StyleSheet.create({
   categoriasContainer: {
-    marginTop: 5,
     width: "100%",
   },
   cardsCategoriesContainer: {
@@ -62,7 +61,7 @@ const styles = StyleSheet.create({
     color: "#2b60ab",
     alignSelf: "flex-start",
     marginLeft: 22,
-    marginTop: 35,
+    marginTop: 5,
     width: "100%",
     alignItems: "center",
     justifyContent: "center",
