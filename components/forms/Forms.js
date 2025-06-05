@@ -13,11 +13,16 @@ export default function Forms() {
   ];
 
   const handleSubmit = () => {
+    console.log("Resposta enviada:", options[selectedOption]);
+    
+    Alert.alert("Enviando resposta...");
     if (selectedOption !== null) {
       Alert.alert("Resposta enviada!", `Você selecionou: ${options[selectedOption]}`);
     } else {
       Alert.alert("Por favor, selecione uma opção.");
     }
+
+    setSelectedOption(null)
   };
 
   return (
