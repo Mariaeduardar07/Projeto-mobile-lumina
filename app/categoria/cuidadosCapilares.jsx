@@ -49,8 +49,6 @@ export default function Hair() {
 
   const handleSearch = (query) => {
     setSearchQuery(query);
-    const resultado = dados.filter((item) =>
-      item.tipo.toLowerCase().includes(query.toLowerCase())
     if (!query) {
       setLista(dados);
       return;
@@ -80,33 +78,6 @@ export default function Hair() {
         gradientColors={["rgb(141, 185, 209)", "rgba(167,213,236,0.8)"]}
       />
 
-      {lista.map((item) => (
-        <View key={item.id}>
-          <View style={styles.containerCabelos}>
-            <Text style={styles.titleCabelos}>{item.tipo}</Text>
-            <Image style={styles.imageCabelos} source={item.imagem} />
-            <Text style={styles.describe1}>{item.descricao}</Text>
-          </View>
-          <View style={styles.Dicas}>
-            <View style={styles.dicasHeader}>
-              <Text style={styles.titleDicas}>Dicas:</Text>
-              <View style={styles.decorativeLine} />
-            </View>
-            <Text style={styles.describeDicas}>
-              Clique no botão abaixo para baixar nosso PDF exclusivo com dicas
-              essenciais para seu tipo ideal de cabelos contendo, produtos para
-              cronograma capilar e muito mais!
-            </Text>
-            <CustomButton title="Baixe PDF" onPress={() => openPDF(item.pdf)} />
-          </View>
-        </View>
-      ))}
-        text="Bem-vinda à seção de Cuidados Capilares do Lumina."
-        gradientColors={[
-          "rgb(141, 185, 209)", "rgba(167,213,236,0.8)",
-        ]}
-      />
-
       {lista.length === 0 ? (
         <Banner
           title="Nada encontrado"
@@ -117,26 +88,20 @@ export default function Hair() {
           <View key={item.id}>
             <View style={styles.containerCabelos}>
               <Text style={styles.titleCabelos}>{item.tipo}</Text>
-              <Image
-                style={styles.imageCabelos}
-                source={item.imagem}
-              />
-              <Text style={styles.describe1}>
-                {item.descricao}
-              </Text>
+              <Image style={styles.imageCabelos} source={item.imagem} />
+              <Text style={styles.describe1}>{item.descricao}</Text>
             </View>
             <View style={styles.Dicas}>
-              <Text style={styles.titleDicas}>Dicas:</Text>
-              <Text style={styles.lineDicas}>__________________________________</Text>
+              <View style={styles.dicasHeader}>
+                <Text style={styles.titleDicas}>Dicas:</Text>
+                <View style={styles.decorativeLine} />
+              </View>
               <Text style={styles.describeDicas}>
                 Clique no botão abaixo para baixar nosso PDF exclusivo com dicas
                 essenciais para seu tipo ideal de cabelos contendo, produtos para
                 cronograma capilar e muito mais!
               </Text>
-              <CustomButton
-                title="Baixe PDF"
-                onPress={() => openPDF(item.pdf)}
-              />
+              <CustomButton title="Baixe PDF" onPress={() => openPDF(item.pdf)} />
             </View>
           </View>
         ))
@@ -144,6 +109,7 @@ export default function Hair() {
     </ScrollView>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {

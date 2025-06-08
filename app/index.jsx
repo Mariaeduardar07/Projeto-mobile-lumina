@@ -5,7 +5,6 @@ import {
   Alert,
   Dimensions,
 } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
 import Banner from "../components/banner/Banner.js";
 import CategoriesCards from "../components/categoriesCards/CategoriesCards.js";
 import SearchBar from "../components/search/Search.js";

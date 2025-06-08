@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     alignItems: "center",
-    backgroundColor: "#ffff",
+    backgroundColor: "#fff",
     paddingVertical: 20,
   },
   welcomeCard: {
