@@ -17,6 +17,7 @@ const dados = [
   {
     id: "1",
     tipo: "Peles secas",
+    keywords: ["seca", "secas", "pele seca", "peles secas", "ressecada", "descamação", "descamacao"],
     descricao:
       "Peles secas são caracterizadas por uma textura mais áspera, falta de viço e tendência ao ressecamento e descamação. A superfície da pele costuma ser mais fina e sem oleosidade natural, o que pode deixá-la com aparência opaca e sensação de repuxamento.",
     imagem: require("../../assets/pele-seca.png"),
@@ -27,6 +28,7 @@ const dados = [
   {
     id: "2",
     tipo: "Peles Mistas",
+    keywords: ["mista", "mistas", "pele mista", "peles mistas", "zona t", "oleosidade", "seca e oleosa"],
     descricao:
       "Peles mistas apresentam características de dois tipos de pele: oleosidade concentrada na zona T (testa, nariz e queixo) e ressecamento nas outras áreas do rosto, como bochechas.",
     imagem: require("../../assets/pele-mista.png"),
@@ -37,6 +39,7 @@ const dados = [
   {
     id: "3",
     tipo: "Peles oleosas",
+    keywords: ["oleosa", "oleosas", "pele oleosa", "peles oleosas", "brilho", "poros", "cravos", "espinhas"],
     descricao:
       "Pele oleosa é caracterizada pelo excesso de produção de sebo, o que causa brilho intenso, poros dilatados e maior tendência a cravos e espinhas.",
     imagem: require("../../assets/pele-oleosa.png"),
@@ -52,8 +55,14 @@ export default function Skincare() {
 
   const handleSearch = (query) => {
     setSearchQuery(query);
+    if (!query) {
+      setLista(dados);
+      return;
+    }
+    const lower = query.toLowerCase();
     const resultado = dados.filter(item =>
-      item.tipo.toLowerCase().includes(query.toLowerCase())
+      item.tipo.toLowerCase().includes(lower) ||
+      (item.keywords && item.keywords.some(k => k.includes(lower) || lower.includes(k)))
     );
     setLista(resultado);
   };
@@ -70,36 +79,43 @@ export default function Skincare() {
 
       <Banner
         style={styles.introductionBanner}
-        title="SKIN CARE"
-        text="Bem-vindo à seção Skin Care do Lumina."
+        title="Skincare"
+        text="Bem-vinda à seção de Skicare do Lumina."
         gradientColors={["rgb(141, 185, 209)", "rgba(167,213,236,0.8)"]}
       />
 
-      {lista.map(item => (
-        <View key={item.id}>
-          <View style={styles.containerSkincare}>
-            <Text style={styles.titleSkincare}>{item.tipo}</Text>
-            <Image
-              style={styles.imageSkincare}
-              source={item.imagem}
-            />
-            <Text style={styles.describe1}>
-              {item.descricao}
-            </Text>
+      {lista.length === 0 ? (
+        <Banner
+          title="Nada encontrado"
+          text="Nenhum tipo de skincare corresponde à sua pesquisa."
+        />
+      ) : (
+        lista.map(item => (
+          <View key={item.id}>
+            <View style={styles.containerSkincare}>
+              <Text style={styles.titleSkincare}>{item.tipo}</Text>
+              <Image
+                style={styles.imageSkincare}
+                source={item.imagem}
+              />
+              <Text style={styles.describe1}>
+                {item.descricao}
+              </Text>
+            </View>
+            <View style={styles.Dicas}>
+              <Text style={styles.titleDicas}>Dicas:</Text>
+              <Text style={styles.lineDicas}>__________________________________</Text>
+              <Text style={styles.describeDicas}>
+                {item.dicas}
+              </Text>
+              <CustomButton
+                title="Baixe PDF"
+                onPress={() => openPDF(item.pdf)}
+              />
+            </View>
           </View>
-          <View style={styles.Dicas}>
-            <Text style={styles.titleDicas}>Dicas:</Text>
-            <Text style={styles.lineDicas}>__________________________________</Text>
-            <Text style={styles.describeDicas}>
-              {item.dicas}
-            </Text>
-            <CustomButton
-              title="Baixe PDF"
-              onPress={() => openPDF(item.pdf)}
-            />
-          </View>
-        </View>
-      ))}
+        ))
+      )}
     </ScrollView>
   );
 }

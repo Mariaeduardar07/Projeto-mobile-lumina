@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -7,14 +7,17 @@ import {
   Dimensions,
 } from "react-native";
 import fotoDuda from "../assets/duds.png"; 
-import fotoMari from "../assets/mari.png";
+import fotoMari from "../assets/mariana.png";
 import fotoBalico from "../assets/balico.png";
- const { width } = Dimensions.get("window");
+import fotoGomes from "../assets/sophiagomes.png";
+import fotoAnna from "../assets/anna.png";
+
+const { width } = Dimensions.get("window");
 
 import Carousel from "../components/carousel/Carousel.js";
 import SearchBar from "../components/search/Search.js";
 import ObjetivosCards from "../components/teamObjectives/TeamObjectives.js";
-
+import Banner from "../components/banner/Banner.js";
 
 const carouselData = [
   {
@@ -33,17 +36,13 @@ const carouselData = [
     id: "3",
     title: "Anna Clara",
     subtitle: "Desenvolvedora",
-    image: {
-      uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGL0me_PGKcII0ZfpgoFOEyNGH2xNp4a0O0Mp3DmmLEsZu0nSVIbjQT49kHCpSY79g4h4&usqp=CAU",
-    },
+    image: fotoAnna
   },
   {
     id: "4",
     title: "Sophia Gomes",
     subtitle: "Desenvolvedora",
-    image: {
-      uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiE1jj4QbYkci-ttq8XTrZOUPbg2G69BKml_076NpqClNjjmJ6yKhHclR1LAW3-LIoWcM&usqp=CAU",
-    },
+    image: fotoGomes,
   },
   {
     id: "5",
@@ -53,30 +52,91 @@ const carouselData = [
   },
 ];
 
-export default function AboutUs() {
-  return (
-    <ScrollView contentContainerStyle={styles.container}>
-      {/* INÍCIO DA BARRA DE PESQUISA */}
-      <SearchBar />
-      {/* FIM DA BARRA DE PESQUISA */}
-
-      {/* CARD DE BOAS-VINDAS */}
+// Palavras-chave para cada conteúdo
+const contentKeywords = [
+  {
+    keywords: [
+      "sobre",
+      "lumina",
+      "quem somos",
+      "apresentação",
+      "apresentacao",
+      "história",
+      "historia",
+      "nós",
+      "nos"
+    ],
+    render: () => (
       <View style={styles.welcomeCard}>
         <Text style={styles.welcomeTitle}>Seja bem-vinda ao nosso mundo</Text>
         <Text style={styles.welcomeText}>
           Somos cinco amigas unidas pela paixão por beleza, tecnologia e criatividade. A Lumina nasceu para inspirar, compartilhar dicas sinceras e celebrar a liberdade de se sentir bem com quem você é. Com uma Product Owner, uma Scrum Master e três desenvolvedoras, criamos este cantinho com carinho — pra iluminar seu dia com conteúdo feito de coração.
         </Text>
       </View>
-      {/* FIM DO CARD DE BOAS-VINDAS */}
-
+    ),
+  },
+  {
+    keywords: [
+      "equipe",
+      "time",
+      "grupo",
+      "integrantes",
+      "fundadoras",
+      "fundadora"
+    ],
+    render: () => (
       <View style={styles.carouselContainer}>
         <Carousel data={carouselData} autoplayDelay={4000} />
       </View>
-
-      {/* OBJETIVOS LUMINA COMO CARROSSEL */}
+    ),
+  },
+  {
+    keywords: [
+      "objetivos",
+      "objetivo",
+      "missão",
+      "missao",
+      "valores",
+      "propósito",
+      "proposito"
+    ],
+    render: () => (
       <View style={styles.objetivosListaContainer}>
         <ObjetivosCards />
       </View>
+    ),
+  },
+];
+
+export default function AboutUs() {
+  const [activeContents, setActiveContents] = useState(contentKeywords);
+
+  const handleSearch = (query) => {
+    if (!query) {
+      setActiveContents(contentKeywords);
+      return;
+    }
+    const lower = query.toLowerCase();
+    const filtered = contentKeywords.filter(content =>
+      content.keywords.some(k =>
+        k.includes(lower) || lower.includes(k)
+      )
+    );
+    setActiveContents(filtered);
+  };
+
+  return (
+    <ScrollView contentContainerStyle={styles.container}>
+      <SearchBar onSearch={handleSearch} />
+
+      {activeContents.length === 0 ? (
+        <Banner
+          title="Nada encontrado"
+          text="Nenhuma informação corresponde à sua pesquisa."
+        />
+      ) : (
+        activeContents.map((content, idx) => <React.Fragment key={idx}>{content.render()}</React.Fragment>)
+      )}
     </ScrollView>
   );
 }
@@ -102,7 +162,7 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   welcomeTitle: {
-    fontSize: width * 0.07, // Ajustando o tamanho da fonte
+    fontSize: width * 0.07,
     fontWeight: "bold",
     color: "#2b60ab",
     marginBottom: 12,
@@ -110,7 +170,7 @@ const styles = StyleSheet.create({
     letterSpacing: 1,
   },
   welcomeText: {
-    fontSize: width * 0.04, // Ajustando o tamanho da fonte
+    fontSize: width * 0.04,
     color: "#222",
     textAlign: "justify",
     lineHeight: 26,

@@ -17,6 +17,7 @@ const dados = [
   {
     id: "1",
     tipo: "Pele",
+    keywords: ["pele", "base", "corretivo", "blush", "contorno", "iluminador", "maquiagem pele"],
     descricao:
       "A maquiagem na pele é a base de qualquer produção, sendo essencial para criar um acabamento uniforme, disfarçar imperfeições e realçar os traços naturais do rosto. Mais do que estética, ela contribui para a autoestima, oferecendo uma aparência saudável, iluminada e bem cuidada.",
     imagem: require("../../assets/pele-maquiagem.png"),
@@ -27,6 +28,7 @@ const dados = [
   {
     id: "2",
     tipo: "Olhos",
+    keywords: ["olhos", "sombra", "delineador", "rímel", "mascara", "maquiagem olhos", "lápis de olho"],
     descricao:
       "A maquiagem nos olhos é uma das etapas mais expressivas da make, responsável por destacar o olhar e transmitir personalidade. Com os produtos certos, é possível criar desde visuais discretos e elegantes até produções marcantes e ousadas.",
     imagem: require("../../assets/eyes.png"),
@@ -37,6 +39,7 @@ const dados = [
   {
     id: "3",
     tipo: "Lábios",
+    keywords: ["lábios","labios", "boca", "batom", "gloss", "maquiagem boca", "batom líquido", "lip tint"],
     descricao:
       "A maquiagem para os lábios é um dos pontos de destaque em qualquer produção. Ela pode transformar completamente o visual, transmitindo elegância, ousadia ou suavidade, tudo depende da escolha dos produtos e da forma de aplicação.",
     imagem: require("../../assets/lip.png"),
@@ -52,8 +55,14 @@ export default function Maquiagens() {
 
   const handleSearch = (query) => {
     setSearchQuery(query);
+    if (!query) {
+      setLista(dados);
+      return;
+    }
+    const lower = query.toLowerCase();
     const resultado = dados.filter(item =>
-      item.tipo.toLowerCase().includes(query.toLowerCase())
+      item.tipo.toLowerCase().includes(lower) ||
+      (item.keywords && item.keywords.some(k => k.includes(lower) || lower.includes(k)))
     );
     setLista(resultado);
   };
@@ -71,37 +80,44 @@ export default function Maquiagens() {
       <Banner
         style={styles.introductionBanner}
         title="Maquiagens"
-        text="Bem-vindo à seção Maquiagem do Lumina."
+        text="Bem-vinda à seção de Maquiagens do Lumina."
         gradientColors={[
           "rgb(141, 185, 209)", "rgba(167,213,236,0.8)",
         ]}
       />
 
-      {lista.map(item => (
-        <View key={item.id}>
-          <View style={styles.containerMakeup}>
-            <Text style={styles.titleMakeup}>{item.tipo}</Text>
-            <Image
-              style={styles.imageMakeup}
-              source={item.imagem}
-            />
-            <Text style={styles.describe1}>
-              {item.descricao}
-            </Text>
+      {lista.length === 0 ? (
+        <Banner
+          title="Nada encontrado"
+          text="Nenhum tipo de maquiagem corresponde à sua pesquisa."
+        />
+      ) : (
+        lista.map(item => (
+          <View key={item.id}>
+            <View style={styles.containerMakeup}>
+              <Text style={styles.titleMakeup}>{item.tipo}</Text>
+              <Image
+                style={styles.imageMakeup}
+                source={item.imagem}
+              />
+              <Text style={styles.describe1}>
+                {item.descricao}
+              </Text>
+            </View>
+            <View style={styles.Dicas}>
+              <Text style={styles.titleDicas}>Dicas:</Text>
+              <Text style={styles.lineDicas}>__________________________________</Text>
+              <Text style={styles.describeDicas}>
+                {item.dicas}
+              </Text>
+              <CustomButton
+                title="Baixe PDF"
+                onPress={() => openPDF(item.pdf)}
+              />
+            </View>
           </View>
-          <View style={styles.Dicas}>
-            <Text style={styles.titleDicas}>Dicas:</Text>
-            <Text style={styles.lineDicas}>__________________________________</Text>
-            <Text style={styles.describeDicas}>
-              {item.dicas}
-            </Text>
-            <CustomButton
-              title="Baixe PDF"
-              onPress={() => openPDF(item.pdf)}
-            />
-          </View>
-        </View>
-      ))}
+        ))
+      )}
     </ScrollView>
   );
 }
