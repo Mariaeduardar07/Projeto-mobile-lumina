@@ -7,8 +7,11 @@ import {
   Dimensions,
 } from "react-native";
 import fotoDuda from "../assets/duds.png"; 
-import fotoMari from "../assets/mari.png";
+import fotoMari from "../assets/mariana.png";
 import fotoBalico from "../assets/balico.png";
+import fotoGomes from "../assets/sophiagomes.png";
+import fotoAnna from "../assets/anna.png";
+
 const { width } = Dimensions.get("window");
 
 import Carousel from "../components/carousel/Carousel.js";
@@ -33,17 +36,13 @@ const carouselData = [
     id: "3",
     title: "Anna Clara",
     subtitle: "Desenvolvedora",
-    image: {
-      uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGL0me_PGKcII0ZfpgoFOEyNGH2xNp4a0O0Mp3DmmLEsZu0nSVIbjQT49kHCpSY79g4h4&usqp=CAU",
-    },
+    image: fotoAnna
   },
   {
     id: "4",
     title: "Sophia Gomes",
     subtitle: "Desenvolvedora",
-    image: {
-      uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiE1jj4QbYkci-ttq8XTrZOUPbg2G69BKml_076NpqClNjjmJ6yKhHclR1LAW3-LIoWcM&usqp=CAU",
-    },
+    image: fotoGomes,
   },
   {
     id: "5",
