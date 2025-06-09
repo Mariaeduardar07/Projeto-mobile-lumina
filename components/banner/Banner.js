@@ -7,26 +7,28 @@ const { width } = Dimensions.get("window");
 const Banner = ({
   title = "Título padrão",
   text = "Texto padrão",
-  gradientColors = ["rgba(167, 213, 236, 0.49)","rgba(167,213,236,0.8)",],
+  gradientColors = ["rgba(167, 213, 236, 0.49)", "rgba(167,213,236,0.8)"],
   style,
   children,
 }) => {
   return (
     <View style={[styles.introduction, style]}>
       <View style={styles.bannerIntroduction}>
-          <LinearGradient
-            colors={gradientColors}
-            start={{ x: 0, y: 1}}
-            end={{ x: 0, y: 1}}
-            style={styles.gradient}
-          >
-            {children ? children : (
-              <>
-                <Text style={styles.titleIntroduction}>{title}</Text>
-                <Text style={styles.textIntroduction}>{text}</Text>
-              </>
-            )}
-          </LinearGradient>
+        <LinearGradient
+          colors={gradientColors}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 0 }}
+          style={styles.gradient}
+        >
+          {children ? (
+            children
+          ) : (
+            <>
+              <Text style={styles.titleIntroduction}>{title}</Text>
+              <Text style={styles.textIntroduction}>{text}</Text>
+            </>
+          )}
+        </LinearGradient>
       </View>
     </View>
   );
