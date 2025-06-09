@@ -11,7 +11,7 @@ import SearchBar from "../components/search/Search.js";
 import { useRouter } from "expo-router";
 import Newsletter from "../components/newsletter/Newsletter.js";
 import Forms from "../components/forms/Forms.js";
-import ObjetivosBlog from "../components/blogObjectives/BlogObjectives.js";
+import BlogObjectives from "../components/blogObjectives/BlogObjectives.js";
 
 const { width } = Dimensions.get("window");
 
@@ -187,7 +187,7 @@ export default function Home() {
             ]}
             onCategoryPress={handleCategoryPress}
           />
-          <ObjetivosBlog />
+          <BlogObjectives />
           <Newsletter />
           <Forms />
         </>

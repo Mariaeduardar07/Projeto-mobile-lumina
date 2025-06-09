@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from "react";
 import {
   View,
   Text,
@@ -6,36 +6,37 @@ import {
   Dimensions,
   Animated,
   TouchableOpacity,
-} from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+} from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 
-const { width } = Dimensions.get('window');
+const { width } = Dimensions.get("window");
 const CARD_WIDTH = width * 0.78;
 const CARD_SPACING = 16;
 
 const objetivos = [
   {
-    id: '1',
+    id: "1",
     icon: <Ionicons name="book-outline" size={48} color="#fff" />,
     title: "Entregar conteúdos de qualidade que inspirem o autocuidado..",
   },
   {
-    id: '2',
+    id: "2",
     icon: <Ionicons name="chatbubbles-outline" size={48} color="#fff" />,
     title: "Promover a colaboração e o trabalho em equipe.",
   },
   {
-    id: '3',
+    id: "3",
     icon: <Ionicons name="bulb-outline" size={48} color="#fff" />,
     title: "Construir uma comunidade acolhedora e colaborativa.",
   },
   {
-    id: '4',
+    id: "4",
     icon: <Ionicons name="ribbon-outline" size={48} color="#fff" />,
-    title: "Inspirar e transformar vidas por meio de experiências significativas.",
+    title:
+      "Inspirar e transformar vidas por meio de experiências significativas.",
   },
   {
-    id: '5',
+    id: "5",
     icon: <Ionicons name="heart-outline" size={48} color="#fff" />,
     title: "Cultivar um espaço digital saudável, inclusivo e elegante.",
   },
@@ -56,7 +57,8 @@ const BlogObjectives = () => {
   useEffect(() => {
     if (!objetivos || objetivos.length === 0) return;
     const interval = setInterval(() => {
-      const nextIndex = activeIndex === objetivos.length - 1 ? 0 : activeIndex + 1;
+      const nextIndex =
+        activeIndex === objetivos.length - 1 ? 0 : activeIndex + 1;
       flatListRef.current?.scrollToIndex({ index: nextIndex, animated: true });
     }, 4000);
     return () => clearInterval(interval);
@@ -77,12 +79,12 @@ const BlogObjectives = () => {
     const scale = scrollX.interpolate({
       inputRange,
       outputRange: [0.92, 1, 0.92],
-      extrapolate: 'clamp',
+      extrapolate: "clamp",
     });
     const opacity = scrollX.interpolate({
       inputRange,
       outputRange: [0.6, 1, 0.6],
-      extrapolate: 'clamp',
+      extrapolate: "clamp",
     });
     return (
       <Animated.View style={[styles.card, { transform: [{ scale }], opacity }]}>
@@ -99,13 +101,6 @@ const BlogObjectives = () => {
       <Text style={styles.header}>#OBJETIVOSLUMINA</Text>
 
       <View style={styles.carouselWrapper}>
-        <TouchableOpacity
-          onPress={() => scrollToIndex(activeIndex - 1)}
-          style={styles.arrowButton}
-        >
-          <Ionicons name="chevron-back" size={28} color="#2563eb" />
-        </TouchableOpacity>
-
         <Animated.FlatList
           ref={flatListRef}
           data={objetivos}
@@ -115,8 +110,10 @@ const BlogObjectives = () => {
           showsHorizontalScrollIndicator={false}
           snapToInterval={CARD_WIDTH + CARD_SPACING}
           decelerationRate="fast"
+          style={{ width: "100%" }}
           contentContainerStyle={{
-            paddingHorizontal: (width - CARD_WIDTH) / 2,
+            paddingLeft: (width - CARD_WIDTH) / 2,
+            paddingRight: (width - CARD_WIDTH) / 2,
           }}
           onScroll={Animated.event(
             [{ nativeEvent: { contentOffset: { x: scrollX } } }],
@@ -133,6 +130,15 @@ const BlogObjectives = () => {
         />
 
         <TouchableOpacity
+          onPress={() => scrollToIndex(activeIndex - 1)}
+          style={[
+            styles.arrowButton,
+            { left: 0, right: undefined, position: "absolute", top: "40%" },
+          ]}
+        >
+          <Ionicons name="chevron-back" size={28} color="#2563eb" />
+        </TouchableOpacity>
+        <TouchableOpacity
           onPress={() => scrollToIndex(activeIndex + 1)}
           style={styles.arrowButton}
         >
@@ -146,53 +152,58 @@ const BlogObjectives = () => {
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
-    alignItems: 'center',
+    width: "100%",
+    height: 450,
+    alignItems: "center",
+    justifyContent: "center",
     marginTop: 40,
     marginBottom: 30,
-    backgroundColor: '#f4f8fb',
+    backgroundColor: "#f4f8fb",
   },
   header: {
     fontSize: 24,
-    color: '#2b60ab',
-    fontWeight: 'bold',
+    color: "#2b60ab",
+    fontWeight: "bold",
     marginBottom: 28,
     letterSpacing: 2,
-    textTransform: 'uppercase',
+    textTransform: "uppercase",
   },
   carouselWrapper: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    width: "100%",
+    position: "relative",
+    justifyContent: "center",
+    alignItems: "center",
   },
   arrowButton: {
     padding: 8,
     zIndex: 10,
+    right: 0,
+    position: "absolute",
+    top: "40%",
   },
   card: {
     width: CARD_WIDTH,
-    backgroundColor: '#fff',
+    height: 315,
+    backgroundColor: "#fff",
     borderRadius: 10,
-    paddingVertical: 36,
-    paddingHorizontal: 24,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginHorizontal: CARD_SPACING / 2,
-    shadowColor: '#2b60ab',
-    shadowOffset: { width: 0, height: 8 },
-    shadowOpacity: 0.13,
+    alignItems: "center",
+    justifyContent: "center",
+    shadowColor: "#2b60ab",
+    shadowOpacity: 1.5,
     shadowRadius: 24,
     elevation: 8,
     borderWidth: 2,
-    borderColor: '#e0e7ef',
+    borderColor: "#e3f1fa",
+    marginHorizontal: CARD_SPACING / 2, // ESSENCIAL para espaçamento entre cards
   },
   iconCircle: {
-    backgroundColor: '#2b60ab',
+    backgroundColor: "#2b60ab",
     borderRadius: 60,
     padding: 22,
     marginBottom: 22,
-    alignItems: 'center',
-    justifyContent: 'center',
-    shadowColor: '#2b60ab',
+    alignItems: "center",
+    justifyContent: "center",
+    shadowColor: "#2b60ab",
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.18,
     shadowRadius: 10,
@@ -200,14 +211,14 @@ const styles = StyleSheet.create({
   },
   cardText: {
     fontSize: 20,
-    color: '#1e293b',
-    textAlign: 'center',
-    fontWeight: '700',
+    color: "#1e293b",
+    textAlign: "center",
+    width: "80%",
+    fontWeight: "700",
     letterSpacing: 0.5,
     lineHeight: 28,
     marginTop: 8,
   },
-  // Os estilos de paginação podem ser removidos se quiser
 });
 
 export default BlogObjectives;

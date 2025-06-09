@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity, StyleSheet, Alert } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet, Alert, Dimensions } from "react-native";
+const { width, height } = Dimensions.get("window");
 
 export default function Forms() {
   const [selectedOption, setSelectedOption] = useState(null);
@@ -60,23 +61,30 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#f5faff",
-    padding: 20,
+    padding: width * 0.05,
+    minHeight: height * 0.8,
   },
   title: {
-    fontSize: 24,
+    fontSize: width < 350 ? 20 : 24,
     fontWeight: "bold",
     color: "#0056b3",
     marginBottom: 20,
+    textAlign: "center",
   },
   formContainer: {
- 
     borderRadius: 10,
-    padding: 20,
-    width: "90%",
+    padding: width * 0.05,
+    width: width * 0.92,
     alignItems: "center",
+    backgroundColor: "#fff",
+    elevation: 2,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.08,
+    shadowRadius: 4,
   },
   question: {
-    fontSize: 18,
+    fontSize: width < 350 ? 16 : 18,
     color: "#333",
     marginBottom: 20,
     textAlign: "center",
@@ -84,41 +92,41 @@ const styles = StyleSheet.create({
   option: {
     flexDirection: "row",
     alignItems: "center",
-    padding: 10,
+    padding: width * 0.03,
     marginVertical: 5,
     backgroundColor: "#d9ecf9",
     borderRadius: 5,
     width: "100%",
-   
-    
   },
   selectedOption: {
     borderColor: "#0056b3",
-    backgroundColor: "#d9ecf9",
+    backgroundColor: "#b3d8f7",
+    borderWidth: 1,
   },
   optionText: {
-    fontSize: 16,
+    fontSize: width < 350 ? 14 : 16,
     color: "#333",
     marginLeft: 10,
+    flexShrink: 1,
   },
   radioCircle: {
-    height: 20,
-    width: 20,
-    borderRadius: 10,
+    height: width < 350 ? 16 : 20,
+    width: width < 350 ? 16 : 20,
+    borderRadius: width < 350 ? 8 : 10,
     borderWidth: 2,
     borderColor: "#0056b3",
     alignItems: "center",
     justifyContent: "center",
   },
   selectedCircle: {
-    height: 10,
-    width: 10,
-    borderRadius: 5,
+    height: width < 350 ? 8 : 10,
+    width: width < 350 ? 8 : 10,
+    borderRadius: width < 350 ? 4 : 5,
     backgroundColor: "#0056b3",
   },
   submitButton: {
     marginTop: 20,
-    padding: 15,
+    padding: width * 0.04,
     backgroundColor: "#0056b3",
     borderRadius: 5,
     width: "100%",
@@ -126,12 +134,12 @@ const styles = StyleSheet.create({
   },
   submitButtonText: {
     color: "white",
-    fontSize: 16,
+    fontSize: width < 350 ? 14 : 16,
     fontWeight: "bold",
   },
   footerText: {
     marginTop: 20,
-    fontSize: 16,
+    fontSize: width < 350 ? 14 : 16,
     color: "#0056b3",
     textDecorationLine: "underline",
   },
