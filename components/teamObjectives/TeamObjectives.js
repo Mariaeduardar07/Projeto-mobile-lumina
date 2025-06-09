@@ -60,7 +60,7 @@ const ObjetivosCards = () => {
 const styles = StyleSheet.create({
     wrapper: {
         alignItems: 'center',
-        marginTop: 30,
+        marginTop: 20,
         width: '100%',
     },
     header: {

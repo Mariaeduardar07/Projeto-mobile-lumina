@@ -6,7 +6,7 @@ import {
   ScrollView,
   Dimensions,
 } from "react-native";
-import fotoDuda from "../assets/duds.png"; 
+import fotoDuda from "../assets/duda.png"; 
 import fotoMari from "../assets/mariana.png";
 import fotoBalico from "../assets/balico.png";
 import fotoGomes from "../assets/sophiagomes.png";

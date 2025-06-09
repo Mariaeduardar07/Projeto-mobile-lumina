@@ -69,7 +69,7 @@ const Carousel = ({ data, autoplayDelay = 3000 }) => {
                     key={i}
                     style={[
                         styles.paginationDot,
-                        { backgroundColor: i === activeIndex ? '#2196F3' : '#D1D1D1' }
+                        { backgroundColor: i === activeIndex ? '#2b60ab' : 'rgb(150, 184, 201)' }
                     ]}
                 />
             ))}
@@ -97,8 +97,8 @@ const Carousel = ({ data, autoplayDelay = 3000 }) => {
 const styles = StyleSheet.create({
     container: {
         width,
-        height: width * 0.8,
-        marginBottom: 20,
+        height: width * 1.3,
+        marginTop: 20,
     },
     slide: {
         width,
@@ -106,19 +106,17 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     slideImage: {
-        width: "90%", // Largura da imagem
-        height: "100%", // Altura da imagem
-        borderRadius: 10, // Bordas arredondadas
+        width: "90%", 
+        height: "100%",
+        borderRadius: 10, 
     },
     textContainer: {
-        position: 'absolute', // Sobrepõe a imagem
+        position: 'absolute',
         bottom: 0, // Fixa na parte inferior da imagem
         width: "90%", // Mesma largura da imagem
         backgroundColor: 'rgb(167, 214, 237)', // Fundo azul translúcido
         paddingVertical: 10,
         paddingHorizontal: 20,
-        borderBottomLeftRadius: 10, // Bordas arredondadas no canto inferior esquerdo
-        borderBottomRightRadius: 10, // Bordas arredondadas no canto inferior direito
         alignItems: 'center',
     },
     title: {
@@ -134,7 +132,7 @@ const styles = StyleSheet.create({
     },
     paginationContainer: {
         position: 'absolute',
-        marginTop: 350,
+        marginTop: 550,
         left: 0,
         right: 0,
         flexDirection: 'row',

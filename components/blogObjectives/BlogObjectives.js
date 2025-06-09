@@ -145,7 +145,6 @@ const BlogObjectives = () => {
           <Ionicons name="chevron-forward" size={28} color="#2563eb" />
         </TouchableOpacity>
       </View>
-      {/* Bolinhas removidas */}
     </View>
   );
 };
@@ -194,7 +193,7 @@ const styles = StyleSheet.create({
     elevation: 8,
     borderWidth: 2,
     borderColor: "#e3f1fa",
-    marginHorizontal: CARD_SPACING / 2, // ESSENCIAL para espaçamento entre cards
+    marginHorizontal: CARD_SPACING / 2,
   },
   iconCircle: {
     backgroundColor: "#2b60ab",
