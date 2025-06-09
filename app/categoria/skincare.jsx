@@ -18,7 +18,15 @@ const dados = [
   {
     id: "1",
     tipo: "Peles secas",
-    keywords: ["seca", "secas", "pele seca", "peles secas", "ressecada", "descamação", "descamacao"],
+    keywords: [
+      "seca",
+      "secas",
+      "pele seca",
+      "peles secas",
+      "ressecada",
+      "descamação",
+      "descamacao",
+    ],
     descricao:
       "Peles secas são caracterizadas por uma textura mais áspera, falta de viço e tendência ao ressecamento e descamação. A superfície da pele costuma ser mais fina e sem oleosidade natural, o que pode deixá-la com aparência opaca e sensação de repuxamento.",
     imagem: require("../../assets/pele-seca.png"),
@@ -29,7 +37,15 @@ const dados = [
   {
     id: "2",
     tipo: "Peles Mistas",
-    keywords: ["mista", "mistas", "pele mista", "peles mistas", "zona t", "oleosidade", "seca e oleosa"],
+    keywords: [
+      "mista",
+      "mistas",
+      "pele mista",
+      "peles mistas",
+      "zona t",
+      "oleosidade",
+      "seca e oleosa",
+    ],
     descricao:
       "Peles mistas apresentam características de dois tipos de pele: oleosidade concentrada na zona T (testa, nariz e queixo) e ressecamento nas outras áreas do rosto, como bochechas.",
     imagem: require("../../assets/pele-mista.png"),
@@ -40,7 +56,16 @@ const dados = [
   {
     id: "3",
     tipo: "Peles oleosas",
-    keywords: ["oleosa", "oleosas", "pele oleosa", "peles oleosas", "brilho", "poros", "cravos", "espinhas"],
+    keywords: [
+      "oleosa",
+      "oleosas",
+      "pele oleosa",
+      "peles oleosas",
+      "brilho",
+      "poros",
+      "cravos",
+      "espinhas",
+    ],
     descricao:
       "Pele oleosa é caracterizada pelo excesso de produção de sebo, o que causa brilho intenso, poros dilatados e maior tendência a cravos e espinhas.",
     imagem: require("../../assets/pele-oleosa.png"),
@@ -61,9 +86,11 @@ export default function Skincare() {
       return;
     }
     const lower = query.toLowerCase();
-    const resultado = dados.filter(item =>
-      item.tipo.toLowerCase().includes(lower) ||
-      (item.keywords && item.keywords.some(k => k.includes(lower) || lower.includes(k)))
+    const resultado = dados.filter(
+      (item) =>
+        item.tipo.toLowerCase().includes(lower) ||
+        (item.keywords &&
+          item.keywords.some((k) => k.includes(lower) || lower.includes(k)))
     );
     setLista(resultado);
   };
@@ -86,27 +113,21 @@ export default function Skincare() {
       />
 
       {lista.length === 0 ? (
-         <NoResults
-        />
+        <NoResults />
       ) : (
-        lista.map(item => (
+        lista.map((item) => (
           <View key={item.id}>
             <View style={styles.containerSkincare}>
               <Text style={styles.titleSkincare}>{item.tipo}</Text>
-              <Image
-                style={styles.imageSkincare}
-                source={item.imagem}
-              />
-              <Text style={styles.describe1}>
-                {item.descricao}
-              </Text>
+              <Image style={styles.imageSkincare} source={item.imagem} />
+              <Text style={styles.describe1}>{item.descricao}</Text>
             </View>
             <View style={styles.Dicas}>
-              <Text style={styles.titleDicas}>Dicas:</Text>
-              <Text style={styles.lineDicas}>__________________________________</Text>
-              <Text style={styles.describeDicas}>
-                {item.dicas}
-              </Text>
+              <View style={styles.dicasHeader}>
+                <Text style={styles.titleDicas}>Dicas:</Text>
+                <View style={styles.decorativeLine} />
+              </View>
+              <Text style={styles.describeDicas}>{item.dicas}</Text>
               <CustomButton
                 title="Baixe PDF"
                 onPress={() => openPDF(item.pdf)}
@@ -124,6 +145,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "white",
+    width: "100%",
   },
   introductionBanner: {
     width: width - 32,
@@ -131,26 +153,26 @@ const styles = StyleSheet.create({
     marginTop: 15,
   },
   containerSkincare: {
-    width: width * 0.9, // 90% da largura da tela
-    margin: 10,
+    width: width * 0.9,
+    marginTop: 20,
   },
   titleSkincare: {
-     fontSize: width < 350 ? 18 : 24,
+    fontSize: width < 350 ? 18 : 24,
     fontWeight: "500",
     color: "#2b60ab",
     alignSelf: "flex-start",
     marginTop: 5,
     width: "100%",
-    textAlign: "left", // alinhamento à esquerda
+    textAlign: "left",
   },
   imageSkincare: {
-    width: "100%", // Largura total do contêiner
-    height: height * 0.2, // Altura em proporção à altura da tela
+    width: "100%",
+    height: height * 0.2,
     borderRadius: 10,
     marginTop: 20,
   },
   describe1: {
-    fontSize: width * 0.04, // Tamanho da fonte dinâmico
+    fontSize: width * 0.04,
     color: "black",
     marginTop: 15,
     width: "100%",
@@ -158,22 +180,30 @@ const styles = StyleSheet.create({
   },
   Dicas: {
     width: width * 0.9,
+    marginBottom: 30,
+  },
+  dicasHeader: {
+    alignSelf: "flex-start",
+    marginTop: 30,
+    marginBottom: 8,
   },
   titleDicas: {
-    fontSize: width * 0.05,
+    fontSize: 22,
     color: "#65a2bf",
-    marginTop: 10,
+    marginBottom: 2,
   },
-  lineDicas: {
-    fontSize: width * 0.05,
-    color: "#65a2bf",
-    width: "100%",
-    marginTop: -16,
+  decorativeLine: {
+    width: 55,
+    height: 4,
+    backgroundColor: "#65a2bf",
+    borderRadius: 2,
+    marginLeft: 2,
+    marginTop: 0,
   },
   describeDicas: {
     fontSize: width * 0.04,
     color: "black",
-    marginTop: 15,
+    marginTop: 5,
     width: "100%",
     textAlign: "justify",
   },

@@ -144,8 +144,7 @@ const styles = StyleSheet.create({
   },
   containerCabelos: {
     width: width * 0.9,
-    marginTop: 10,
-    marginBottom: 0,
+    marginTop: 20,
   },
   titleCabelos: {
     fontSize: width < 350 ? 18 : 24,
@@ -157,13 +156,13 @@ const styles = StyleSheet.create({
     textAlign: "left", // alinhamento à esquerda
   },
   imageCabelos: {
-    width: "100%", // Largura total do contêiner
-    height: height * 0.2, // Altura em proporção à altura da tela
+    width: "100%",
+    height: height * 0.2, 
     borderRadius: 10,
     marginTop: 20,
   },
   describe1: {
-    fontSize: width * 0.04, // Tamanho da fonte dinâmico
+    fontSize: width * 0.04,
     color: "black",
     marginTop: 15,
     width: "100%",
@@ -176,19 +175,19 @@ const styles = StyleSheet.create({
   dicasHeader: {
     alignSelf: "flex-start",
     marginTop: 30,
-    marginBottom: 8, // Menor espaço para ficar igual ao exemplo
+    marginBottom: 8, 
   },
   titleDicas: {
     fontSize: 22,
     color: "#65a2bf",
-    marginBottom: 2, // Espaço pequeno entre texto e linha
+    marginBottom: 80, 
   },
   decorativeLine: {
-    width: 55, // Ajuste para o tamanho desejado
+    width: 55, 
     height: 4,
     backgroundColor: "#65a2bf",
     borderRadius: 2,
-    marginLeft: 2, // Pequeno ajuste para alinhar com o texto
+    marginLeft: 2, 
     marginTop: 0,
   },
   describeDicas: {

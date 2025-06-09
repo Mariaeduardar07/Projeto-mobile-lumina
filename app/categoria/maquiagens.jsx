@@ -6,7 +6,7 @@ import {
   StyleSheet,
   Image,
   Dimensions,
-  Linking
+  Linking,
 } from "react-native";
 const { width, height } = Dimensions.get("window");
 import Banner from "../../components/banner/Banner.js";
@@ -18,7 +18,15 @@ const dados = [
   {
     id: "1",
     tipo: "Pele",
-    keywords: ["pele", "base", "corretivo", "blush", "contorno", "iluminador", "maquiagem pele"],
+    keywords: [
+      "pele",
+      "base",
+      "corretivo",
+      "blush",
+      "contorno",
+      "iluminador",
+      "maquiagem pele",
+    ],
     descricao:
       "A maquiagem na pele é a base de qualquer produção, sendo essencial para criar um acabamento uniforme, disfarçar imperfeições e realçar os traços naturais do rosto. Mais do que estética, ela contribui para a autoestima, oferecendo uma aparência saudável, iluminada e bem cuidada.",
     imagem: require("../../assets/pele-maquiagem.png"),
@@ -29,7 +37,15 @@ const dados = [
   {
     id: "2",
     tipo: "Olhos",
-    keywords: ["olhos", "sombra", "delineador", "rímel", "mascara", "maquiagem olhos", "lápis de olho"],
+    keywords: [
+      "olhos",
+      "sombra",
+      "delineador",
+      "rímel",
+      "mascara",
+      "maquiagem olhos",
+      "lápis de olho",
+    ],
     descricao:
       "A maquiagem nos olhos é uma das etapas mais expressivas da make, responsável por destacar o olhar e transmitir personalidade. Com os produtos certos, é possível criar desde visuais discretos e elegantes até produções marcantes e ousadas.",
     imagem: require("../../assets/eyes.png"),
@@ -40,7 +56,16 @@ const dados = [
   {
     id: "3",
     tipo: "Lábios",
-    keywords: ["lábios","labios", "boca", "batom", "gloss", "maquiagem boca", "batom líquido", "lip tint"],
+    keywords: [
+      "lábios",
+      "labios",
+      "boca",
+      "batom",
+      "gloss",
+      "maquiagem boca",
+      "batom líquido",
+      "lip tint",
+    ],
     descricao:
       "A maquiagem para os lábios é um dos pontos de destaque em qualquer produção. Ela pode transformar completamente o visual, transmitindo elegância, ousadia ou suavidade, tudo depende da escolha dos produtos e da forma de aplicação.",
     imagem: require("../../assets/lip.png"),
@@ -61,9 +86,11 @@ export default function Maquiagens() {
       return;
     }
     const lower = query.toLowerCase();
-    const resultado = dados.filter(item =>
-      item.tipo.toLowerCase().includes(lower) ||
-      (item.keywords && item.keywords.some(k => k.includes(lower) || lower.includes(k)))
+    const resultado = dados.filter(
+      (item) =>
+        item.tipo.toLowerCase().includes(lower) ||
+        (item.keywords &&
+          item.keywords.some((k) => k.includes(lower) || lower.includes(k)))
     );
     setLista(resultado);
   };
@@ -82,30 +109,24 @@ export default function Maquiagens() {
         style={styles.introductionBanner}
         title="Maquiagens"
         text="Bem-vinda à seção de Maquiagens do Lumina."
-        gradientColors={[
-          "rgb(141, 185, 209)", "rgba(167,213,236,0.8)",
-        ]}
+        gradientColors={["rgb(141, 185, 209)", "rgba(167,213,236,0.8)"]}
       />
 
       {lista.length === 0 ? (
-         <NoResults
-        />
+        <NoResults />
       ) : (
-        lista.map(item => (
-          <View key={item.id}>
+        lista.map((item) => (
+                 <View key={item.id}>
             <View style={styles.containerMakeup}>
               <Text style={styles.titleMakeup}>{item.tipo}</Text>
-              <Image
-                style={styles.imageMakeup}
-                source={item.imagem}
-              />
-              <Text style={styles.describe1}>
-                {item.descricao}
-              </Text>
+              <Image style={styles.imageMakeup} source={item.imagem} />
+              <Text style={styles.describe1}>{item.descricao}</Text>
             </View>
             <View style={styles.Dicas}>
-              <Text style={styles.titleDicas}>Dicas:</Text>
-              <Text style={styles.lineDicas}>__________________________________</Text>
+              <View style={styles.dicasHeader}>
+                <Text style={styles.titleDicas}>Dicas:</Text>
+                <View style={styles.decorativeLine} />
+              </View>
               <Text style={styles.describeDicas}>
                 {item.dicas}
               </Text>
@@ -126,6 +147,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "white",
+    width: "100%",
   },
   introductionBanner: {
     width: width - 32,
@@ -133,26 +155,26 @@ const styles = StyleSheet.create({
     marginTop: 15,
   },
   containerMakeup: {
-    width: width * 0.9, // 90% da largura da tela
-    margin: 20,
+    width: width * 0.9,
+    marginTop: 20,
   },
   titleMakeup: {
-   fontSize: width < 350 ? 18 : 24,
+    fontSize: width < 350 ? 18 : 24,
     fontWeight: "500",
     color: "#2b60ab",
     alignSelf: "flex-start",
     marginTop: 5,
     width: "100%",
-    textAlign: "left", // alinhamento à esquerda
+    textAlign: "left",
   },
   imageMakeup: {
-    width: "100%", // Largura total do contêiner
-    height: height * 0.2, // Altura em proporção à altura da tela
+    width: "100%",
+    height: height * 0.2,
     borderRadius: 10,
     marginTop: 20,
   },
   describe1: {
-    fontSize: width * 0.04, // Tamanho da fonte dinâmico
+    fontSize: width * 0.04,
     color: "black",
     marginTop: 15,
     width: "100%",
@@ -160,22 +182,30 @@ const styles = StyleSheet.create({
   },
   Dicas: {
     width: width * 0.9,
+    marginBottom: 30,
+  },
+  dicasHeader: {
+    alignSelf: "flex-start",
+    marginTop: 30,
+    marginBottom: 8,
   },
   titleDicas: {
-    fontSize: width * 0.05,
+    fontSize: 22,
     color: "#65a2bf",
-    marginTop: 10,
+    marginBottom: 2,
   },
-  lineDicas: {
-    fontSize: width * 0.05,
-    color: "#65a2bf",
-    width: "100%",
-    marginTop: -16,
+  decorativeLine: {
+    width: 55,
+    height: 4,
+    backgroundColor: "#65a2bf",
+    borderRadius: 2,
+    marginLeft: 2,
+    marginTop: 0,
   },
   describeDicas: {
     fontSize: width * 0.04,
     color: "black",
-    marginTop: 15,
+    marginTop: 5,
     width: "100%",
     textAlign: "justify",
   },
