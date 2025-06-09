@@ -28,6 +28,8 @@ export default function Curiosity() {
   const [newImageUrl, setNewImageUrl] = useState("");
   const [selectedPost, setSelectedPost] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
+  const [interactions, setInteractions] = useState({});
+  const [tempComment, setTempComment] = useState("");
 
   const API_URL = "http://localhost:5000/post";
 
@@ -84,6 +86,33 @@ export default function Curiosity() {
   useEffect(() => {
     fetchPosts();
   }, []);
+
+  const toggleLike = (postId) => {
+    setInteractions((prev) => {
+      const prevPost = prev[postId] || { liked: false, comments: [] };
+      return {
+        ...prev,
+        [postId]: {
+          ...prevPost,
+          liked: !prevPost.liked,
+        },
+      };
+    });
+  };
+
+  const addCommentToPost = (postId, comment) => {
+    if (!comment.trim()) return;
+    setInteractions((prev) => {
+      const prevPost = prev[postId] || { liked: false, comments: [] };
+      return {
+        ...prev,
+        [postId]: {
+          ...prevPost,
+          comments: [...prevPost.comments, comment.trim()],
+        },
+      };
+    });
+  };
 
   const renderItem = ({ item }) => (
     <Pressable
@@ -183,9 +212,65 @@ export default function Curiosity() {
               <>
                 <Text style={styles.modalTitle}>{selectedPost.title}</Text>
                 <Text style={styles.content}>{selectedPost.content}</Text>
+
+                {/* Botão Curtir */}
+                <Pressable
+                  onPress={() => toggleLike(selectedPost.id)}
+                  style={[
+                    styles.button,
+                    interactions[selectedPost.id]?.liked && {
+                      backgroundColor: "#e0245e",
+                    },
+                  ]}
+                >
+                  <Text style={styles.buttonText}>
+                    {interactions[selectedPost.id]?.liked
+                      ? "❤️ Curtido"
+                      : "🤍 Curtir"}
+                  </Text>
+                </Pressable>
+
+                {/* Input comentário */}
+                <TextInput
+                  placeholder="Escreva um comentário..."
+                  value={tempComment}
+                  onChangeText={setTempComment}
+                  style={[styles.input, { marginBottom: 8 }]}
+                  placeholderTextColor="#aaa"
+                />
+
+                {/* Botão enviar comentário */}
+                <Pressable
+                  style={[styles.button, { backgroundColor: "#28a745" }]}
+                  onPress={() => {
+                    addCommentToPost(selectedPost.id, tempComment);
+                    setTempComment("");
+                  }}
+                >
+                  <Text style={styles.buttonText}>Enviar Comentário</Text>
+                </Pressable>
+
+                {/* Lista de comentários */}
+                <FlatList
+                  data={interactions[selectedPost.id]?.comments || []}
+                  keyExtractor={(_, index) => index.toString()}
+                  style={{ maxHeight: 150, marginTop: 12 }}
+                  renderItem={({ item }) => (
+                    <View style={styles.commentBox}>
+                      <Text>{item}</Text>
+                    </View>
+                  )}
+                  ListEmptyComponent={
+                    <Text style={{ color: "#666" }}>
+                      Nenhum comentário ainda.
+                    </Text>
+                  }
+                />
+
+                {/* Botão fechar modal */}
                 <Pressable
                   onPress={() => setContentModalVisible(false)}
-                  style={styles.button}
+                  style={[styles.button, { marginTop: 12 }]}
                 >
                   <Text style={styles.buttonText}>Fechar</Text>
                 </Pressable>
@@ -320,4 +405,10 @@ const styles = StyleSheet.create({
     width: "100%",
     marginBottom: 16,
   },
+  commentBox: {
+  padding: 8,
+  backgroundColor: "#f3f3f3",
+  borderRadius: 8,
+  marginBottom: 6,
+},
 });
