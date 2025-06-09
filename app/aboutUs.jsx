@@ -18,6 +18,7 @@ import Carousel from "../components/carousel/Carousel.js";
 import SearchBar from "../components/search/Search.js";
 import ObjetivosCards from "../components/teamObjectives/TeamObjectives.js";
 import Banner from "../components/banner/Banner.js";
+import NoResults from "../components/noResults/NoResults.js";
 
 const carouselData = [
   {
@@ -130,9 +131,7 @@ export default function AboutUs() {
       <SearchBar onSearch={handleSearch} />
 
       {activeContents.length === 0 ? (
-        <Banner
-          title="Nada encontrado"
-          text="Nenhuma informação corresponde à sua pesquisa."
+        <NoResults
         />
       ) : (
         activeContents.map((content, idx) => <React.Fragment key={idx}>{content.render()}</React.Fragment>)

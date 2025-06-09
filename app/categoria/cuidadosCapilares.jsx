@@ -11,6 +11,7 @@ import {
 import CustomButton from "../../components/customButton/CustomButton";
 import SearchBar from "../../components/search/Search";
 import Banner from "../../components/banner/Banner.js";
+import NoResults from "../../components/noResults/NoResults.js";
 const { width, height } = Dimensions.get("window");
 
 // Adicione as palavras-chave para cada tipo de cabelo
@@ -18,8 +19,16 @@ const dados = [
   {
     id: "1",
     tipo: "Cabelos Lisos",
-    keywords: ["liso", "lisos", "cabelo liso", "cabelos lisos", "reto", "sem ondas"],
-    descricao: "Cabelos lisos são aqueles que possuem uma estrutura capilar reta, sem ondulações ou cachos. A textura do fio é suave e uniforme, sem curvas ou frizz.",
+    keywords: [
+      "liso",
+      "lisos",
+      "cabelo liso",
+      "cabelos lisos",
+      "reto",
+      "sem ondas",
+    ],
+    descricao:
+      "Cabelos lisos são aqueles que possuem uma estrutura capilar reta, sem ondulações ou cachos. A textura do fio é suave e uniforme, sem curvas ou frizz.",
     imagem: {
       uri: "https://uploads.folhavitoria.com.br/2025/02/31iDrZV7-Copia-de-CORTE-DE-FOTOS-4-2-png.webp",
     },
@@ -28,8 +37,16 @@ const dados = [
   {
     id: "2",
     tipo: "Cabelos Cacheados",
-    keywords: ["cacheado", "cacheados", "cabelo cacheado", "cachos", "ondulado", "ondas"],
-    descricao: "Cabelos cacheados são caracterizados por fios que formam cachos ou ondas de forma natural.",
+    keywords: [
+      "cacheado",
+      "cacheados",
+      "cabelo cacheado",
+      "cachos",
+      "ondulado",
+      "ondas",
+    ],
+    descricao:
+      "Cabelos cacheados são caracterizados por fios que formam cachos ou ondas de forma natural.",
     imagem: require("../../assets/cachos.png"),
     pdf: "https://drive.google.com/file/d/1qY6NkYE6UFrVVZj6vmStgDNrdAg7pe8V/view?usp=sharing",
   },
@@ -37,7 +54,8 @@ const dados = [
     id: "3",
     tipo: "Cabelos Crespos",
     keywords: ["crespo", "crespos", "cabelo crespo", "afro", "volumoso"],
-    descricao: "Cabelos crespos são caracterizados por fios que possuem uma curvatura muito apertada, o que resulta em um formato mais compacto e volumoso.",
+    descricao:
+      "Cabelos crespos são caracterizados por fios que possuem uma curvatura muito apertada, o que resulta em um formato mais compacto e volumoso.",
     imagem: require("../../assets/crespo.png"),
     pdf: "https://drive.google.com/file/d/1qY6NkYE6UFrVVZj6vmStgDNrdAg7pe8V/view?usp=sharing",
   },
@@ -54,9 +72,11 @@ export default function Hair() {
       return;
     }
     const lower = query.toLowerCase();
-    const resultado = dados.filter(item =>
-      item.tipo.toLowerCase().includes(lower) ||
-      (item.keywords && item.keywords.some(k => k.includes(lower) || lower.includes(k)))
+    const resultado = dados.filter(
+      (item) =>
+        item.tipo.toLowerCase().includes(lower) ||
+        (item.keywords &&
+          item.keywords.some((k) => k.includes(lower) || lower.includes(k)))
     );
     setLista(resultado);
   };
@@ -79,12 +99,9 @@ export default function Hair() {
       />
 
       {lista.length === 0 ? (
-        <Banner
-          title="Nada encontrado"
-          text="Nenhum tipo de cabelo corresponde à sua pesquisa."
-        />
+        <NoResults />
       ) : (
-        lista.map(item => (
+        lista.map((item) => (
           <View key={item.id}>
             <View style={styles.containerCabelos}>
               <Text style={styles.titleCabelos}>{item.tipo}</Text>
@@ -98,10 +115,13 @@ export default function Hair() {
               </View>
               <Text style={styles.describeDicas}>
                 Clique no botão abaixo para baixar nosso PDF exclusivo com dicas
-                essenciais para seu tipo ideal de cabelos contendo, produtos para
-                cronograma capilar e muito mais!
+                essenciais para seu tipo ideal de cabelos contendo, produtos
+                para cronograma capilar e muito mais!
               </Text>
-              <CustomButton title="Baixe PDF" onPress={() => openPDF(item.pdf)} />
+              <CustomButton
+                title="Baixe PDF"
+                onPress={() => openPDF(item.pdf)}
+              />
             </View>
           </View>
         ))
@@ -109,7 +129,6 @@ export default function Hair() {
     </ScrollView>
   );
 }
-
 
 const styles = StyleSheet.create({
   container: {
@@ -123,11 +142,11 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     marginTop: 15,
   },
- containerCabelos: {
-  width: width * 0.9,
-  marginTop: 10,
-  marginBottom: 0,
-},
+  containerCabelos: {
+    width: width * 0.9,
+    marginTop: 10,
+    marginBottom: 0,
+  },
   titleCabelos: {
     fontSize: width < 350 ? 18 : 24,
     fontWeight: "500",
@@ -150,10 +169,10 @@ const styles = StyleSheet.create({
     width: "100%",
     textAlign: "justify",
   },
-Dicas: {
-  width: width * 0.9,
-  marginBottom: 30,
-},
+  Dicas: {
+    width: width * 0.9,
+    marginBottom: 30,
+  },
   dicasHeader: {
     alignSelf: "flex-start",
     marginTop: 30,

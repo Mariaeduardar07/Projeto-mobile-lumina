@@ -12,6 +12,7 @@ const { width, height } = Dimensions.get("window");
 import Banner from "../../components/banner/Banner.js";
 import SearchBar from "../../components/search/Search";
 import CustomButton from "../../components/customButton/CustomButton.js";
+import NoResults from "../../components/noResults/NoResults.js";
 
 const dados = [
   {
@@ -87,9 +88,7 @@ export default function Maquiagens() {
       />
 
       {lista.length === 0 ? (
-        <Banner
-          title="Nada encontrado"
-          text="Nenhum tipo de maquiagem corresponde à sua pesquisa."
+         <NoResults
         />
       ) : (
         lista.map(item => (

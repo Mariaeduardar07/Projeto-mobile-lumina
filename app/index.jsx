@@ -12,6 +12,7 @@ import { useRouter } from "expo-router";
 import Newsletter from "../components/newsletter/Newsletter.js";
 import Forms from "../components/forms/Forms.js";
 import BlogObjectives from "../components/blogObjectives/BlogObjectives.js";
+import NoResults from "../components/noResults/NoResults.js";
 
 const { width } = Dimensions.get("window");
 
@@ -140,7 +141,7 @@ export default function Home() {
         normalize(page.title).includes(lower) ||
         (page.keywords && page.keywords.some(k => normalize(k).includes(lower) || lower.includes(normalize(k))))
     );
-    setSearchResult(found ? found.render() : <Banner title="Nada encontrado" text="Nenhuma página corresponde à sua pesquisa." />);
+    setSearchResult(found ? found.render() : <NoResults />);
   };
 
   return (
