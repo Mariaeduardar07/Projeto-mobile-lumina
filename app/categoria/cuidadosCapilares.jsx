@@ -180,7 +180,7 @@ const styles = StyleSheet.create({
   titleDicas: {
     fontSize: 22,
     color: "#65a2bf",
-    marginBottom: 80, 
+    marginBottom: 2, 
   },
   decorativeLine: {
     width: 55, 
