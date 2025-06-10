@@ -78,6 +78,7 @@ const Carousel = ({ data, autoplayDelay = 3000 }) => {
 
     return (
         <View style={styles.container}>
+             <Text style={styles.carouselTitle}>#NOSSAESQUIPE</Text>
             <FlatList
                 ref={flatListRef}
                 data={data}
@@ -100,6 +101,14 @@ const styles = StyleSheet.create({
         height: width * 1.3,
         marginTop: 20,
     },
+    carouselTitle: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    color: '#2b60ab',
+    textAlign: 'center',
+    marginBottom: 12,
+    marginTop: 8,
+},
     slide: {
         width,
         justifyContent: 'center',

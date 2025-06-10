@@ -157,7 +157,10 @@ export default function Curiosity() {
             style={styles.introduction}
             title="Curiosidade"
             text="Bem-vinda à seção post do Lumina."
-            gradientColors={["rgb(141, 185, 209)", "rgba(167,213,236,0.8)"]}
+            gradientColors={[
+              "rgb(141, 185, 209)",
+              "hsla(200, 64.50%, 79.00%, 0.80)",
+            ]}
           />
         }
       />
@@ -213,42 +216,45 @@ export default function Curiosity() {
                 <Text style={styles.modalTitle}>{selectedPost.title}</Text>
                 <Text style={styles.content}>{selectedPost.content}</Text>
 
-                {/* Botão Curtir */}
-                <Pressable
-                  onPress={() => toggleLike(selectedPost.id)}
-                  style={[
-                    styles.button,
-                    interactions[selectedPost.id]?.liked && {
-                      backgroundColor: "#e0245e",
-                    },
-                  ]}
-                >
-                  <Text style={styles.buttonText}>
-                    {interactions[selectedPost.id]?.liked
-                      ? "❤️ Curtido"
-                      : "🤍 Curtir"}
-                  </Text>
-                </Pressable>
+                {/* Botão de Curtir em uma linha separada */}
+                <View style={styles.likeRow}>
+                  <Pressable
+                    onPress={() => toggleLike(selectedPost.id)}
+                    style={[
+                      styles.actionButton,
+                      styles.likeButtonFullWidth,
+                      interactions[selectedPost.id]?.liked && {
+                        backgroundColor: "#e0245e",
+                      },
+                    ]}
+                  >
+                    <Text style={styles.buttonText}>
+                      {interactions[selectedPost.id]?.liked
+                        ? "❤️ Curtido"
+                        : "🤍 Curtir"}
+                    </Text>
+                  </Pressable>
+                </View>
 
-                {/* Input comentário */}
-                <TextInput
-                  placeholder="Escreva um comentário..."
-                  value={tempComment}
-                  onChangeText={setTempComment}
-                  style={[styles.input, { marginBottom: 8 }]}
-                  placeholderTextColor="#aaa"
-                />
-
-                {/* Botão enviar comentário */}
-                <Pressable
-                  style={[styles.button, { backgroundColor: "#28a745" }]}
-                  onPress={() => {
-                    addCommentToPost(selectedPost.id, tempComment);
-                    setTempComment("");
-                  }}
-                >
-                  <Text style={styles.buttonText}>Enviar Comentário</Text>
-                </Pressable>
+                {/* Campo de comentário e botão enviar em outra linha */}
+                <View style={styles.commentRow}>
+                  <TextInput
+                    placeholder="Comente..."
+                    value={tempComment}
+                    onChangeText={setTempComment}
+                    style={styles.commentInput}
+                    placeholderTextColor="#aaa"
+                  />
+                  <Pressable
+                    style={[styles.actionButton, styles.sendButtonBorder]}
+                    onPress={() => {
+                      addCommentToPost(selectedPost.id, tempComment);
+                      setTempComment("");
+                    }}
+                  >
+                    <Text style={styles.buttonEnviar}>Enviar</Text>
+                  </Pressable>
+                </View>
 
                 {/* Lista de comentários */}
                 <FlatList
@@ -257,7 +263,7 @@ export default function Curiosity() {
                   style={{ maxHeight: 150, marginTop: 12 }}
                   renderItem={({ item }) => (
                     <View style={styles.commentBox}>
-                      <Text>{item}</Text>
+                      <Text style={styles.commentText}>{item}</Text>
                     </View>
                   )}
                   ListEmptyComponent={
@@ -267,7 +273,6 @@ export default function Curiosity() {
                   }
                 />
 
-                {/* Botão fechar modal */}
                 <Pressable
                   onPress={() => setContentModalVisible(false)}
                   style={[styles.button, { marginTop: 12 }]}
@@ -406,9 +411,78 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   commentBox: {
-  padding: 8,
-  backgroundColor: "#f3f3f3",
-  borderRadius: 8,
-  marginBottom: 6,
-},
+    padding: 8,
+    backgroundColor: "#f3f3f3",
+    borderRadius: 8,
+    marginBottom: 6,
+  },
+  actionsRow: {
+    backgroundColor: "#fff",
+    borderWidth: 1,
+    borderColor: "#2b60ab",
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 8,
+    gap: 8,
+  },
+  actionButton: {
+    backgroundColor: "#2b60ab",
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    borderRadius: 8,
+    alignItems: "center",
+    marginRight: 6,
+  },
+  buttonEnviar: {
+    color: "#2b60ab",
+    fontWeight: "600",
+  },
+  likeButtonFullWidth: {
+    width: "100%",
+    marginRight: 0,
+    justifyContent: "center",
+  },
+  sendButtonBorder: {
+    borderWidth: 2,
+    borderColor: "#a7d5ec",
+    backgroundColor: "#fff",
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    borderRadius: 8,
+    alignItems: "center",
+  },
+  commentInput: {
+    flex: 1,
+    borderWidth: 1,
+    borderColor: "#ccc",
+    borderRadius: 8,
+    padding: 8,
+    marginRight: 6,
+    fontSize: 14,
+    backgroundColor: "#fafafa",
+    color: "#444",
+  },
+  commentBox: {
+    padding: 8,
+    backgroundColor: "#f3f3f3",
+    borderRadius: 8,
+    marginBottom: 6,
+    borderLeftWidth: 4,
+    borderLeftColor: "#2b60ab",
+  },
+  commentText: {
+    color: "#333",
+    fontSize: 14,
+  },
+  likeRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    marginBottom: 8,
+  },
+  commentRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 8,
+  },
 });
