@@ -17,7 +17,6 @@ const { width } = Dimensions.get("window");
 import Carousel from "../components/carousel/Carousel.js";
 import SearchBar from "../components/search/Search.js";
 import ObjetivosCards from "../components/teamObjectives/TeamObjectives.js";
-import Banner from "../components/banner/Banner.js";
 import NoResults from "../components/noResults/NoResults.js";
 
 const carouselData = [
