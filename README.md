@@ -7,7 +7,7 @@
 ![capa do readme](./assets/capaDoReadme.png)
 
 <h1 style="font-family: 'Tan Pearl', serif;">
-    <img src="./public/logo-curta.png" alt="Logo do projeto" width="30px" /> Lumina Bloom
+    <img src="./assets/logo-curta.png" alt="Logo do projeto" width="30px" /> Lumina Bloom
 </h1>
 
 Lumina Bloom é um blog de autoajuda e desenvolvimento pessoal, criado como parte do projeto final do curso de Desenvolvimento de Sistemas do SENAI. O objetivo deste projeto é fornecer um espaço para compartilhar dicas, reflexões e recursos que ajudem as pessoas a florescerem em suas vidas pessoais e profissionais.
