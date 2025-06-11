@@ -31,7 +31,7 @@ export default function Curiosity() {
   const [interactions, setInteractions] = useState({});
   const [tempComment, setTempComment] = useState("");
 
-  const API_URL = "http://localhost:5000/post";
+  const API_URL = "https://lumina.coolify.fps92.dev/posts";
 
   const fetchPosts = async () => {
     try {
